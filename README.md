@@ -15,7 +15,7 @@ A Browser extension that is meant to propagate learning outcomes for individuals
 ### To run linting
 ``` npm run lint ```
 
-###To run linting in watch mode
+### To run linting in watch mode
 ``` npm run watch ```
 
 ### To run prettier
