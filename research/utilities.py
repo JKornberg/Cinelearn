@@ -83,14 +83,23 @@ def transcript_to_df(path, merge_time=True):
         # Merge identical time segments into a single string
         data = data.groupby(["begin", "end"])["text"].apply(lambda x: " ".join(x)).reset_index()
         data["text"] = data["text"].str.strip()
-
+    data['index'] = np.arange(len(data)) + 1
     return data
 
-def df_to_text(df, index=False):
+def split_df_segments(df, n=2):
+    duration = df['end'].max()
+    segment_length = duration / n
+    segments = []
+    for i in range(n):
+        segment = df[(df['end'] >= (i * segment_length)) & (df['end'] <= ((i + 1) * segment_length))]
+        segments.append(segment)
+    return segments
+
+def df_to_text(df, index=False, separate='\n'):
     if index:
-        return '\n'.join([f'{i+1}. {row["text"]}' for i, row in df.iterrows()])
+        return separate.join([f'{row["index"]}. {row["text"]}' for i, row in df.iterrows()])
     else:
-        return '\n'.join([f'{row["text"]}\n' for i, row in df.iterrows()])
+        return separate.join([f'{row["text"]}' for i, row in df.iterrows()])
 
 
 
