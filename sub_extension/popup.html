@@ -1,5 +1,25 @@
+<!DOCTYPE html>
 <html>
-  <body>
-    <h1>Hello Extensions</h1>
-  </body>
+<head>
+	<title>Mountain Climbing Progress</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="script.js"></script>
+</head>
+<body>
+
+	<!-- Wrap the mountain climbing and progress bar elements in a wrapper div -->
+	<div class="wrapper">
+		<div>
+			<img class="mountain-climbing" src="mountain-climbing.jpg" alt="Mountain Climbing">
+			<img class="mountain-climber" id="mountain-climber" src="mountain-climber.png" alt="Mountain Climber">
+		</div>
+		<progress id="myProgress" value="0" max="100" style="width: 100%"></progress>
+		<!-- Add a button to simulate progress -->
+		<div class="btn-container">
+			<button id="fillButton">Fill Progress Bar</button>
+			<span id='skill-level'>Beginner</span>
+		</div>
+	</div>
+
+</body>
 </html>
