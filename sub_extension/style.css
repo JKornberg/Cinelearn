@@ -6,12 +6,12 @@
 
 .mountain-climbing {
   position: relative;
-  display: inline-block;
+  display: none;
   width: 300px;
 }
 
 .mountain-climber {
-  display: inline-block;
+  display: none;
   position: absolute;
   top: 170px;
   left: 220px;
@@ -19,7 +19,7 @@
 }
 
 .btn-container {
-  display: inline-block;
+  display: none;
   position: relative;
 }
 		

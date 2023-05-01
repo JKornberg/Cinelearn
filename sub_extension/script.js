@@ -71,4 +71,50 @@ function fillProgressBar() {
 document.addEventListener('DOMContentLoaded', function() {
   var fillButton = document.getElementById('fillButton');
   fillButton.addEventListener('click', fillProgressBar);
+
+  const loginForm = document.getElementById('login-form');
+  const mountainSection = document.getElementById('mountain-section');
+  const progressBar = document.getElementById('myProgress');
+  const mountain = document.getElementById('mountain-climbing');
+  const climber = document.getElementById('mountain-climber');
+  const btnContainer = document.querySelector('.btn-container');
+  const passwordField = document.querySelector('.password-field');
+  const showPasswordCheckbox = document.getElementById('show-password-checkbox');
+
+
+  loginForm.addEventListener('submit', (event) => {
+	event.preventDefault(); // Prevent the form from submitting
+
+	// Check if the username and password are correct (replace with your own logic)
+	const username = document.getElementById('username').value;
+	const password = document.getElementById('password').value;
+	const isAuthenticated = (username === 'exampleuser' && password === 'examplepassword');
+
+	if (isAuthenticated) {
+		mountainSection.style.display = 'block'; // Hide the mountain climbing elements
+		progressBar.style.display = 'inline-block'; // Show the progress bar
+		btnContainer.style.display = 'inline-block'; // Show the button container
+		mountain.style.display = 'inline-block'; // Show the mountain
+		climber.style.display = 'inline-block'; // Show the climber
+
+		loginForm.style.display = 'none';
+	} else {
+		alert('Incorrect username or password');
+	}
+  });
+
+
+  showPasswordCheckbox.addEventListener('change', () => {
+	// Toggle the visibility of the password field
+	const passwordInput = document.getElementById('password');
+	const showPasswordIcon = document.querySelector('.show-password-icon');
+
+	if (showPasswordCheckbox.checked) {
+		passwordInput.type = 'text';
+		showPasswordIcon.classList.add('hide-password');
+	} else {
+		passwordInput.type = 'password';
+		showPasswordIcon.classList.remove('hide-password');
+	}
+  });
 });
