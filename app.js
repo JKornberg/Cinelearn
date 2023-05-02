@@ -1,5 +1,6 @@
 var createError = require("http-errors");
 var express = require("express");
+const mysql = require('mysql')
 var app = express();
 app.use(express.json());
 
@@ -24,8 +25,8 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
 
 app.use(logger("dev"));
-app.use(bodyParser.json()); // Add this line
-app.use(bodyParser.urlencoded({ extended: true })); // Add this line
+// app.use(bodyParser.json()); // Add this line
+// app.use(bodyParser.urlencoded({ extended: true })); // Add this line
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
@@ -37,6 +38,7 @@ app.use("/users", usersRouter);
 app.use(function (req, res, next) {
   next(createError(404));
 });
+ 
 
 // error handler
 app.use(function (err, req, res, next) {
@@ -47,6 +49,10 @@ app.use(function (err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render("error");
+});
+
+app.listen(3200, () => {
+  console.log("SERVER RUNS PERFECTLY!");
 });
 
 module.exports = app;
