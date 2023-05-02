@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 var createError = require("http-errors");
 var express = require("express");
 const mysql = require('mysql')

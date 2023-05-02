@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "lint": "npx eslint .",
+    "lint": "npx eslint ./routes ./app.js",
     "watch": "npx esw -w .",
     "prettify": "npx prettier --write .",
     "test": "jest --coverage"

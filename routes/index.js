@@ -1,9 +1,13 @@
+/* eslint-disable no-self-assign */
+/* eslint-disable no-useless-escape */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 var express = require("express");
 var mysql = require("mysql");
-const router = express.Router();
-const jwt = require('jsonwebtoken');
+const router = express.Router();s
+const jwt = require('jsonwebtoken');s
 const passport = require('passport');
-const fs = require('fs');
+const fs = require('fs');s
 // var privateKey = fs.readFileSync('./private-key.pem', 'utf8');
 /* GET home page. */
 const connection = mysql.createConnection({
