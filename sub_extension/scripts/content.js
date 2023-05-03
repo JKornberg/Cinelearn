@@ -7,7 +7,6 @@ modalContainer.appendChild(checkmark);
 
 */
 
-/* add mixpanel tracking */
 var current_subs = [];
 var elapsed_time = 0; //ms
 var ref_time = 0; // ms
@@ -40,7 +39,6 @@ class QuizQuestion {
 }
 
 // Create some sample quiz questions
-/* add random sampling of questions */
 const quizQuestions = [
 	new QuizQuestion("What is the capital of France?", ["London", "Paris", "Berlin", "Madrid"], 1),
 	new QuizQuestion("What is the largest planet in our solar system?", ["Mars", "Jupiter", "Saturn", "Venus"], 1),
@@ -109,6 +107,9 @@ window.addEventListener('load', function() {
 	})
 	.catch(error => console.error(error));  });
 
+
+
+
 window.addEventListener('load', function() {
 	var opts = {
 		headers: {
@@ -116,7 +117,7 @@ window.addEventListener('load', function() {
 		'Access-Control-Allow-Origin': '*'
 		},
 	}
-	fetch('https://cinelearn.fly.dev/getSpanishSubs?episode_num=0',opts)
+	fetch('https://cinelearn.fly.dev/getEpisode?episode_num=0',opts)
 	.then(response => response.json())
 	.then(data => {
 		data['spanish_subs']= data['spanish_subs'].sort(function(a, b) {
@@ -351,10 +352,6 @@ var intervalId = window.setInterval(function () {
 		console.log('pause');
 		return;
 	}
-	chrome.storage.local.get(['key'], function(result) {
-		console.log('Value currently is ' + result.key);
-	});	
-	console.log('abc');
 	
 	if (!isCreated) {
 		const sideContainer = document.createElement('div');
