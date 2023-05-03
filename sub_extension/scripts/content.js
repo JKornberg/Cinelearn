@@ -94,6 +94,7 @@ window.video_change_observer.observe(document.documentElement, window.video_chan
 // reference time and iterator 
 // update iterator
 createSub = true;
+questionMutex = 0;
 
 function createAnswer(text) {
 	const modalBg = document.createElement("div");
@@ -212,6 +213,7 @@ function createQuizModal(question) {
 	// Add event listeners to the submit and close buttons
 	submitButton.addEventListener("click", () => {
 		const selectedAnswer = parseInt(document.querySelector('input[name="answer"]:checked').value);
+		questionMutex -= 1;
 		if (selectedAnswer === question.correctAnswer) {
 			// alert("Correct!");
 			modalBg.remove();
@@ -224,6 +226,7 @@ function createQuizModal(question) {
 	});
 
 	closeButton.addEventListener("click", () => {
+		questionMutex -= 1;
 		modalBg.remove();
 	});
 
@@ -246,7 +249,10 @@ function updateSidebar() {
 		listItem.textContent = question.question;
 		listItem.addEventListener('click', () => {
 			console.log(question.id);
-			createQuizModal(quizQuestions[question.id]);
+			if (questionMutex == 0) {
+				createQuizModal(quizQuestions[question.id]);
+				questionMutex += 1;
+			}
 		});
 		sidebarList.appendChild(listItem);
 	});
