@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "node app.js",
     "lint": "npx eslint ./routes ./app.js",
     "watch": "npx esw -w .",
     "prettify": "npx prettier --write .",
@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
+    "cor": "^0.0.0",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
     "dotenv": "^16.0.3",

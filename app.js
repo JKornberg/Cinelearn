@@ -3,7 +3,11 @@
 var createError = require("http-errors");
 var express = require("express");
 const mysql = require('mysql')
+const cors = require('cors');
+
 var app = express();
+app.use(cors())
+
 app.use(express.json());
 
 var path = require("path");
@@ -53,7 +57,7 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-app.listen(3200, () => {
+app.listen(80, () => {
   console.log("SERVER RUNS PERFECTLY!");
 });
 
