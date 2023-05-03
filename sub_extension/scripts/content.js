@@ -39,6 +39,7 @@ class QuizQuestion {
 }
 
 // Create some sample quiz questions
+/* add random sampling of questions */
 const quizQuestions = [
 	new QuizQuestion("What is the capital of France?", ["London", "Paris", "Berlin", "Madrid"], 1),
 	new QuizQuestion("What is the largest planet in our solar system?", ["Mars", "Jupiter", "Saturn", "Venus"], 1),
