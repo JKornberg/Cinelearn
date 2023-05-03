@@ -38,7 +38,8 @@
       "resources": [
         "css/fontawesome.min.css",
         "css/regular.min.css",
-        "webfonts/fa-regular-400.woff2"
+        "webfonts/fa-regular-400.woff2",
+        "images/logo_narrow.png"
       ],
       "matches": [
         "https://*.netflix.com/*"

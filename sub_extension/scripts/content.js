@@ -59,9 +59,9 @@ let subs = [new Subtitle(0, 100000, 'hello world'), new Subtitle(100000, 300000,
 let subs2 = [new Subtitle(0, 100000, 'hola mundo'), new Subtitle(100000, 300000, 'esto es una prueba')];
 
 const questions = [
-	new QuestionSidebar(10, 20, 0, 'Multiple Choice Question'),
-	new QuestionSidebar(30, 40, 1, 'Vocab Question'),
-	new QuestionSidebar(50, 60, 2, 'Matching Question')
+	new QuestionSidebar(10, 20, 0, 'Question 5'),
+	new QuestionSidebar(30, 40, 1, 'Question 4'),
+	new QuestionSidebar(50, 60, 2, 'Question 3')
 ];
 
 
@@ -195,7 +195,7 @@ function createQuizModal(question) {
 
 
 function updateSidebar() {
-	const sidebarContainer = document.getElementsByClassName("sidebar-container")[0];
+	const questionContainer = document.getElementsByClassName("question-container")[0];
 	const vidDiv = document.querySelector(".watch-video");
 
 	const sidebarList = document.createElement('ul');
@@ -210,8 +210,8 @@ function updateSidebar() {
 		});
 		sidebarList.appendChild(listItem);
 	});
-	sidebarContainer.innerHTML = "";
-	sidebarContainer.appendChild(sidebarList);
+	questionContainer.innerHTML = "";
+	questionContainer.appendChild(sidebarList);
 
 	// Style the list elements with the "active" class to be square blocks that fill the sidebar
 	const activeListItems = document.querySelectorAll('.sidebar-list-item.active');
@@ -223,6 +223,7 @@ function updateSidebar() {
 	});
 }
 
+let isCreated=false;
 
 var intervalId = window.setInterval(function () {
 	// add subtitle container once //
@@ -234,6 +235,30 @@ var intervalId = window.setInterval(function () {
 		console.log('pause');
 		return;
 	}
+	
+	if (!isCreated) {
+		const sideContainer = document.createElement('div');
+		const videoCanvas = document.querySelectorAll("[data-uia='video-canvas']")[0]
+
+		videoCanvas.classList.add('player-modifier');
+		sideContainer.classList.add('side-container');
+		videoCanvas.appendChild(sideContainer);
+		isCreated = true;
+		sideLogo = document.createElement('img');
+		sideLogo.classList.add('side-logo');
+		sideLogo.src = chrome.runtime.getURL('images/logo_narrow.png');
+
+		sideContainer.appendChild(sideLogo);
+		const sideTitle = document.createElement('h2');
+		sideTitle.classList.add('side-title');
+		sideTitle.textContent = 'Quiz Yourself!';
+		sideContainer.appendChild(sideTitle);
+		const questionContainer = document.createElement('div');
+		questionContainer.classList.add('question-container');
+		sideContainer.appendChild(questionContainer);
+	}
+		
+
 	if (createSub) {
 		const newSubContainer = document.createElement("div");
 		newSubContainer.className = 'sub-container';
