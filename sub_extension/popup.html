@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Mountain Climbing Progress</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="script.js"></script>
+</head>
+
+<body>
+
+	<!-- Wrap the mountain climbing and progress bar elements in a wrapper div -->
+	<div class="wrapper">
+		<div id="mountain-section">
+			<img class="mountain-climbing" id="mountain-climbing" src="images/mountain-climbing.jpg" alt="Mountain Climbing">
+			<img class="mountain-climber" id="mountain-climber" src="images/mountain-climber.png" alt="Mountain Climber">
+		</div>
+		<progress id="myProgress" value="0" max="100" style="width: 100%; display: none;"></progress>
+		<!-- Add a button to simulate progress -->
+		<div class="btn-container" style="display: none;">
+			<button id="fillButton">Fill Progress Bar</button>
+			<span id='skill-level'>Beginner</span>
+		</div>
+
+		<!-- Add a form to enter username and password -->
+		<div class="login-container">
+			<img class="login-logo" src="images/logo_narrow.png" alt="Logo" />
+			<form id="login-form">
+				<input class='form-input' id="username" name="username" value="" placeholder="Username">
+				<input class='form-input' id="password" name="password" type="password" value="" placeholder="Password" >
+				<div class="password-reveal-container">
+					<label for="show-password-checkbox">Show Password</label>
+					<input type="checkbox" id="show-password-checkbox" class="show-password-checkbox">
+					<span class="show-password-icon"></span>
+				</div>
+
+				<br>
+
+				<input class="app-button" type="submit" value="Login">
+			</form>
+		</div>
+	</div>
+
+</body>
+
+</html>

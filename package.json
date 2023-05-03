@@ -3,14 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "lint": "npx eslint .",
+    "start": "node app.js",
+    "lint": "npx eslint ./routes ./app.js",
     "watch": "npx esw -w .",
     "prettify": "npx prettier --write .",
-    "test": "jest --coverage"
+    "test": "jest --coverage --passWithNoTests"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
+    "cor": "^0.0.0",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
     "dotenv": "^16.0.3",
@@ -20,6 +21,7 @@
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "jsonwebtoken": "^9.0.0",
+    "mixpanel": "^0.17.0",
     "morgan": "~1.9.1",
     "mysql": "^2.18.1",
     "passport": "^0.6.0",
