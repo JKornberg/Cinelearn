@@ -338,6 +338,9 @@ var intervalId = window.setInterval(function () {
 		sideLogo.src = chrome.runtime.getURL('images/logo_narrow.png');
 
 		sideContainer.appendChild(sideLogo);
+		divider = document.createElement('hr');
+		divider.classList.add('solid');
+		sideContainer.appendChild(divider);
 		const sideTitle = document.createElement('h2');
 		sideTitle.classList.add('side-title');
 		sideTitle.textContent = 'Quiz Yourself!';
@@ -345,6 +348,10 @@ var intervalId = window.setInterval(function () {
 		const questionContainer = document.createElement('div');
 		questionContainer.classList.add('question-container');
 		sideContainer.appendChild(questionContainer);
+
+		divider2 = document.createElement('hr');
+		divider2.classList.add('solid');
+		sideContainer.appendChild(divider2);
 	}
 		
 

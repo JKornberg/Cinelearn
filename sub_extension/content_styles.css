@@ -90,6 +90,14 @@
     width: 75% !important;
 }
 
+.side-title {
+    font-size: 15pt
+}
+
+hr.solid {
+    border-top: 3px solid #bbb;
+  }
+
 .side-container {
     padding-left: 10px;
     padding-right: 10px;
@@ -99,11 +107,20 @@
     right: 0;
     top:0;
     background-color: #333;
+    text-align: center;
 }
 
 .sidebar-list{
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.question-container{
     display: block;
+    padding-bottom: 20px;
 }
 
 .sidebar-list-item{
@@ -115,4 +132,7 @@
     color: #000;
     border-radius: 10px;
     margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
