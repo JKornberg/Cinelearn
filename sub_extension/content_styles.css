@@ -80,12 +80,18 @@
     width: 200px;
 }
 
-.player-modifier {
+.video-container-modifier {
     display: flex;
+}
+
+.player-modifier{
+    width: 80%;
 }
 
 .side-container {
     width: 200px;
+    position: absolute;
+    right: 0;
     height: 100%;
     background-color: #333;
 }

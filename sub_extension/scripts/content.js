@@ -149,12 +149,12 @@ function createQuizModal(question) {
 	buttonContainer.classList.add("button-container");
 
 	const submitButton = document.createElement("button");
-	submitButton.classList.add("submit", "question-button");
+	submitButton.classList.add("submit", "app-button");
 	submitButton.textContent = "Submit";
 	buttonContainer.appendChild(submitButton);
 
 	const videoSkipButton = document.createElement("button");
-	videoSkipButton.classList.add("skip", "question-button");
+	videoSkipButton.classList.add("skip", "app-button");
 	videoSkipButton.textContent = "Skip to Time";
 	buttonContainer.appendChild(videoSkipButton);
 
@@ -238,9 +238,9 @@ var intervalId = window.setInterval(function () {
 	
 	if (!isCreated) {
 		const sideContainer = document.createElement('div');
-		const videoCanvas = document.querySelectorAll("[data-uia='video-canvas']")[0]
-
-		videoCanvas.classList.add('player-modifier');
+		const videoCanvas = document.querySelectorAll("[data-uia='watch-video']")[0]
+		wvpv[0].classList.add('player-modifier')
+		videoCanvas.classList.add('video-container-modifier');
 		sideContainer.classList.add('side-container');
 		videoCanvas.appendChild(sideContainer);
 		isCreated = true;
@@ -321,17 +321,17 @@ var intervalId = window.setInterval(function () {
 		});
 
 		// add list of timestamps
-		const timestampList = document.createElement("ul");
-		for (let i = 1; i <= 10; i++) {
-			const timestampItem = document.createElement("li");
-			timestampItem.textContent = "Timestamp " + i;
-			timestampList.appendChild(timestampItem);
-		}
-		sidebarContainer.appendChild(timestampList);
+		// const timestampList = document.createElement("ul");
+		// for (let i = 1; i <= 10; i++) {
+		// 	const timestampItem = document.createElement("li");
+		// 	timestampItem.textContent = "Timestamp " + i;
+		// 	timestampList.appendChild(timestampItem);
+		// }
+		// sidebarContainer.appendChild(timestampList);
 
 		const vidDiv = document.querySelector(".watch-video");
 		vidDiv.appendChild(newSubContainer);
-		vidDiv.appendChild(sidebarContainer);
+		// vidDiv.appendChild(sidebarContainer);
 		createSub = false;
 	}
 
