@@ -30,6 +30,7 @@ class QuestionSidebar {
 }
 
 // Define a class to represent the quiz question
+/* have proper questions integrated with backend */
 class QuizQuestion {
 	constructor(question, choices, correctAnswer) {
 		this.question = question; // string
