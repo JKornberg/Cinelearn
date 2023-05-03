@@ -7,6 +7,7 @@ modalContainer.appendChild(checkmark);
 
 */
 
+/* add mixpanel tracking */
 var current_subs = [];
 var elapsed_time = 0; //ms
 var ref_time = 0; // ms
