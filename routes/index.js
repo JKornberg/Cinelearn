@@ -196,7 +196,7 @@ function hashcode(s) {
     while (i < l)
       h = (h << 5) - h + s.charCodeAt(i++) | 0;
   return h;
-};
+}
 
 router.get('/createContextAnswer', (req, res) => {
   question_id = req.query.question_id
