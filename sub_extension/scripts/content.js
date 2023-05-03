@@ -95,6 +95,42 @@ window.video_change_observer.observe(document.documentElement, window.video_chan
 // update iterator
 createSub = true;
 
+function createAnswer(text) {
+	const modalBg = document.createElement("div");
+	modalBg.classList.add("modal-bg");
+	modalBg.className = 'modal-box';
+
+	// Create the modal container element
+	const modalContainer = document.createElement("div");
+	modalContainer.classList.add("modal-container");
+
+	// Create the question title element
+	const titleElement = document.createElement("h2");
+	titleElement.textContent = text;
+	titleElement.classList.add("question-title")
+	modalContainer.appendChild(titleElement);
+
+	// Create the close button element
+	const closeButton = document.createElement("span");
+	closeButton.classList.add("close-button");
+	closeButton.innerHTML = "&times;";
+	closeButton.style.position = 'absolute';
+	closeButton.style.top = '10px';
+	closeButton.style.right = '10px';
+	closeButton.style.fontSize = '20px';
+	closeButton.style.cursor = 'pointer';
+	modalContainer.appendChild(closeButton);
+
+	closeButton.addEventListener("click", () => {
+		modalBg.remove();
+	});
+
+	// Append the modal container to the modal background and the modal background to the body
+	modalBg.appendChild(modalContainer);
+	const vidDiv = document.querySelector(".watch-video");
+	vidDiv.appendChild(modalBg);
+}
+
 
 // Define a function to create a quiz modal
 function createQuizModal(question) {
@@ -177,9 +213,13 @@ function createQuizModal(question) {
 	submitButton.addEventListener("click", () => {
 		const selectedAnswer = parseInt(document.querySelector('input[name="answer"]:checked').value);
 		if (selectedAnswer === question.correctAnswer) {
-			alert("Correct!");
+			// alert("Correct!");
+			modalBg.remove();
+			createAnswer("Correct!");
 		} else {
-			alert("Incorrect!");
+			// alert("Incorrect!");
+			modalBg.remove();
+			createAnswer("Incorrect");
 		}
 	});
 
