@@ -72,7 +72,6 @@ router.get('/getContextQuestions', (req, res) => {
         question_dict.answer_list = answer_info_list
         question_list.push(question_dict)
       }
-      rows = rows
       if(err) throw err
       res.status(200).json({
         status: "success",
@@ -80,6 +79,56 @@ router.get('/getContextQuestions', (req, res) => {
       });
     })
 })
+
+router.get('/getVocabQuestions', (req, res) => {
+  episode_num = req.query.episode_num
+  connection.query(`SELECT * FROM vocab WHERE episode_id=${episode_num}`, (err, rows, fields) => 
+    {
+      if(err) throw err
+      res.status(200).json({
+        status: "success",
+        data: rows,
+      });
+    })
+})
+
+router.get('/getEpisodeContextProgress', (req, res) => {
+  episode_num = req.query.episode_num
+  user_id = req.query.user_id
+  connection.query(`SELECT user_id,SUM(correct),episode_id 
+  FROM progress JOIN vocab_progress ON progress.vocab_progress_id=vocab_progress.progress_id 
+  JOIN vocab on vocab.vocab_id=vocab_progress.vocab_id GROUP BY user_id HAVING user_id=${user_id} AND episode_id=${episode_num}`, 
+  (err, rows, fields) => 
+    {
+      question_list = []
+      rows = rows
+      if(err) throw err
+      res.status(200).json({
+        status: "success",
+        data: rows,
+      });
+    })
+})
+
+router.get('/getEpisodeVocabProgress', (req, res) => {
+  episode_num = req.query.episode_num
+  user_id = req.query.user_id
+  connection.query(`SELECT user_id,SUM(correct),episode_id 
+  FROM progress JOIN question_progress ON progress.question_progress_id=question_progress.progress_id 
+  JOIN question on question.question_id=question_progress.question_id GROUP BY user_id HAVING user_id=${user_id} AND episode_id=${episode_num}`, 
+  (err, rows, fields) => 
+    {
+      rows = rows[0]['SUM(correct)']
+      console.log(rows)
+      if(err) throw err
+      res.status(200).json({
+        status: "success",
+        correct_num: rows,
+        user_id: user_id
+      });
+    })
+})
+
 
 
 
