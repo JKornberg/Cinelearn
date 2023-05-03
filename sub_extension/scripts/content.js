@@ -86,6 +86,49 @@ var callback = function (mutationsList, observer) {
 	}
 }
 
+window.addEventListener('load', function() {
+	var opts = {
+		headers: {
+		'mode':'cors',
+		'Access-Control-Allow-Origin': '*'
+		},
+	}
+	fetch('https://cinelearn.fly.dev/getEnglishSubs?episode_num=0',opts)
+	.then(response => response.json())
+	.then(data => {
+		data['english_subs']= data['english_subs'].sort(function(a, b) {
+			return parseFloat(b['start_time']) - parseFloat(a['start_time'])
+		});
+		subs = data['english_subs'].map((subtitle) => {
+			return new Subtitle(subtitle['start_time']/10000, subtitle['end_time']/10000, subtitle['english_subtitle'])
+		})
+		console.log(subs)
+
+	})
+	.catch(error => console.error(error));  });
+
+
+
+
+window.addEventListener('load', function() {
+	var opts = {
+		headers: {
+		'mode':'cors',
+		'Access-Control-Allow-Origin': '*'
+		},
+	}
+	fetch('https://cinelearn.fly.dev/getEpisode?episode_num=0',opts)
+	.then(response => response.json())
+	.then(data => {
+		data['spanish_subs']= data['spanish_subs'].sort(function(a, b) {
+			return parseFloat(b['start_time']) - parseFloat(a['start_time'])
+		});
+		subs2 = data['spanish_subs'].map((subtitle) => {
+			return new Subtitle(subtitle['start_time']/10000, subtitle['end_time']/10000, subtitle['spanish_subtitle'])
+		})
+		console.log(subs2)
+	})
+	.catch(error => console.error(error));  });
 window.video_change_observer = new MutationObserver(callback);
 window.video_change_observer_config = { childList: true, subtree: true, }
 window.video_change_observer.observe(document.documentElement, window.video_change_observer_config);
@@ -399,3 +442,7 @@ var intervalId = window.setInterval(function () {
 
 	updateSidebar();
 }, 1000);
+
+
+
+
