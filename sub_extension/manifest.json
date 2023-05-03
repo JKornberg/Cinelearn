@@ -24,8 +24,8 @@
       ],
       "css": [
         "./content_styles.css",
-	"css/fontawesome.min.css",
-	"css/regular.min.css"
+        "css/fontawesome.min.css",
+        "css/regular.min.css"
       ]
     }
   ],
@@ -36,7 +36,6 @@
   "web_accessible_resources" : [
     {
       "resources": [
-        "images/circle-check-solid.svg",
         "css/fontawesome.min.css",
         "css/regular.min.css",
         "webfonts/fa-regular-400.woff2"
