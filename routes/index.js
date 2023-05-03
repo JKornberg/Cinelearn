@@ -253,13 +253,14 @@ router.get('/createVocabAnswer', (req, res) => {
 router.get('/authUser', (req, res) => {
   username = req.query.username
   password = req.query.hashed_password
-  connection.query(`SELECT password FROM user where user_name='${username}'`, 
+  connection.query(`SELECT user_id,password FROM user where user_name='${username}'`, 
   (err, rows, fields) => 
     {
       if(err) throw err
-      if(password == rows[0].password) {
+      if(rows.length > 0 && password == rows[0].password) {
         res.status(200).json({
           status: "success",
+          user_id: rows[0].user_id
         });
       }
       else {
