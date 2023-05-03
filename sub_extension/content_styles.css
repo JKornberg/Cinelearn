@@ -77,22 +77,26 @@
   
 
   .side-logo{
-    width: 200px;
-}
+    width: 100%;
+    margin: 0 auto;
+  }
 
 .video-container-modifier {
     display: flex;
 }
 
 .player-modifier{
-    width: 80%;
+    width: 75% !important;
 }
 
 .side-container {
-    width: 20%;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 25%;
+    height: 100%;
     position: absolute;
     right: 0;
-    height: 100%;
+    top:0;
     background-color: #333;
 }
 
@@ -105,9 +109,9 @@
     background-color: #FCA311;
     font-size: 12pt;
     height: 40px;
-    width: 100%;
+    width: 70%;
     margin: 0 auto;
     color: #000;
     border-radius: 10px;
-    margin: 10px;
+    margin-top: 10px;
 }
