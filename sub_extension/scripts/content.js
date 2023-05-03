@@ -7,6 +7,7 @@ modalContainer.appendChild(checkmark);
 
 */
 
+/* add mixpanel tracking */
 var current_subs = [];
 var elapsed_time = 0; //ms
 var ref_time = 0; // ms
@@ -368,6 +369,9 @@ var intervalId = window.setInterval(function () {
 		sideLogo.src = chrome.runtime.getURL('images/logo_narrow.png');
 
 		sideContainer.appendChild(sideLogo);
+		divider = document.createElement('hr');
+		divider.classList.add('solid');
+		sideContainer.appendChild(divider);
 		const sideTitle = document.createElement('h2');
 		sideTitle.classList.add('side-title');
 		sideTitle.textContent = 'Quiz Yourself!';
@@ -375,6 +379,81 @@ var intervalId = window.setInterval(function () {
 		const questionContainer = document.createElement('div');
 		questionContainer.classList.add('question-container');
 		sideContainer.appendChild(questionContainer);
+
+		divider2 = document.createElement('hr');
+		divider2.classList.add('solid');
+		sideContainer.appendChild(divider2);
+
+
+		vocabTitle = document.createElement('h2');
+		vocabTitle.classList.add('side-title');
+		vocabTitle.textContent = 'General Spanish Vocab';
+		sideContainer.appendChild(vocabTitle);
+
+		const vocabContainer = document.createElement('div');
+		vocabContainer.classList.add('vocab-container');
+		const vocabList = document.createElement('div');
+		vocabList.classList.add('vocab-list');
+		vocabList.innerHTML = `
+		<p class="vocab-list-item">Hola - Hello</p>
+		<p class="vocab-list-item">Me Llamo - My name is</p>
+		<p class="vocab-list-item">Donde Esta - Where is</p>
+		<p class="vocab-list-item">Todo el mundo - All the world</p>
+		<p class="vocab-list-item">Adiós - Goodbye</p>
+		<p class="vocab-list-item">Por favor - Please</p>
+		<p class="vocab-list-item">Gracias - Thank you</p>
+		<p class="vocab-list-item">De nada - You're welcome</p>
+		<p class="vocab-list-item">Sí - Yes</p>
+		<p class="vocab-list-item">No - No</p>
+		<p class="vocab-list-item">Buenos días - Good morning</p>
+		<p class="vocab-list-item">Buenas tardes - Good afternoon</p>
+		<p class="vocab-list-item">Buenas noches - Good evening/night</p>
+		<p class="vocab-list-item">Hasta luego - See you later</p>
+		<p class="vocab-list-item">Hasta mañana - See you tomorrow</p>
+		<p class="vocab-list-item">Perdón - Excuse me</p>
+		<p class="vocab-list-item">Lo siento - I'm sorry</p>
+		<p class="vocab-list-item">Bienvenido/a - Welcome</p>
+		<p class="vocab-list-item">Cómo estás? - How are you?</p>
+		<p class="vocab-list-item">Estoy bien - I'm good</p>
+		<p class="vocab-list-item">Estoy mal - I'm bad</p>
+		<p class="vocab-list-item">Muy bien - Very good</p>
+		<p class="vocab-list-item">Más o menos - So-so</p>
+		<p class="vocab-list-item">Hablas inglés? - Do you speak English?</p>
+		<p class="vocab-list-item">No hablo español - I don't speak Spanish</p>
+		<p class="vocab-list-item">Entiendo - I understand</p>
+		<p class="vocab-list-item">No entiendo - I don't understand</p>
+		<p class="vocab-list-item">Quiero - I want</p>
+		<p class="vocab-list-item">Necesito - I need</p>
+		<p class="vocab-list-item">Tengo - I have</p>
+		<p class="vocab-list-item">No tengo - I don't have</p>
+		<p class="vocab-list-item">Dónde - Where</p>
+		<p class="vocab-list-item">Cuándo - When</p>
+		<p class="vocab-list-item">Quién - Who</p>
+		<p class="vocab-list-item">Por qué - Why</p>
+		<p class="vocab-list-item">Cómo - How</p>
+		<p class="vocab-list-item">Cuánto - How much</p>
+		<p class="vocab-list-item">Mucho - A lot</p>
+		<p class="vocab-list-item">Poco - A little</p>
+		<p class="vocab-list-item">Aquí - Here</p>
+		<p class="vocab-list-item">Allí - There</p>
+		<p class="vocab-list-item">Ahora - Now</p>
+		<p class="vocab-list-item">Después - After</p>
+		<p class="vocab-list-item">Antes - Before</p>
+		<p class="vocab-list-item">Siempre - Always</p>
+		<p class="vocab-list-item">Nunca - Never</p>
+		<p class="vocab-list-item">Tarde - Late</p>
+		<p class="vocab-list-item">Temprano - Early</p>
+		<p class="vocab-list-item">Feliz - Happy</p>
+		<p class="vocab-list-item">Triste - Sad</p>
+		<p class="vocab-list-item">Enfermo/a - Sick</p>
+		<p class="vocab-list-item">Salud - Bless you</p>
+		<p class="vocab-list-item">Comida - Food</p>
+		<p class="vocab-list-item">Agua - Water</p>
+		<p class="vocab-list-item">Café - Coffee</p>
+		<p class="vocab-list-item">Té - Tea</p>
+		`
+		vocabContainer.appendChild(vocabList);
+		sideContainer.appendChild(vocabContainer);
 	}
 		
 
