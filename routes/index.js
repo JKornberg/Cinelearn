@@ -12,7 +12,7 @@ var Mixpanel = require('mixpanel');
 var mixpanel = Mixpanel.init('ececd3d662d1259408c9b162565367ef');
 
 // var privateKey = fs.readFileSync('./private-key.pem', 'utf8');
-/* GET home page. */
+/* GET home page. */ 
 const connection = mysql.createConnection({
   host: '***REMOVED***',
   port: 3306,
@@ -231,7 +231,7 @@ function hashcode(s) {
     while (i < l)
       h = (h << 5) - h + s.charCodeAt(i++) | 0;
   return h;
-};
+}
 
 router.get('/createContextAnswer', (req, res) => {
   question_id = req.query.question_id
@@ -288,13 +288,14 @@ router.get('/createVocabAnswer', (req, res) => {
 router.get('/authUser', (req, res) => {
   username = req.query.username
   password = req.query.hashed_password
-  connection.query(`SELECT password FROM user where user_name='${username}'`, 
+  connection.query(`SELECT user_id,password FROM user where user_name='${username}'`, 
   (err, rows, fields) => 
     {
       if(err) throw err
-      if(password == rows[0].password) {
+      if(rows.length > 0 && password == rows[0].password) {
         res.status(200).json({
           status: "success",
+          user_id: rows[0].user_id
         });
       }
       else {
