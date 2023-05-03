@@ -118,7 +118,7 @@ window.addEventListener('load', function() {
 		'Access-Control-Allow-Origin': '*'
 		},
 	}
-	fetch('https://cinelearn.fly.dev/getEpisode?episode_num=0',opts)
+	fetch('https://cinelearn.fly.dev/getSpanishSubs?episode_num=0',opts)
 	.then(response => response.json())
 	.then(data => {
 		data['spanish_subs']= data['spanish_subs'].sort(function(a, b) {
@@ -353,6 +353,10 @@ var intervalId = window.setInterval(function () {
 		console.log('pause');
 		return;
 	}
+	chrome.storage.local.get(['key'], function(result) {
+		console.log('Value currently is ' + result.key);
+	});	
+	console.log('abc');
 	
 	if (!isCreated) {
 		const sideContainer = document.createElement('div');
