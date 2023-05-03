@@ -56,8 +56,8 @@ var dict = {
 };
 
 
-let subs = [new Subtitle(0, 100000, 'hello world'), new Subtitle(100000, 300000, 'this is a test')];
-let subs2 = [new Subtitle(0, 100000, 'hola mundo'), new Subtitle(100000, 300000, 'esto es una prueba')];
+let subs = [];
+let subs2 = [];
 
 const questions = [
 	new QuestionSidebar(10, 20, 0, 'Question 5'),
@@ -118,7 +118,7 @@ window.addEventListener('load', function() {
 		'Access-Control-Allow-Origin': '*'
 		},
 	}
-	fetch('https://cinelearn.fly.dev/getEpisode?episode_num=0',opts)
+	fetch('https://cinelearn.fly.dev/getSpanishSubs?episode_num=0',opts)
 	.then(response => response.json())
 	.then(data => {
 		data['spanish_subs']= data['spanish_subs'].sort(function(a, b) {
