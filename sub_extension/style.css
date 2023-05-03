@@ -2,6 +2,11 @@
   position: relative;
   display: inline-block;
   width: 300px;
+  height: 300px;
+}
+
+body{
+  background-color: #333;
 }
 
 .mountain-climbing {
@@ -31,3 +36,49 @@
   line-height: 1.5;
   font-family: 'Open Sans', sans-serif;
 }
+
+.form-input {
+  background-color: #000;
+  color: #fff;
+  border: 0;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+.password-reveal-container{
+  color: #fff;
+}
+
+.app-button{
+  width: 50%;
+  margin: 0 auto;
+  display: block;
+  font-size: 15pt;
+  font-weight: 300;
+  background-color: #14213D;
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
+  border-width: 1px;
+}
+
+.form-input::placeholder{
+  color: #fff;
+}
+
+.login-container {
+  display: block;
+  justify-content: center;
+  text-align: center;
+}
+
+#login-form {
+  text-align: center;
+}
+
+.login-logo {
+  width: 200px;
+  margin: 0 auto;
+}
+

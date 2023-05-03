@@ -10,18 +10,40 @@
     "128": "images/icon-128.png"
   },
   "permissions": [
-    "storage"
+    "storage",
+    "tabs"
   ],
   "content_scripts": [
     {
-      "js": ["jquery-3.5.1.min.js", "scripts/content.js"],
+      "js": [
+        "jquery-3.5.1.min.js",
+        "scripts/content.js"
+      ],
       "matches": [
-        "https://www.netflix.com/*"
+        "https://*.netflix.com/*"
+      ],
+      "css": [
+        "./content_styles.css",
+        "css/fontawesome.min.css",
+        "css/regular.min.css"
       ]
     }
   ],
   "action": {
     "default_popup": "popup.html",
     "default_icon": "images/icon-32.png"
-  }
+  },
+  "web_accessible_resources" : [
+    {
+      "resources": [
+        "css/fontawesome.min.css",
+        "css/regular.min.css",
+        "webfonts/fa-regular-400.woff2",
+        "images/logo_narrow.png"
+      ],
+      "matches": [
+        "https://*.netflix.com/*"
+      ]
+    }
+  ]
 }
