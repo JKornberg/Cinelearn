@@ -198,10 +198,10 @@ function updateSidebar() {
 	const questionContainer = document.getElementsByClassName("question-container")[0];
 	const vidDiv = document.querySelector(".watch-video");
 
-	const sidebarList = document.createElement('ul');
+	const sidebarList = document.createElement('div');
 	sidebarList.className = 'sidebar-list';
 	questions.forEach(question => {
-		const listItem = document.createElement('li');
+		const listItem = document.createElement('div');
 		listItem.className = 'sidebar-list-item';
 		listItem.textContent = question.question;
 		listItem.addEventListener('click', () => {

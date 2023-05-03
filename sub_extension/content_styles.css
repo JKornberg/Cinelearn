@@ -89,9 +89,25 @@
 }
 
 .side-container {
-    width: 200px;
+    width: 20%;
     position: absolute;
     right: 0;
     height: 100%;
     background-color: #333;
+}
+
+.sidebar-list{
+    text-align: center;
+    display: block;
+}
+
+.sidebar-list-item{
+    background-color: #FCA311;
+    font-size: 12pt;
+    height: 40px;
+    width: 100%;
+    margin: 0 auto;
+    color: #000;
+    border-radius: 10px;
+    margin: 10px;
 }
