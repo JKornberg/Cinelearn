@@ -82,29 +82,44 @@ document.addEventListener('DOMContentLoaded', function() {
   const showPasswordCheckbox = document.getElementById('show-password-checkbox');
 
 
-  loginForm.addEventListener('submit', (event) => {
-	event.preventDefault(); // Prevent the form from submitting
-  
-	// Check if the username and password are correct (replace with your own logic)
-	const username = document.getElementById('username').value;
-	const password = document.getElementById('password').value;
-	const isAuthenticated = (username === 'exampleuser' && password === 'examplepassword');
-  chrome.storage.local.set({ key: username }).then(() => {
-    console.log("Value is set to " + username);
-  });
-	if (isAuthenticated) {
-		mountainSection.style.display = 'block'; // Hide the mountain climbing elements
-		progressBar.style.display = 'inline-block'; // Show the progress bar
-		btnContainer.style.display = 'inline-block'; // Show the button container
-		mountain.style.display = 'inline-block'; // Show the mountain
-		climber.style.display = 'inline-block'; // Show the climber
-    window.test = 'this is a test'
-		loginForm.style.display = 'none';
-	} else {
-		alert('Incorrect username or password');
-	}
-  });
+  loginForm.addEventListener('submit', async (event) => {
+    event.preventDefault(); // Prevent the form from submitting
 
+    // Check if the username and password are correct (replace with your own logic)
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    var isAuthenticated = (username === 'exampleuser' && password === 'examplepassword');
+    chrome.storage.local.set({ key: username }).then(() => {
+      console.log("Value is set to " + username);
+    });
+
+    var opts = {
+      headers: {
+      'mode':'cors',
+      'Access-Control-Allow-Origin': '*'
+      },
+    }
+    var url = `https://cinelearn.fly.dev/authUser?username=${username}&hashed_password=${password}`;
+    // console.log(url);
+    const response = await fetch(url,opts)
+    .then(response => response.json())
+    .then(data => {
+      isAuthenticated = data['status'] === 'success';
+    })
+    .catch(error => console.error(error));
+
+	  if (isAuthenticated) {
+		  mountainSection.style.display = 'block'; // Hide the mountain climbing elements
+		  progressBar.style.display = 'inline-block'; // Show the progress bar
+		  btnContainer.style.display = 'inline-block'; // Show the button container
+		  mountain.style.display = 'inline-block'; // Show the mountain
+		  climber.style.display = 'inline-block'; // Show the climber
+
+		  loginForm.style.display = 'none';
+	  } else {
+		  alert('Incorrect username or password');
+	  }
+  });
 
   showPasswordCheckbox.addEventListener('change', () => {
 	// Toggle the visibility of the password field

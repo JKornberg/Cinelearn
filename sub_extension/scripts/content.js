@@ -108,9 +108,6 @@ window.addEventListener('load', function() {
 	})
 	.catch(error => console.error(error));  });
 
-
-
-
 window.addEventListener('load', function() {
 	var opts = {
 		headers: {
