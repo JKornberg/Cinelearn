@@ -92,6 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const logoutButton = document.getElementById('logout-button');
   let userId = null;
   let username = "Not logged in";
+  let streak = 0;
 
   function showProgress() {
     if (!userId) {
@@ -124,6 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
   }
+  handleStreaks();
 
   logoutButton.addEventListener('click', () => {
     chrome.storage.local.remove(['user_id', 'username'], function () {
@@ -132,6 +134,43 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     window.location.reload();
   });
+
+  function daysBetween(first, second) {
+
+    // Copy date parts of the timestamps, discarding the time parts.
+    var one = new Date(first.getFullYear(), first.getMonth(), first.getDate());
+    var two = new Date(second.getFullYear(), second.getMonth(), second.getDate());
+
+    // Do the math.
+    var millisecondsPerDay = 1000 * 60 * 60 * 24;
+    var millisBetween = two.getTime() - one.getTime();
+    var days = millisBetween / millisecondsPerDay;
+
+    // Round down.
+    return Math.floor(days);
+}
+
+  function handleStreaks(){
+    const currentDay = new Date().getDay();
+    chrome.storage.local.get(['last_login_day', 'streak'], function (result) {
+      const currentDate = new Date();
+      if (!result.last_login_day || !result.streak){
+        streak = 1;
+      } else{
+        const lastLoginDate = new Date(result.last_login_day);
+        if (daysBetween(lastLoginDate, currentDate) === 1){
+          streak = result.streak + 1;
+        } else{
+          streak = 1;
+        }
+      }
+      chrome.storage.local.set({'last_login_day': currentDate, 'streak': streak}, function () {
+        console.log("Last login day is set to " + currentDate);
+        console.log("Streak is set to " + streak);
+      });
+      document.getElementById('streak').innerText = `Your current streak is: ${streak}!`;
+  });
+}
 
 
   chrome.storage.local.get(['user_id', 'username'], function (result) {
@@ -197,4 +236,7 @@ document.addEventListener('DOMContentLoaded', function () {
       showPasswordIcon.classList.remove('hide-password');
     }
   });
+  
+
+
 });
