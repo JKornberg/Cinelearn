@@ -118,16 +118,40 @@ window.addEventListener('load', function() {
 		'Access-Control-Allow-Origin': '*'
 		},
 	}
+	fetch('https://cinelearn.fly.dev/getContextQuestions?episode_num=0',opts)
+	.then(response => response.json())
+	.then(data => {
+		console.log(data)
+	})
+	.catch(error => console.error(error));  });
+
+window.addEventListener('load', function() {
+	var opts = {
+		headers: {
+		'mode':'cors',
+		'Access-Control-Allow-Origin': '*'
+		},
+	}
+	fetch('https://cinelearn.fly.dev/getVocabQuestions?episode_num=0',opts)
+	.then(response => response.json())
+	.then(data => {
+		console.log(data)
+	})
+	.catch(error => console.error(error));  });
+
+
+
+window.addEventListener('load', function() {
+	var opts = {
+		headers: {
+		'mode':'cors',
+		'Access-Control-Allow-Origin': '*'
+		},
+	}
 	fetch('https://cinelearn.fly.dev/getSpanishSubs?episode_num=0',opts)
 	.then(response => response.json())
 	.then(data => {
-		data['spanish_subs']= data['spanish_subs'].sort(function(a, b) {
-			return parseFloat(b['start_time']) - parseFloat(a['start_time'])
-		});
-		subs2 = data['spanish_subs'].map((subtitle) => {
-			return new Subtitle(subtitle['start_time']/10000, subtitle['end_time']/10000, subtitle['spanish_subtitle'])
-		})
-		console.log(subs2)
+		console.log(data)
 	})
 	.catch(error => console.error(error));  });
 window.video_change_observer = new MutationObserver(callback);
