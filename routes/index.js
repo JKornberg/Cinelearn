@@ -98,9 +98,16 @@ router.get('/getUserContextProgress', (req, res) => {
   JOIN vocab on vocab.vocab_id=vocab_progress.vocab_id GROUP BY user_id HAVING user_id=${user_id} AND episode_id=${episode_num}`, 
   (err, rows, fields) => 
     {
-      user_correct_num = rows[0]['SUM(correct)']
-      episode_id = rows[0]['episode_id']
-      user_id = rows[0]['user_id']
+      if(rows.length > 0) {
+        user_correct_num = rows[0]['SUM(correct)']
+        episode_id = rows[0]['episode_id']
+        user_id = rows[0]['user_id']
+      }
+      else {
+        user_correct_num = 0
+        episode_id = episode_num
+        user_id = user_id
+      }
       if(err) throw err
       res.status(200).json({
         status: "success",
@@ -119,9 +126,16 @@ router.get('/getUserVocabProgress', (req, res) => {
   JOIN vocab on vocab.vocab_id=vocab_progress.vocab_id GROUP BY user_id HAVING user_id=${user_id} AND episode_id=${episode_num}`, 
   (err, rows, fields) => 
     {
-      user_correct_num = rows[0]['SUM(correct)']
-      episode_id = rows[0]['episode_id']
-      user_id = rows[0]['user_id']
+      if(rows.length > 0) {
+        user_correct_num = rows[0]['SUM(correct)']
+        episode_id = rows[0]['episode_id']
+        user_id = rows[0]['user_id']
+      }
+      else {
+        user_correct_num = 0
+        episode_id = episode_num
+        user_id = user_id
+      }
       if(err) throw err
       res.status(200).json({
         status: "success",
@@ -183,41 +197,6 @@ function hashcode(s) {
       h = (h << 5) - h + s.charCodeAt(i++) | 0;
   return h;
 };
-
-router.get('/authUser', (req, res) => {
-  username = req.query.username
-  password = req.query.hashed_password
-  connection.query(`SELECT password FROM user where user_name='${username}'`, 
-  (err, rows, fields) => 
-    {
-      if(err) throw err
-      if(password == rows[0].password) {
-        res.status(200).json({
-          status: "success",
-        });
-      }
-      else {
-        res.status(200).json({
-          status: "failed",
-        });
-      }
-    })
-})
-
-router.get('/createUser', (req, res) => {
-  username = req.query.username
-  password = req.query.hashed_password
-  connection.query(`INSERT INTO user (user_name, password) VALUES ('${username}', '${password}');`, 
-  (err, rows, fields) => 
-    {
-      if(err) throw err
-      else {
-        res.status(200).json({
-          status: "success",
-        });
-      }
-    })
-})
 
 router.get('/createContextAnswer', (req, res) => {
   question_id = req.query.question_id
