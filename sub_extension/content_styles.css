@@ -59,6 +59,15 @@
     border-width: 1px;
 }
 
+.continue {
+    color: #333;
+    background-color: white;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .skip{
     background-color: #fff;
     color: #14213D;
@@ -70,9 +79,16 @@
 }
 
 .checkmark {
-    font-size: 30pt;
+    font-size: 20vh;
     color: limegreen;
     --fa-primary-color: limegreen;
+    --fa-secondary-color: white;
+  }
+
+  .xmark {
+    font-size: 20vh;
+    color: red;
+    --fa-primary-color: red;
     --fa-secondary-color: white;
   }
   
@@ -115,4 +131,18 @@
     color: #000;
     border-radius: 10px;
     margin-top: 10px;
+}
+
+.explanation-container{
+    background-color: #14213D;
+    border-radius: 10px;
+    width: auto;
+    margin-top: 10px;
+    margin-bottom: 8px;
+    padding: 8px;
+}
+
+.explanation {
+    color: white;
+    font-size: 15pt;
 }
