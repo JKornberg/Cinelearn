@@ -8,8 +8,11 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const fs = require('fs');
+var Mixpanel = require('mixpanel');
+var mixpanel = Mixpanel.init('ececd3d662d1259408c9b162565367ef');
+
 // var privateKey = fs.readFileSync('./private-key.pem', 'utf8');
-/* GET home page. */
+/* GET home page. */ 
 const connection = mysql.createConnection({
   host: '***REMOVED***',
   port: 3306,
@@ -113,6 +116,13 @@ router.get('/getUserContextProgress', (req, res) => {
         user_id = user_id
       }
       if(err) throw err
+
+      mixpanel.track('User Context Progress', {
+        'distinct_id': user_id,
+        'episode_id': episode_num,
+        'correct': user_correct_num
+      });
+
       res.status(200).json({
         status: "success",
         user_correct: user_correct_num,
@@ -141,6 +151,13 @@ router.get('/getUserVocabProgress', (req, res) => {
         user_id = user_id
       }
       if(err) throw err
+
+      mixpanel.track('User Vocab Progress', {
+        'distinct_id': user_id,
+        'episode_id': episode_num,
+        'correct': user_correct_num
+      });
+
       res.status(200).json({
         status: "success",
         user_correct: user_correct_num,
@@ -171,6 +188,13 @@ router.get('/getEpisodeContextInfo', (req, res) => {
         context_question_list.push(context_question_dict)
       }
       if(err) throw err
+      
+      mixpanel.track('Episode Context Info', {
+        'distinct_id': user_id,
+        'episode_id': episode_num,
+        'context_question_list': context_question_list
+      });
+
       res.status(200).json({
         status: "success",
         context_question_list: context_question_list
@@ -187,6 +211,13 @@ router.get('/getEpisodeVocabInfo', (req, res) => {
   (err, rows, fields) => 
     {
       if(err) throw err
+      
+      mixpanel.track('Episode Vocab Info', {
+        'distinct_id': user_id,
+        'episode_id': episode_num,
+        'vocab_question_list': rows
+      });
+      
       res.status(200).json({
         status: "success",
         vocab_question_list: rows
@@ -200,7 +231,7 @@ function hashcode(s) {
     while (i < l)
       h = (h << 5) - h + s.charCodeAt(i++) | 0;
   return h;
-};
+}
 
 router.get('/createContextAnswer', (req, res) => {
   question_id = req.query.question_id
@@ -257,13 +288,14 @@ router.get('/createVocabAnswer', (req, res) => {
 router.get('/authUser', (req, res) => {
   username = req.query.username
   password = req.query.hashed_password
-  connection.query(`SELECT password FROM user where user_name='${username}'`, 
+  connection.query(`SELECT user_id,password FROM user where user_name='${username}'`, 
   (err, rows, fields) => 
     {
       if(err) throw err
-      if(password == rows[0].password) {
+      if(rows.length > 0 && password == rows[0].password) {
         res.status(200).json({
           status: "success",
+          user_id: rows[0].user_id
         });
       }
       else {
