@@ -8,11 +8,12 @@
 */
 
 .modal-box {
-    position: fixed;
-    width: 50%;
+    position: absolute;
+    width: 70%;
     height: 50%;
-    top: 25%;
-    left: 25%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: #E5E5E5;
     border-radius: 10px;
     padding: 20px;

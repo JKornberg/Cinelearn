@@ -128,7 +128,7 @@ function createAnswer(text) {
 
 	// Append the modal container to the modal background and the modal background to the body
 	modalBg.appendChild(modalContainer);
-	const vidDiv = document.querySelector(".watch-video");
+	const vidDiv = document.querySelector(".watch-video--player-view");
 	vidDiv.appendChild(modalBg);
 }
 
@@ -232,7 +232,7 @@ function createQuizModal(question) {
 
 	// Append the modal container to the modal background and the modal background to the body
 	modalBg.appendChild(modalContainer);
-	const vidDiv = document.querySelector(".watch-video");
+	const vidDiv = document.querySelector(".watch-video--player-view");
 	vidDiv.appendChild(modalBg);
 }
 
@@ -313,7 +313,8 @@ var intervalId = window.setInterval(function () {
 			'white-space': 'nowrap',
 			'text-align': 'center',
 			position: 'absolute',
-			left: '40.3846%',
+			left: '50%',
+			transform: 'translate(-50%, -50%)',
 			bottom: '20%'
 		});
 
@@ -375,7 +376,7 @@ var intervalId = window.setInterval(function () {
 		// }
 		// sidebarContainer.appendChild(timestampList);
 
-		const vidDiv = document.querySelector(".watch-video");
+		const vidDiv = document.querySelector(".watch-video--player-view");
 		vidDiv.appendChild(newSubContainer);
 		// vidDiv.appendChild(sidebarContainer);
 		createSub = false;
