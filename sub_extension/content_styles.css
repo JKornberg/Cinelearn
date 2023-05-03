@@ -112,6 +112,7 @@
 
 hr.solid {
     border-top: 3px solid #bbb;
+    width: 100%;
   }
 
 .side-container {
@@ -124,6 +125,8 @@ hr.solid {
     top:0;
     background-color: #333;
     text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .sidebar-list{
@@ -166,4 +169,22 @@ hr.solid {
 .explanation {
     color: white;
     font-size: 15pt;
+}
+
+.vocab-container{
+    overflow-y: scroll;
+    height: 100%;
+}
+
+.vocab-container::-webkit-scrollbar {
+    width: 12px;
+}
+
+.vocab-container::-webkit-scrollbar-track {
+    background-color: #444;
+    border-radius: 10px;
+}
+
+.vocab-list-item {
+    font-size: 12pt;
 }
