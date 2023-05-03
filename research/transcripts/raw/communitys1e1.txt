@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tt xmlns:tt="http://www.w3.org/ns/ttml" xmlns:ttm="http://www.w3.org/ns/ttml#metadata" xmlns:ttp="http://www.w3.org/ns/ttml#parameter" xmlns:tts="http://www.w3.org/ns/ttml#styling" ttp:tickRate="10000000" ttp:timeBase="media" xmlns="http://www.w3.org/ns/ttml">
+<head>
+<ttp:profile use="http://netflix.com/ttml/profile/dfxp-ls-sdh"/>
+<styling>
+<style tts:color="white" tts:fontSize="100%" tts:fontWeight="normal" tts:textAlign="center" xml:id="normal"/>
+<style tts:color="white" tts:fontSize="100%" tts:fontStyle="italic" tts:fontWeight="normal" tts:textAlign="center" xml:id="normal_1"/>
+</styling>
+<layout>
+<region tts:displayAlign="after" tts:extent="80.00% 40.00%" tts:origin="10.00% 50.00%" xml:id="bottom"/>
+<region tts:displayAlign="before" tts:extent="80.00% 40.00%" tts:origin="10.00% 10.00%" xml:id="top"/>
+</layout>
+</head>
+<body region="bottom">
+<div xml:space="preserve">
+<p begin="15432082t" end="40040000t" region="top" style="normal" xml:id="subtitle0">UNIVERSIDAD COMUNITARIA DE GREENDALE<br/>A TRES CUADRAS DE CASA</p>
+<p begin="40874166t" end="55054999t" region="top" style="normal" xml:id="subtitle1">Buenos días.</p>
+<p begin="56723332t" end="91341250t" style="normal" xml:id="subtitle2">Muchos están a mitad de su primera semana<br/>aquí en Greendale,</p>
+<p begin="93009582t" end="111778332t" style="normal" xml:id="subtitle3">y como su decano,</p>
+<p begin="118034582t" end="165165000t" style="normal" xml:id="subtitle4">quiero compartirles<br/>algunos pensamientos sabios e inspiradores.</p>
+<p begin="166833332t" end="210627082t" style="normal" xml:id="subtitle5">¿Qué es la universidad comunitaria?<br/>Bueno, han escuchado mil cosas.</p>
+<p begin="212295416t" end="258174582t" style="normal" xml:id="subtitle6">Que es una universidad<br/>de perdedores para malos estudiantes,</p>
+<p begin="259842916t" end="280280000t" style="normal" xml:id="subtitle7">los de veintitantos que abandonaron,</p>
+<p begin="281948332t" end="300300000t" style="normal" xml:id="subtitle8">divorciados de edad media,</p>
+<p begin="301968332t" end="326993332t" style="normal" xml:id="subtitle9">y viejitos manteniendo activas sus mentes</p>
+<p begin="328661666t" end="355355000t" style="normal" xml:id="subtitle10">al circular por la alcantarilla de la eternidad.</p>
+<p begin="357023332t" end="376209166t" style="normal" xml:id="subtitle11">Es lo que han oído.</p>
+<p begin="377877500t" end="405405000t" style="normal" xml:id="subtitle12">Aun así, les deseo suerte.</p>
+<p begin="451701249t" end="468384582t" style="normal" xml:id="subtitle13">Bueno, ya saben...</p>
+<p begin="472555416t" end="497163332t" style="normal" xml:id="subtitle14">Había más discurso. Se me perdió una tarjeta.</p>
+<p begin="498831666t" end="525942082t" style="normal" xml:id="subtitle15">¿Podemos buscarla? Porque de veras quería...</p>
+<p begin="527610416t" end="552218332t" region="top" style="normal" xml:id="subtitle16">Sólo soy mitad árabe. Mi papá es palestino.</p>
+<p begin="553886666t" end="573906666t" region="top" style="normal" xml:id="subtitle17">Ciudadano americano, no amenaza a la seguridad.</p>
+<p begin="575575000t" end="598931666t" region="top" style="normal" xml:id="subtitle18">Me preguntan porque tiene una energía de ira.</p>
+<p begin="600600000t" end="621871250t" region="top" style="normal" xml:id="subtitle19">No es con el país, es con mi mamá por irse.</p>
+<p begin="623539582t" end="650232916t" region="top" style="normal" xml:id="subtitle20">Se fue porque estaba furioso.<br/>Porque ella es estadounidense.</p>
+<p begin="651901250t" end="668584582t" region="top" style="normal" xml:id="subtitle21">Me llamo Abed, por cierto.</p>
+<p begin="670252916t" end="705287916t" region="top" style="normal" xml:id="subtitle22">Abed, me da gusto conocerte<br/>y encontrarte, en ese orden.</p>
+<p begin="706956250t" end="730730000t" region="top" style="normal" xml:id="subtitle23">¿Y sobre la pregunta que tenía?</p>
+<p begin="735317916t" end="751584166t" region="top" style="normal" xml:id="subtitle24">Las 11:05 cuando preguntaste.</p>
+<p begin="753252500t" end="765765000t" style="normal" xml:id="subtitle25">-Abed.<br/>-Sí.</p>
+<p begin="767433332t" end="792041250t" style="normal" xml:id="subtitle26">¿Qué onda con la sexy de la clase de español?</p>
+<p begin="793709582t" end="810392916t" style="normal" xml:id="subtitle27">No encuentro un camino ahí.</p>
+<p begin="811227082t" end="839171666t" style="normal" xml:id="subtitle28">Sólo le hablé una vez cuando me pidió un lápiz.</p>
+<p begin="840839999t" end="862111249t" style="normal" xml:id="subtitle29">Su nombre es Britta, tiene 28, cumple en octubre.</p>
+<p begin="863779582t" end="893392499t" style="normal" xml:id="subtitle30">Un hermano trabaja con niños<br/>con trastornos que debería investigar.</p>
+<p begin="894226666t" end="920502916t" style="normal" xml:id="subtitle31">Reprobará el examen mañana. No se concentra.</p>
+<p begin="921337082t" end="946362082t" style="normal" xml:id="subtitle32">Y lamenta si eso la hace parecer fría.</p>
+<p begin="948030416t" end="959291666t" style="normal" xml:id="subtitle33">Santo dios.</p>
+<p begin="960959999t" end="1006422082t" style="normal" xml:id="subtitle34">Abed, ahora veo tu valor.</p>
+<p begin="1021854166t" end="1044376666t" style="normal" xml:id="subtitle35">Es lo más amable que jamás me han dicho.</p>
+<p begin="1045210832t" end="1053552499t" style="normal" xml:id="subtitle36">CIENCIAS HUMANAS</p>
+<p begin="1054386666t" end="1083582500t" region="top" style="normal" xml:id="subtitle37">Jeff Winger, genio en derecho.</p>
+<p begin="1085250832t" end="1120702916t" region="top" style="normal" xml:id="subtitle38">-Deja de decir eso.<br/>-Nunca lo haré. Siéntate.</p>
+<p begin="1132381250t" end="1171170000t" region="top" style="normal" xml:id="subtitle39">-¿Qué hace mi abogado aquí?<br/>-Soy estudiante.</p>
+<p begin="1182014166t" end="1202451250t" region="top" style="normal" xml:id="subtitle40">Pues no puede ser un viaje inspirador.</p>
+<p begin="1204119582t" end="1227893332t" region="top" style="normal" xml:id="subtitle41">Tengo un pequeño problema.</p>
+<p begin="1229561666t" end="1257089166t" region="top" style="normal" xml:id="subtitle42">La barra estatal suspendió mi licencia para ejercer.</p>
+<p begin="1258757500t" end="1297129166t" region="top" style="normal" xml:id="subtitle43">Descubrieron que mi título universitario<br/>no es muy legítimo.</p>
+<p begin="1297963332t" end="1316315000t" style="normal" xml:id="subtitle44">¿No era un título de Columbia?</p>
+<p begin="1317149166t" end="1342174166t" style="normal" xml:id="subtitle45">Pues ahora necesito uno de Estados Unidos.</p>
+<p begin="1343008332t" end="1378877500t" style="normal" xml:id="subtitle46">-Y no puede ser un adjunto de e-mail.<br/>-Escogiste una buena escuela.</p>
+<p begin="1380545832t" end="1428510416t" style="normal" xml:id="subtitle47">Sí. Y espero que nuestra amistad<br/>me dé ciertas ventajas.</p>
+<p begin="1429344582t" end="1446027916t" style="normal" xml:id="subtitle48">-Orientación académica.<br/>-Sí.</p>
+<p begin="1447696250t" end="1458123332t" style="normal" xml:id="subtitle49">Apoyo moral.</p>
+<p begin="1459791666t" end="1482731250t" style="normal" xml:id="subtitle50">Las respuestas de cada examen</p>
+<p begin="1484399582t" end="1510675832t" style="normal" xml:id="subtitle51">de cada una de las clases que tomaré.</p>
+<p begin="1511510000t" end="1536535000t" style="normal" xml:id="subtitle52">-Toma mi horario.<br/>-Jeff, al sólo pedirlo,</p>
+<p begin="1538203332t" end="1582414166t" style="normal" xml:id="subtitle53">has insultado la integridad de la institución entera.</p>
+<p begin="1584082500t" end="1613278332t" style="normal" xml:id="subtitle54">Bandido. No es un baño. No es un baño.</p>
+<p begin="1614946666t" end="1654569582t" style="normal" xml:id="subtitle55">Bien. Duncan,<br/>no te importaba mucho la integridad</p>
+<p begin="1656237916t" end="1677926250t" style="normal" xml:id="subtitle56">el día que convencí a 12 jurados</p>
+<p begin="1678760416t" end="1702951249t" style="normal" xml:id="subtitle57">que, cuando diste vuelta en U en la calle</p>
+<p begin="1703785416t" end="1731729999t" style="normal" xml:id="subtitle58">y ordenaste chalupas<br/>del teléfono de emergencias</p>
+<p begin="1733398332t" end="1761342916t" style="normal" xml:id="subtitle59">tu único delito real fue amar a este país.</p>
+<p begin="1779694582t" end="1794292499t" style="normal" xml:id="subtitle60">-Veré qué puedo hacer.<br/>-Gracias.</p>
+<p begin="1795960832t" end="1821819999t" style="normal" xml:id="subtitle61">Duncan, eres un buen hombre.</p>
+<p begin="1823488332t" end="1857272082t" style="normal" xml:id="subtitle62">Jeff, ¿conoces el dicho<br/>"Los tramposos nunca prosperan"?</p>
+<p begin="1862694166t" end="1887719166t" style="normal" xml:id="subtitle63">No. Y si quisiera aprender algo,</p>
+<p begin="1889387499t" end="1918166249t" style="normal" xml:id="subtitle64">no hubiera venido a la universidad comunitaria.</p>
+<p begin="2213044166t" end="2241822916t" region="top" style="normal" xml:id="subtitle65">-Oye, Español.<br/>-Sí, no me quieras ligar, ¿está claro?</p>
+<p begin="2243491250t" end="2266013750t" style="normal" xml:id="subtitle66">Ni siquiera lo soñaría.</p>
+<p begin="2267682082t" end="2306887916t" style="normal" xml:id="subtitle67">Sólo quería contarte de mi grupo<br/>de estudio de español.</p>
+<p begin="2322737082t" end="2364862500t" style="normal" xml:id="subtitle68">¿El que juega "Gato" en su iPhone<br/>en la clase tiene un grupo de estudio?</p>
+<p begin="2365696666t" end="2394058332t" style="normal" xml:id="subtitle69">-¿Me registro dos veces?<br/>-Tomo la clase como crédito fácil.</p>
+<p begin="2395726666t" end="2426173750t" style="normal" xml:id="subtitle70">De hecho soy tutor de español.<br/>Certificado por el consejo.</p>
+<p begin="2427842082t" end="2448279166t" style="normal" xml:id="subtitle71">¿Ahora puedes decirlo en español?</p>
+<p begin="2523354166t" end="2565062500t" style="normal" xml:id="subtitle72">-Necesito mucha ayuda en español.<br/>-Estaba seguro. Soy Jeff. O...</p>
+<p begin="2575072500t" end="2602182916t" style="normal" xml:id="subtitle73">-Nos vemos en la biblioteca a las 4:00.<br/>-Britta. Gracias.</p>
+<p begin="2641805832t" end="2665579582t" style="normal" xml:id="subtitle74">SALÓN DE ESTUDIO EN GRUPO</p>
+<p begin="2687685000t" end="2715212500t" style="normal" xml:id="subtitle75">Oye, muy bien, pásale.</p>
+<p begin="2716046666t" end="2737735000t" style="normal" xml:id="subtitle76">-Sí.<br/>-Tengo toda la mesa.</p>
+<p begin="2738569166t" end="2766096666t" style="normal" xml:id="subtitle77">Aquí está la hoja de contacto.</p>
+<p begin="2766930832t" end="2786950832t" style="normal" xml:id="subtitle78">Pon ahí tus datos. Es...</p>
+<p begin="2794458332t" end="2833247082t" style="normal" xml:id="subtitle79">Hombre, el resto del grupo está muy retrasado.</p>
+<p begin="2834915416t" end="2852850000t" style="normal" xml:id="subtitle80">Pero mientras tanto podemos conocernos.</p>
+<p begin="2854518332t" end="2882880000t" style="normal" xml:id="subtitle81">Seguro notaste esta mañana,<br/>no soy buena charlando.</p>
+<p begin="2884548332t" end="2910824582t" style="normal" xml:id="subtitle82">-Ni yo. ¿Háblame de ti?<br/>-¿Eso no es charla trivial?</p>
+<p begin="2911658750t" end="2928342082t" style="normal" xml:id="subtitle83">Háblame de ti y de si Dios está muerto.</p>
+<p begin="2939603332t" end="2958789166t" style="normal" xml:id="subtitle84">Bueno, ¿quieres saber de mí?</p>
+<p begin="2959623332t" end="2982980000t" style="normal" xml:id="subtitle85">Me gusta la sinceridad sobre todo.</p>
+<p begin="2991321666t" end="3022602916t" style="normal" xml:id="subtitle86">-La sinceridad.<br/>-Me dices la verdad, me caerás bien.</p>
+<p begin="3024271250t" end="3048879166t" style="normal" xml:id="subtitle87">Me mientes, nunca te volveré a hablar.</p>
+<p begin="3050547500t" end="3082662916t" style="normal" xml:id="subtitle88">-Bonita forma de ser.<br/>-¿Y tú qué?</p>
+<p begin="3084331250t" end="3131044582t" style="normal" xml:id="subtitle89">Tendría que ir... Tendría que decir, la sinceridad.</p>
+<p begin="3137300832t" end="3169833332t" style="normal" xml:id="subtitle90">Porque digo lo que sea<br/>para obtener lo que quiero,</p>
+<p begin="3171501666t" end="3206119582t" style="normal" xml:id="subtitle91">y quiero caerte bien. Así que...</p>
+<p begin="3214878332t" end="3255335416t" style="normal" xml:id="subtitle92">Pues fue una respuesta sincera.<br/>Muy bien, por ahora, me caes bien.</p>
+<p begin="3263260000t" end="3290787500t" style="normal" xml:id="subtitle93">-¿En serio? Eres fácil.<br/>-Rayos, sí.</p>
+<p begin="3292455832t" end="3314561250t" style="normal" xml:id="subtitle94">Abed. En el lugar.</p>
+<p begin="3347927916t" end="3366279582t" style="normal" xml:id="subtitle95">-¿Por?<br/>-Britta me invitó. ¿No es genial?</p>
+<p begin="3367947916t" end="3400480416t" style="normal" xml:id="subtitle96">No puedo pensar en una sola razón lógica<br/>para decir que no.</p>
+<p begin="3402148749t" end="3416746666t" style="normal" xml:id="subtitle97">-Genial.<br/>-Ahí vamos.</p>
+<p begin="3418414999t" end="3438434999t" style="normal" xml:id="subtitle98">Toma. Escribe tus datos ahí.</p>
+<p begin="3440103332t" end="3469299166t" style="normal" xml:id="subtitle99">-Muy bien.<br/>-Genial, genial, genial.</p>
+<p begin="3486816666t" end="3508504999t" style="normal" xml:id="subtitle100">Es como <span style="normal_1">El Club de los Cinco</span>, ¿no?</p>
+<p begin="3510173332t" end="3522268749t" style="normal" xml:id="subtitle101">Es una biblioteca.</p>
+<p begin="3523937082t" end="3557720832t" style="normal" xml:id="subtitle102">Seguro tenemos un problema<br/>que nos haría llorar si lo dijéramos.</p>
+<p begin="3559389166t" end="3583579999t" style="normal" xml:id="subtitle103">¿Tienes algo reprimido dentro?</p>
+<p begin="3584831249t" end="3615278332t" style="normal" xml:id="subtitle104">Me pongo un poco loco<br/>cuando las cosas son emocionales.</p>
+<p begin="3638634999t" end="3653649999t" style="normal" xml:id="subtitle105">Oye, mensaje de texto.</p>
+<p begin="3655318332t" end="3686182499t" style="normal" xml:id="subtitle106">-Leámoslo.<br/>-Seguro sólo es para ti.</p>
+<p begin="3687016666t" end="3714544166t" style="normal" xml:id="subtitle107">-Es sólo para tus ojos.<br/>-"Di que vas al baño. Necesito hablar".</p>
+<p begin="3723302916t" end="3747910832t" style="normal" xml:id="subtitle108">-"Di que vas al baño".<br/>-Qué raro.</p>
+<p begin="3749579166t" end="3773352916t" style="normal" xml:id="subtitle109">-¿Necesitas ir?<br/>-No. Qué raro está.</p>
+<p begin="3775021249t" end="3794207082t" style="normal" xml:id="subtitle110">Pues no entiendo. Eso da miedo.</p>
+<p begin="3795458332t" end="3809222082t" style="normal" xml:id="subtitle111">Yo también tengo miedo.</p>
+<p begin="3810473332t" end="3825488332t" style="normal" xml:id="subtitle112">-¿Qué es?<br/>-¿Dice que vayas al baño?</p>
+<p begin="3826322499t" end="3840920416t" style="normal" xml:id="subtitle113">¡Pl-t-ca en cancha de futbol ya!</p>
+<p begin="3842588749t" end="3874704166t" style="normal" xml:id="subtitle114">No, sólo alguien<br/>que no tiene ni idea cómo se abrevia.</p>
+<p begin="3876372499t" end="3888050832t" style="normal" xml:id="subtitle115">Necesito cinco minutos.</p>
+<p begin="3889719166t" end="3933929999t" style="normal" xml:id="subtitle116">Empiecen y estudien todos los verbos en español.</p>
+<p begin="3946442499t" end="3957286666t" style="normal" xml:id="subtitle117">En español.</p>
+<p begin="3968130832t" end="4007753749t" style="normal" xml:id="subtitle118">Supón que es posible<br/>obtener las respuestas de los exámenes.</p>
+<p begin="4009422082t" end="4036115416t" style="normal" xml:id="subtitle119">Diría adelante.<br/>Y podría haberlo dicho por el celular.</p>
+<p begin="4037783749t" end="4076155416t" style="normal" xml:id="subtitle120">Pregunto si sabes la diferencia entre bien y mal.</p>
+<p begin="4077823749t" end="4105351249t" style="normal" xml:id="subtitle121">Descubrí a una edad temprana,<br/>si hablo suficiente</p>
+<p begin="4107019582t" end="4127873749t" style="normal" xml:id="subtitle122">convierto lo que quiera en bien o mal.</p>
+<p begin="4129542082t" end="4172918749t" style="normal" xml:id="subtitle123">O soy Dios o la verdad es relativa,<br/>y en cualquier caso...</p>
+<p begin="4177923749t" end="4212541666t" style="normal" xml:id="subtitle124">Interesante. La persona promedio<br/>habla con más dificultad</p>
+<p begin="4214209999t" end="4227973749t" style="normal" xml:id="subtitle125">del relativismo moral.</p>
+<p begin="4229642082t" end="4256335416t" style="normal" xml:id="subtitle126">No le hagas al loquero para proteger tu orgullo.</p>
+<p begin="4257169582t" end="4272184582t" style="normal" xml:id="subtitle127">Acepto que eres gallina.</p>
+<p begin="4273018749t" end="4293455832t" style="normal" xml:id="subtitle128">Soy profesor. No puedes hablarme así.</p>
+<p begin="4295124166t" end="4329742082t" style="normal" xml:id="subtitle129">-Una niña de seis años puede.<br/>-Sí, porque sería adorable.</p>
+<p begin="4331410416t" end="4363108750t" style="normal" xml:id="subtitle130">No, porque eres una niña de cinco,<br/>y hay derecho de antigüedad.</p>
+<p begin="4364777082t" end="4382294582t" style="normal" xml:id="subtitle131">-Perfecto, lo haré.<br/>-Gracias.</p>
+<p begin="4383962916t" end="4411907500t" style="normal" xml:id="subtitle132">Sí, un placer. Adiós.</p>
+<p begin="4413575832t" end="4430259166t" style="normal" xml:id="subtitle133">Sí, bueno.</p>
+<p begin="4431927500t" end="4465294166t" style="normal" xml:id="subtitle134">¿Por qué sigo gritando?<br/>Atraigo la atención de todos.</p>
+<p begin="4466962500t" end="4500746250t" style="normal" xml:id="subtitle135">No creerán esto, pero el resto del grupo...</p>
+<p begin="4512424582t" end="4525354166t" style="normal" xml:id="subtitle136">...está aquí.</p>
+<p begin="4527022500t" end="4547876666t" style="normal" xml:id="subtitle137">¿Eres el tutor certificado?</p>
+<p begin="4549545000t" end="4566645416t" style="normal" xml:id="subtitle138">Significa que harás mi tarea, ¿no?</p>
+<p begin="4568313750t" end="4589167916t" style="normal" xml:id="subtitle139">Debo hablarle a mi niñera si tardamos.</p>
+<p begin="4590002082t" end="4612524582t" style="normal" xml:id="subtitle140">-¿Quién certifica a un tutor?<br/>-¿Y Britta?</p>
+<p begin="4614192916t" end="4640886250t" style="normal" xml:id="subtitle141">No sé. Invité gente<br/>de la clase de español. ¿Genial?</p>
+<p begin="4642554582t" end="4660906250t" style="normal" xml:id="subtitle142">Lo más genial.</p>
+<p begin="4670499166t" end="4698026666t" style="normal" xml:id="subtitle143">Voy al baño.</p>
+<p begin="4699695000t" end="4751830416t" style="normal" xml:id="subtitle144">Y me llevo mi saco, billetera y llaves,</p>
+<p begin="4753498750t" end="4770599166t" style="normal" xml:id="subtitle145">por si hay un incendio.</p>
+<p begin="4777272500t" end="4787699582t" style="normal" xml:id="subtitle146">¿Vamos con él?</p>
+<p begin="4789367916t" end="4808553750t" style="normal" xml:id="subtitle147">Dejo mi trabajo con el étnico.</p>
+<p begin="4810222082t" end="4822317500t" style="normal" xml:id="subtitle148">Raya en lo racista.</p>
+<p begin="4866111250t" end="4884045832t" style="normal" xml:id="subtitle149">Y me pescaron.</p>
+<p begin="4891553332t" end="4916161250t" style="normal" xml:id="subtitle150">-Mira...<br/>-Ahora sabes. Soy fumadora.</p>
+<p begin="4927839582t" end="4949527916t" style="normal" xml:id="subtitle151">Sí, pero con filtro, así son inofensivos.</p>
+<p begin="4951196250t" end="4981226250t" style="normal" xml:id="subtitle152">¿Estás listo? Parece que ya llegó tu grupo.</p>
+<p begin="4982894582t" end="5010422082t" style="normal" xml:id="subtitle153">No es el mío.<br/>Creo que Abed puso un aviso en <span style="normal_1">Craigslist</span>.</p>
+<p begin="5012090416t" end="5031276250t" style="normal" xml:id="subtitle154">Y me entrenaron para no decir esto,</p>
+<p begin="5032944582t" end="5057969582t" style="normal" xml:id="subtitle155">pero creo que ese grupo no es enseñable.</p>
+<p begin="5059637916t" end="5093004582t" style="normal" xml:id="subtitle156">-¿En serio?<br/>-¿Por qué no estudiamos solos?</p>
+<p begin="5094672916t" end="5111356250t" style="normal" xml:id="subtitle157">-¿Durante la cena?<br/>-O con bebidas.</p>
+<p begin="5113024582t" end="5135547082t" style="normal" xml:id="subtitle158">Creo que debemos priorizar</p>
+<p begin="5137215416t" end="5164325832t" style="normal" xml:id="subtitle159">y estudiar primero y luego ir a cenar.</p>
+<p begin="5178506666t" end="5217712500t" style="normal" xml:id="subtitle160">Y si de verdad no son enseñables,<br/>nos escapamos.</p>
+<p begin="5223551666t" end="5276104166t" style="normal" xml:id="subtitle161">De verdad no serán enseñables.</p>
+<p begin="5346174166t" end="5386631250t" style="normal" xml:id="subtitle162">Muy bien. Mira este equipo.</p>
+<p begin="5388299582t" end="5414158750t" style="normal" xml:id="subtitle163">Listos para estudiar toda la noche.</p>
+<p begin="5414992916t" end="5450862082t" style="normal" xml:id="subtitle164">-Puedo quedarme hasta las 10.<br/>-¿Pero quién estudia con extraños?</p>
+<p begin="5452530416t" end="5463374582t" style="normal" xml:id="subtitle165">Me llamo Jeff.</p>
+<p begin="5468796666t" end="5492570416t" style="normal" xml:id="subtitle166">Jeff, mucho gusto. Me llamo Pierce Hawthorne.</p>
+<p begin="5494238750t" end="5518429582t" style="normal" xml:id="subtitle167">Y, sí, Hawthorne como Toallitas Hawthorne,</p>
+<p begin="5520097916t" end="5548459582t" style="normal" xml:id="subtitle168">-las galardonadas toallitas.<br/>-Justo iba a preguntar.</p>
+<p begin="5550127916t" end="5574735832t" style="normal" xml:id="subtitle169">Soy maestro de ceremonia. Presentaré a todos.</p>
+<p begin="5576404166t" end="5592253332t" style="normal" xml:id="subtitle170">-Seguro.<br/>-Conoces a Brittles.</p>
+<p begin="5593921666t" end="5618529582t" style="normal" xml:id="subtitle171">-Britta.<br/>-Abed. Abed el árabe.</p>
+<p begin="5620197916t" end="5636047082t" style="normal" xml:id="subtitle172">-¿Eso es inapropiado?<br/>-Claro.</p>
+<p begin="5637715416t" end="5654398750t" style="normal" xml:id="subtitle173">-Roy, Roy, el maravilla...<br/>-Troy.</p>
+<p begin="5656067082t" end="5675252916t" style="normal" xml:id="subtitle174">-La princesita Elizabeth.<br/>-Annie.</p>
+<p begin="5676921250t" end="5710287916t" style="normal" xml:id="subtitle175">Y por último, esta hermosa creatura<br/>se llama Shirley.</p>
+<p begin="5714875832t" end="5725302916t" style="normal" xml:id="subtitle176">¿Siquiera cerca?</p>
+<p begin="5736147082t" end="5761589166t" style="normal" xml:id="subtitle177">¿Por qué encontré este grupo por accidente?</p>
+<p begin="5762840416t" end="5777855416t" style="normal" xml:id="subtitle178">Más como <span style="normal_1">El Club de los Cinco</span>.</p>
+<p begin="5779523750t" end="5799543750t" style="normal" xml:id="subtitle179">-¿Hay un club?<br/>-Debemos comenzar...</p>
+<p begin="5801212082t" end="5827488332t" style="normal" xml:id="subtitle180">He sido parte de grupos que terminaron</p>
+<p begin="5829156666t" end="5849593750t" style="normal" xml:id="subtitle181">por tensión no resuelta.</p>
+<p begin="5850427916t" end="5877955416t" style="normal" xml:id="subtitle182">¿Y la preocupación de Annie? ¿No la invitamos?</p>
+<p begin="5878789582t" end="5896307082t" style="normal" xml:id="subtitle183">Cielo, no es tras tus espaldas...</p>
+<p begin="5897141250t" end="5922166250t" style="normal" xml:id="subtitle184">¿Podemos dejar los "cariño" y los "cielo"?</p>
+<p begin="5923834582t" end="5942186250t" style="normal" xml:id="subtitle185">Ser joven no me hace inferior.</p>
+<p begin="5943854582t" end="5977221250t" style="normal" xml:id="subtitle186">Si acaso, tu edad indica que no has tomado<br/>buenas decisiones en tu vida.</p>
+<p begin="5978889582t" end="5998909582t" style="normal" xml:id="subtitle187">-Shirley tiene una respuesta.<br/>-No es así.</p>
+<p begin="6000577916t" end="6016427082t" style="normal" xml:id="subtitle188">-Parece que sí.<br/>-Shirley, adelante.</p>
+<p begin="6018095416t" end="6037281250t" style="normal" xml:id="subtitle189">Bueno, bueno.</p>
+<p begin="6038949582t" end="6071482082t" style="normal" xml:id="subtitle190">Seguro he tomado malas decisiones.</p>
+<p begin="6073150416t" end="6101512082t" style="normal" xml:id="subtitle191">Y tal vez las decisiones de Annie sean mejores.</p>
+<p begin="6103180416t" end="6141552082t" style="normal" xml:id="subtitle192">Creo que debe decidir si quiere ser niña o adulta,</p>
+<p begin="6143220416t" end="6167828332t" style="normal" xml:id="subtitle193">porque los niños reciben lástima, no respeto,</p>
+<p begin="6169496666t" end="6188265416t" style="normal" xml:id="subtitle194">y los adultos reciben respeto.</p>
+<p begin="6189933750t" end="6218712500t" style="normal" xml:id="subtitle195">También les insertan la cabeza en muebles.</p>
+<p begin="6220380832t" end="6257918332t" style="normal" xml:id="subtitle196">Bueno. ¿Por qué no aprendemos<br/>a decir "mueble" en español?</p>
+<p begin="6259586666t" end="6273767500t" style="normal" xml:id="subtitle197">-¿Qué haces?<br/>-Pierce.</p>
+<p begin="6275435832t" end="6296290000t" style="normal" xml:id="subtitle198">-Discutamos esta fea situación.<br/>-¿Perdón?</p>
+<p begin="6297958332t" end="6315475832t" style="normal" xml:id="subtitle199">-¿Qué haces?<br/>-Estoy certificado.</p>
+<p begin="6317144166t" end="6355515832t" style="normal" xml:id="subtitle200">¿Te das cuenta de que Shirley<br/>ve tus coqueteos como inapropiados?</p>
+<p begin="6368445416t" end="6379289582t" style="normal" xml:id="subtitle201">¿Qué coqueteos?</p>
+<p begin="6380957916t" end="6409736666t" style="normal" xml:id="subtitle202">Me acosas sexualmente desde el primer día.</p>
+<p begin="6411405000t" end="6435178750t" style="normal" xml:id="subtitle203">¿Acoso sexual?</p>
+<p begin="6436430000t" end="6456032916t" style="normal" xml:id="subtitle204">¿Qué...? No tiene ningún sentido.</p>
+<p begin="6457701250t" end="6479389582t" style="normal" xml:id="subtitle205">¿Por qué acosaría a alguien que me excita?</p>
+<p begin="6480223750t" end="6503580416t" style="normal" xml:id="subtitle206">Decir que te excita es el acoso, amigo.</p>
+<p begin="6515675832t" end="6530690832t" style="normal" xml:id="subtitle207">Oye.</p>
+<p begin="6536947082t" end="6570313750t" style="normal" xml:id="subtitle208">Soy un prominente comerciante<br/>y me invitan mucho a cenas.</p>
+<p begin="6571982082t" end="6605348750t" style="normal" xml:id="subtitle209">No tomaré consejos de cortejo<br/>de ningún adolescente.</p>
+<p begin="6607017082t" end="6641217916t" style="normal" xml:id="subtitle210">Pues este adolescente es mariscal de campo<br/>y rey del baile escolar.</p>
+<p begin="6642052082t" end="6674584582t" style="normal" xml:id="subtitle211">Ya no eres rey de nada, Troy.<br/>Aquí no es Riverside High.</p>
+<p begin="6676252916t" end="6692936250t" style="normal" xml:id="subtitle212">¿Cómo sabes que fui ahí?</p>
+<p begin="6694604582t" end="6729639582t" style="normal" xml:id="subtitle213">Porque sigues usando tu estúpida chamarra...</p>
+<p begin="6730473749t" end="6754247499t" style="normal" xml:id="subtitle214">¿Eres la drogadicta que dejó la escuela?</p>
+<p begin="6758835416t" end="6772182082t" style="normal" xml:id="subtitle215">Eres Annie Adderall.</p>
+<p begin="6773850416t" end="6797624166t" style="normal" xml:id="subtitle216">Y tú eres un estúpido deportista</p>
+<p begin="6799292499t" end="6831407916t" style="normal" xml:id="subtitle217">que perdió su beca por dislocarse<br/>los hombros en una fiesta.</p>
+<p begin="6833076249t" end="6860603749t" style="normal" xml:id="subtitle218">-Haciendo una acrobacia muy difícil.<br/>-No me hables.</p>
+<p begin="6862272082t" end="6884794582t" style="normal" xml:id="subtitle219">No saben... Soy una leyenda.</p>
+<p begin="6930256666t" end="6954030416t" style="normal" xml:id="subtitle220">¿Saben qué me dieron de navidad?</p>
+<p begin="6962372082t" end="6989065416t" style="normal" xml:id="subtitle221">Fue un año fabuloso para la familia Bender.</p>
+<p begin="6990733749t" end="7012839166t" style="normal" xml:id="subtitle222">Un cartón de cigarrillos.</p>
+<p begin="7014507499t" end="7044954582t" style="normal" xml:id="subtitle223">El viejo me agarró. Dijo, "Fúmale, Johnny".</p>
+<p begin="7066642916t" end="7093336249t" style="normal" xml:id="subtitle224">No, papá, ¿y tú?</p>
+<p begin="7125034582t" end="7165074582t" style="normal" xml:id="subtitle225">Bueno, eso salió de <span style="normal_1">El Club de los Cinco</span>.</p>
+<p begin="7180089582t" end="7202194999t" style="normal" xml:id="subtitle226">Nadie pone a Baby en la esquina.</p>
+<p begin="7210119582t" end="7225968749t" style="normal" xml:id="subtitle227"><span style="normal_1">Baile Caliente.</span></p>
+<p begin="7227637082t" end="7241400832t" style="normal" xml:id="subtitle228">-¿Hola?<br/><span style="normal_1">-Es el Prof. Duncan.</span></p>
+<p begin="7243069166t" end="7264340416t" style="normal" xml:id="subtitle229"><span style="normal_1">Ven al estacionamiento ahorita.</span></p>
+<p begin="7266008749t" end="7303546249t" style="normal" xml:id="subtitle230">-¿Qué le pasa a tu voz?<br/><span style="normal_1">-La disimulo.</span></p>
+<p begin="7317727082t" end="7359852499t" style="normal" xml:id="subtitle231">Ya vuelvo. Pero mientras,<br/>ustedes necesitan discutir estas cosas.</p>
+<p begin="7361520832t" end="7398224166t" style="normal" xml:id="subtitle232">No dejen piedra sin voltear. Vamos.</p>
+<p begin="7457449999t" end="7492484999t" style="normal" xml:id="subtitle233">La respuesta a cada examen<br/>de tu currículum este semestre.</p>
+<p begin="7494153332t" end="7514590416t" style="normal" xml:id="subtitle234">Sabía que podrías, amigo. Gracias.</p>
+<p begin="7516258749t" end="7539198332t" style="normal" xml:id="subtitle235">Alto ahí, agarriche, agarriche.</p>
+<p begin="7540866666t" end="7572147916t" style="normal" xml:id="subtitle236">-¿Y yo qué obtengo?<br/>-La satisfacción de estar a mano.</p>
+<p begin="7573816249t" end="7606348749t" style="normal" xml:id="subtitle237">A mano, justicia, bien, mal. No hay un Dios.</p>
+<p begin="7608017082t" end="7619695416t" style="normal" xml:id="subtitle238">¿Qué quieres de mí?</p>
+<p begin="7627202916t" end="7637629999t" style="normal" xml:id="subtitle239">Tu Lexus.</p>
+<p begin="7638464166t" end="7662237916t" style="normal" xml:id="subtitle240">¿Mi auto por un semestre de respuestas?</p>
+<p begin="7663906249t" end="7683926249t" style="normal" xml:id="subtitle241">¿Será sólo un semestre, Jeff?</p>
+<p begin="7685594582t" end="7718544166t" style="normal" xml:id="subtitle242">¿No tomarás el camino fácil<br/>los próximos cuatro años?</p>
+<p begin="7719378332t" end="7737729999t" style="normal" xml:id="subtitle243">Quiero mi pago por adelantado.</p>
+<p begin="7739398332t" end="7765257499t" style="normal" xml:id="subtitle244">Asientos de piel con calentadores de entrepierna.</p>
+<p begin="7766925832t" end="7801960832t" style="normal" xml:id="subtitle245">Fanfarronadas así hicieron<br/>que los tuyos perdieran las colonias.</p>
+<p begin="7803629166t" end="7823649166t" style="normal" xml:id="subtitle246">Feliz audiencia de inhabilitación.</p>
+<p begin="7835744582t" end="7869528332t" style="normal" xml:id="subtitle247">-¿Y yo qué conduzco?<br/>-Toma éste. Es bueno para el planeta.</p>
+<p begin="7871196666t" end="7908734166t" style="normal" xml:id="subtitle248">También limpiarse el trasero<br/>con una hoja, pero así no hace un hombre.</p>
+<p begin="7967959999t" end="7985477499t" style="normal" xml:id="subtitle249">Carrito de golf.</p>
+<p begin="8040115416t" end="8058467082t" style="normal" xml:id="subtitle250">Es un desastre allá adentro.</p>
+<p begin="8060135416t" end="8094753332t" style="normal" xml:id="subtitle251">Sí. No son enseñables.<br/>¿Te gusta la comida tailandesa? A mí sí.</p>
+<p begin="8096421666t" end="8119778332t" style="normal" xml:id="subtitle252">Espera. ¿Esto es un juego para ti?</p>
+<p begin="8121446666t" end="8147305832t" style="normal" xml:id="subtitle253">¿Pones humanos<br/>en un estado de crisis emocional</p>
+<p begin="8148974166t" end="8166491666t" style="normal" xml:id="subtitle254">para meterte en mi cama?</p>
+<p begin="8168159999t" end="8193602082t" style="normal" xml:id="subtitle255">¿Por qué no ves que es un gran cumplido?</p>
+<p begin="8195270416t" end="8213204999t" style="normal" xml:id="subtitle256">-No lo creo.<br/>-¿Qué quieres?</p>
+<p begin="8214873332t" end="8256998749t" style="normal" xml:id="subtitle257">Algo decente sería entrar ahí a limpiar tu tiradero.</p>
+<p begin="8285360416t" end="8319978332t" style="normal" xml:id="subtitle258">Bueno, si lo hago, entonces cenamos, ¿verdad?</p>
+<p begin="8341666666t" end="8368777082t" style="normal" xml:id="subtitle259">Sí, bueno, da igual. Como si hubiera una cena</p>
+<p begin="8370445416t" end="8399641249t" style="normal" xml:id="subtitle260">que me haga olvidar<br/>que eres un desgraciado egoísta.</p>
+<p begin="8401309582t" end="8437595832t" style="normal" xml:id="subtitle261">Vas a comerte tus palabras<br/>cuando veas mi nuevo auto.</p>
+<p begin="8480138332t" end="8500158332t" style="normal" xml:id="subtitle262">Bueno, todos.</p>
+<p begin="8501826666t" end="8527268749t" style="normal" xml:id="subtitle263">Quiero decir algo. Siéntense.</p>
+<p begin="8528102916t" end="8553544999t" style="normal" xml:id="subtitle264">No tienes que gritar. No me gusta tu tono.</p>
+<p begin="8571062499t" end="8593167916t" style="normal" xml:id="subtitle265">¿Qué nos distingue de otros animales?</p>
+<p begin="8594836250t" end="8628620000t" style="normal" xml:id="subtitle266">-Los pies.<br/>-No, no. Vamos, los osos tienen pies.</p>
+<p begin="8630288332t" end="8670328332t" style="normal" xml:id="subtitle267">Somos la única especie de la Tierra<br/>que ve "Semana del Tiburón".</p>
+<p begin="8677835832t" end="8708700000t" style="normal" xml:id="subtitle268">Ni los tiburones la ven, pero nosotros sí.</p>
+<p begin="8710368332t" end="8745820416t" style="normal" xml:id="subtitle269">Por la misma razón que si agarro este lápiz,<br/>digo que se llama Steve,</p>
+<p begin="8747488750t" end="8757915832t" style="normal" xml:id="subtitle270">y hago esto...</p>
+<p begin="8764589166t" end="8802543750t" style="normal" xml:id="subtitle271">Y una parte de ustedes se muere<br/>un poco por dentro.</p>
+<p begin="8804212082t" end="8834242082t" style="normal" xml:id="subtitle272">Porque la gente puede conectar con lo que sea.</p>
+<p begin="8835910416t" end="8861352500t" style="normal" xml:id="subtitle273">Simpatizar con un lápiz, perdonar a un tiburón</p>
+<p begin="8863020832t" end="8893885000t" style="normal" xml:id="subtitle274">y darle a Ben Affleck un Óscar<br/>por escribir libretos.</p>
+<p begin="8895553332t" end="8907231666t" style="normal" xml:id="subtitle275">Gran error.</p>
+<p begin="8908900000t" end="8954779166t" style="normal" xml:id="subtitle276">La gente encuentra algo bueno en todo<br/>menos en sí mismos.</p>
+<p begin="8956447500t" end="8988145832t" style="normal" xml:id="subtitle277">Mírenme. Es evidente para todos ustedes<br/>que soy lo máximo.</p>
+<p begin="8988980000t" end="9016507500t" style="normal" xml:id="subtitle278">Pero yo no puedo admitirlo. Sería insoportable.</p>
+<p begin="9018175832t" end="9056547500t" style="normal" xml:id="subtitle279">Pero lo que puedo es ver<br/>lo que hace genial a Annie. Tiene motivación.</p>
+<p begin="9060718332t" end="9093250832t" style="normal" xml:id="subtitle280">Necesitamos gente motivada<br/>o el helado se derrite.</p>
+<p begin="9094919166t" end="9119110000t" style="normal" xml:id="subtitle281">Y Pierce, necesitamos tipos como Pierce.</p>
+<p begin="9120778332t" end="9153310832t" style="normal" xml:id="subtitle282">-Tiene sabiduría.<br/>-El Dalai Lama y yo...</p>
+<p begin="9154979166t" end="9182506666t" style="normal" xml:id="subtitle283">Un día lo escucharemos. No nos arrepentiremos.</p>
+<p begin="9184175000t" end="9216707500t" style="normal" xml:id="subtitle284">Y Shirley, Shirley se ha ganado nuestro respeto.</p>
+<p begin="9218375832t" end="9250074166t" style="normal" xml:id="subtitle285">No como esposa, no como madre,<br/>sino como mujer.</p>
+<p begin="9251742500t" end="9277601666t" style="normal" xml:id="subtitle286">No la prueben, eso del mueble</p>
+<p begin="9279270000t" end="9296370416t" style="normal" xml:id="subtitle287">no fue una improvisación.</p>
+<p begin="9298038750t" end="9336827500t" style="normal" xml:id="subtitle288">Y Troy. ¿A quién le importa<br/>si Troy se cree mucho?</p>
+<p begin="9338495832t" end="9365189166t" style="normal" xml:id="subtitle289">Quizás es genial. Y Abed.</p>
+<p begin="9366857500t" end="9386460416t" style="normal" xml:id="subtitle290">Abed es un chamán.</p>
+<p begin="9387294582t" end="9421912500t" style="normal" xml:id="subtitle291">Le pides que te pase la sal,<br/>te da un plato de sopa.</p>
+<p begin="9423580832t" end="9445686250t" style="normal" xml:id="subtitle292">Porque ¿saben qué? La sopa es mejor.</p>
+<p begin="9447354582t" end="9461535416t" style="normal" xml:id="subtitle293">Abed es mejor.</p>
+<p begin="9463203750t" end="9490731250t" style="normal" xml:id="subtitle294">Todos ustedes son mejores de lo que creen.</p>
+<p begin="9492399582t" end="9521595416t" style="normal" xml:id="subtitle295">Están diseñados<br/>para no creerlo si lo dicen ustedes.</p>
+<p begin="9523263750t" end="9535776250t" style="normal" xml:id="subtitle296">¿Sopa?</p>
+<p begin="9537444582t" end="9561635416t" style="normal" xml:id="subtitle297">Quiero que vean a la persona a su izquierda.</p>
+<p begin="9574982082t" end="9597921666t" style="normal" xml:id="subtitle298">Perdón. A la persona de junto.</p>
+<p begin="9599590000t" end="9613770832t" style="normal" xml:id="subtitle299">Mírala. Muy bien.</p>
+<p begin="9615439166t" end="9625866250t" style="normal" xml:id="subtitle300">-¿Esto...?<br/>-Sí.</p>
+<p begin="9627534582t" end="9656730416t" style="normal" xml:id="subtitle301">Quiero que le extiendan a esa persona</p>
+<p begin="9658398750t" end="9698438750t" style="normal" xml:id="subtitle302">la misma compasión que a los tiburones,<br/>lápices y Ben Affleck.</p>
+<p begin="9700107082t" end="9735976250t" style="normal" xml:id="subtitle303">Quiero que le digan a esa persona, "Te perdono".</p>
+<p begin="9744317916t" end="9762669582t" style="normal" xml:id="subtitle304">-Te perdono.<br/>-Te perdono.</p>
+<p begin="9764337916t" end="9786026250t" style="normal" xml:id="subtitle305">-Te perdono.<br/>-Pequeño baboso.</p>
+<p begin="9787694582t" end="9809382916t" style="normal" xml:id="subtitle306">Pierce, quiero que digas, "Te perdono".</p>
+<p begin="9811051250t" end="9836493332t" style="normal" xml:id="subtitle307">-¿No lo dijo?<br/>-Te perdono.</p>
+<p begin="9841498332t" end="9864855000t" style="normal" xml:id="subtitle308">Han dejado de ser un grupo de estudio.</p>
+<p begin="9866523332t" end="9902809582t" style="normal" xml:id="subtitle309">Se han convertido en algo imparable.</p>
+<p begin="9904477916t" end="9937844582t" style="normal" xml:id="subtitle310">Por el presente acto los declaro una comunidad.</p>
+<p begin="9944100832t" end="9967040416t" style="normal" xml:id="subtitle311">Qué agradable. Eso me gusta.</p>
+<p begin="9981638332t" end="9996236250t" style="normal" xml:id="subtitle312">No es como <span style="normal_1">El Club de los Cinco.</span></p>
+<p begin="9997904582t" end="10018341666t" style="normal" xml:id="subtitle313">Es cualquier película con Bill Murray.</p>
+<p begin="10020010000t" end="10045035000t" style="normal" xml:id="subtitle314">Abed tiene razón, esta noche ha sido especial.</p>
+<p begin="10058381666t" end="10100090000t" style="normal" xml:id="subtitle315">Y ahora si me disculpan, tengo<br/>un compromiso para cenar con Britta.</p>
+<p begin="10101758332t" end="10121778332t" style="normal" xml:id="subtitle316">-¿Britta?<br/>-Mentí.</p>
+<p begin="10135542082t" end="10151808332t" style="normal" xml:id="subtitle317">Gracias por calmar a todos.</p>
+<p begin="10153476666t" end="10180587082t" style="normal" xml:id="subtitle318">Pero no eres un tutor, sólo un mentiroso</p>
+<p begin="10182255416t" end="10215205000t" style="normal" xml:id="subtitle319">que alteró a todos a propósito<br/>intentando estar conmigo.</p>
+<p begin="10216873332t" end="10251074166t" style="normal" xml:id="subtitle320">Vete y deja de hacernos perder el tiempo.</p>
+<p begin="10252742500t" end="10264420832t" style="normal" xml:id="subtitle321">-¿Están todos listos?<br/>-Bien.</p>
+<p begin="10281938332t" end="10300707082t" style="normal" xml:id="subtitle322">Me da gusto informarles</p>
+<p begin="10302375416t" end="10331988332t" style="normal" xml:id="subtitle323">que una de las ventajas de ser un mentiroso</p>
+<p begin="10333656666t" end="10360350000t" style="normal" xml:id="subtitle324">es que tengo todas las respuestas del examen.</p>
+<p begin="10362018332t" end="10395802082t" style="normal" xml:id="subtitle325">Y las compartiré con cualquiera<br/>que hice perder el tiempo</p>
+<p begin="10397470416t" end="10411651250t" style="normal" xml:id="subtitle326">más de lo que ellos el mío.</p>
+<p begin="10413319582t" end="10457113332t" style="normal" xml:id="subtitle327">Jeff, si tienes las respuestas,<br/>¿para qué carajo empezaste el grupo?</p>
+<p begin="10458781666t" end="10477550416t" style="normal" xml:id="subtitle328">No tengo un grupo. Lo inventé.</p>
+<p begin="10479218750t" end="10507163332t" style="normal" xml:id="subtitle329">-¿Y el discurso?<br/>-Lo inventé. Es lo que hago.</p>
+<p begin="10508831666t" end="10542615416t" style="normal" xml:id="subtitle330">Invento cosas. Y me pagaban<br/>mucho dinero para hacerlo.</p>
+<p begin="10544283750t" end="10578067500t" style="normal" xml:id="subtitle331">Antes de venir a este escusado<br/>en forma de escuela, era abogado.</p>
+<p begin="10581404166t" end="10609765832t" style="normal" xml:id="subtitle332">Hombre, esto lo arruina todo.</p>
+<p begin="10610600000t" end="10631037082t" style="normal" xml:id="subtitle333">Creí que eras como Bill Murray en sus películas.</p>
+<p begin="10632705416t" end="10651474166t" style="normal" xml:id="subtitle334">Eres más como Michael Douglas.</p>
+<p begin="10653142500t" end="10679001666t" style="normal" xml:id="subtitle335">¿Sí? Pues tú tienes Asperger.</p>
+<p begin="10695267916t" end="10705695000t" style="normal" xml:id="subtitle336">¿Eso qué significa?</p>
+<p begin="10717790416t" end="10728217500t" style="normal" xml:id="subtitle337">As-te-tonto.</p>
+<p begin="10729885832t" end="10750322916t" style="normal" xml:id="subtitle338">-Es un trastorno grave.<br/>-Sí lo es.</p>
+<p begin="10751157082t" end="10781187082t" style="normal" xml:id="subtitle339">¿Si es tan grave,<br/>por qué no le pusieron meningitis?</p>
+<p begin="10782855416t" end="10798287500t" style="normal" xml:id="subtitle340">Sí.</p>
+<p begin="10799955832t" end="10820392916t" style="normal" xml:id="subtitle341">-As-te-tonto.<br/>-Se hace tonto.</p>
+<p begin="11028934582t" end="11062718332t" region="top" style="normal" xml:id="subtitle342">Jeffrey, antes de hablar,<br/>piensa en el don que tienes.</p>
+<p begin="11063552500t" end="11093165416t" region="top" style="normal" xml:id="subtitle343">-¿Una excusa para golpear hippies?<br/>-No. No, no eso.</p>
+<p begin="11094833750t" end="11110682916t" region="top" style="normal" xml:id="subtitle344">Una lección importante.</p>
+<p begin="11112351250t" end="11144883750t" style="normal" xml:id="subtitle345">Las herramientas que adquiriste<br/>para sobrevivir allá afuera</p>
+<p begin="11146552082t" end="11164903750t" style="normal" xml:id="subtitle346">no te ayudarán en Greendale.</p>
+<p begin="11166572082t" end="11202024166t" style="normal" xml:id="subtitle347">Lo que tienes es una segunda oportunidad<br/>para una vida honesta.</p>
+<p begin="11203692500t" end="11213702500t" style="normal" xml:id="subtitle348">Dame mis llaves.</p>
+<p begin="11215370832t" end="11232054166t" style="normal" xml:id="subtitle349">No, guardaré tu auto por la lección.</p>
+<p begin="11233722500t" end="11250405832t" style="normal" xml:id="subtitle350">No me pegues. Por favor no.</p>
+<p begin="11252074166t" end="11265837916t" style="normal" xml:id="subtitle351">¿Jeffrey? ¿Jeffrey?</p>
+<p begin="11270425832t" end="11288777500t" style="normal" xml:id="subtitle352">¿Estamos bien?</p>
+<p begin="11300455832t" end="11310882916t" style="normal" xml:id="subtitle353">Estamos bien.</p>
+<p begin="11332988332t" end="11355510832t" style="normal" xml:id="subtitle354">Me caes bien, Jeffrey.</p>
+<p begin="11370942916t" end="11391380000t" style="normal" xml:id="subtitle355">Me recuerdas a mí a tu edad.</p>
+<p begin="11405977916t" end="11424329582t" style="normal" xml:id="subtitle356">Me lo merezco.</p>
+<p begin="11441012916t" end="11471042916t" style="normal" xml:id="subtitle357">¿Sabes que me he divorciado<br/>siete veces?</p>
+<p begin="11487726250t" end="11513585416t" style="normal" xml:id="subtitle358">A veces creo que hago algo mal.</p>
+<p begin="11569474582t" end="11589494582t" style="normal" xml:id="subtitle359">Te sigues casando.</p>
+<p begin="11596167916t" end="11611182916t" style="normal" xml:id="subtitle360">Nunca lo vi así.</p>
+<p begin="11647886250t" end="11666655000t" style="normal" xml:id="subtitle361">¿No deberían estar estudiando?</p>
+<p begin="11668323332t" end="11695433750t" style="normal" xml:id="subtitle362">Sí, todo se puso aburrido cuando te fuiste.</p>
+<p begin="11697102082t" end="11729217500t" style="normal" xml:id="subtitle363">¿No deberías revolcarte en la cama<br/>con tus respuestas?</p>
+<p begin="11783021250t" end="11822644166t" style="normal" xml:id="subtitle364">No tengo las respuestas. Reprobaré el examen.</p>
+<p begin="11823478332t" end="11851422916t" style="normal" xml:id="subtitle365">Si sólo estudiaras una hora, no es tan difícil.</p>
+<p begin="11852257082t" end="11873111250t" style="normal" xml:id="subtitle366">Pareces listo. Usas saco.</p>
+<p begin="11874779582t" end="11901472916t" style="normal" xml:id="subtitle367">Pues, lo curioso de ser listo</p>
+<p begin="11903141250t" end="11934005416t" style="normal" xml:id="subtitle368">es que pasas por la vida sin hacer el trabajo.</p>
+<p begin="11938593332t" end="11977799166t" style="normal" xml:id="subtitle369">Así que no estoy muy seguro de cómo hacerlo.</p>
+<p begin="12033688332t" end="12050371666t" style="normal" xml:id="subtitle370">¿Por favor? ¿Tan triste?</p>
+<p begin="12064969582t" end="12077482082t" style="normal" xml:id="subtitle371">Me hace querer...</p>
+<p begin="12105426666t" end="12132537082t" style="normal" xml:id="subtitle372">¿Qué pasa? ¿Pueden oírme? ¿Estoy sordo?</p>
+<p begin="12134205416t" end="12152557082t" style="normal" xml:id="subtitle373">-¿Me oyen hablar?<br/>-Sí.</p>
+<p begin="12154225416t" end="12171325832t" style="normal" xml:id="subtitle374">Qué bueno.</p>
+<p begin="12189260416t" end="12224295416t" style="normal" xml:id="subtitle375">Sabes qué, Jeff,<br/>en realidad no avanzamos mucho sin ti.</p>
+<p begin="12225963750t" end="12259747500t" style="normal" xml:id="subtitle376">Si quieres volver arriba...</p>
+<p begin="12286440832t" end="12299370416t" style="normal" xml:id="subtitle377">¿En serio?</p>
+<p begin="12301038750t" end="12322310000t" style="normal" xml:id="subtitle378">Pues es tu grupo de estudio, así que...</p>
+<p begin="12323978332t" end="12343998332t" style="normal" xml:id="subtitle379">-Vamos, estudiemos.<br/>-Suena bien.</p>
+<p begin="12345666666t" end="12364852500t" style="normal" xml:id="subtitle380">-Vamos.<br/>-La presión.</p>
+<p begin="12459530416t" end="12494148332t" style="normal" xml:id="subtitle381">Siento haberte dicho Michael Douglas.<br/>Y ahora veo tu valor.</p>
+<p begin="12514585416t" end="12550037500t" style="normal" xml:id="subtitle382">Es lo más amable que jamás me han dicho.</p>
+<p begin="13045532500t" end="13070557500t" region="top" style="normal" xml:id="subtitle383">Traducción de subtítulos por:<br/>Jose Cortes</p>
+</div>
+</body>
+</tt>
