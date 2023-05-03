@@ -4,10 +4,10 @@
 /* eslint-disable no-undef */
 var express = require("express");
 var mysql = require("mysql");
-const router = express.Router();s
-const jwt = require('jsonwebtoken');s
+const router = express.Router();
+const jwt = require('jsonwebtoken');
 const passport = require('passport');
-const fs = require('fs');s
+const fs = require('fs');
 // var privateKey = fs.readFileSync('./private-key.pem', 'utf8');
 /* GET home page. */
 const connection = mysql.createConnection({
