@@ -154,6 +154,34 @@ function createAnswer(text) {
 	titleElement.classList.add("question-title")
 	modalContainer.appendChild(titleElement);
 
+	// Add icon
+	const iconElement = document.createElement("i");
+	if (text == 'Correct'){
+		iconElement.classList.add("fa-solid", "fa-circle-check", "checkmark");
+
+	} else {
+		iconElement.classList.add("fa-solid", "fa-circle-xmark", "xmark");
+	}
+	modalContainer.appendChild(iconElement);
+	
+	const explanationContainer = document.createElement("div");
+	explanationContainer.classList.add("explanation-container");
+	const explanation = document.createElement("p");
+	explanation.textContent = "This is an explanation for why the answer is correct. I hope you enjoy!";
+	explanation.classList.add("explanation");
+	explanationContainer.appendChild(explanation);
+	modalContainer.appendChild(explanationContainer);
+
+	const continueButton = document.createElement("button");
+	continueButton.classList.add("app-button", "continue", "close-button");
+	continueButton.textContent = "Continue";
+
+	continueButton.addEventListener("click", () => {
+		modalBg.remove();
+	});
+	modalContainer.appendChild(continueButton);
+
+
 	// Create the close button element
 	const closeButton = document.createElement("span");
 	closeButton.classList.add("close-button");

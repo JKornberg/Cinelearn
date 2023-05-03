@@ -254,6 +254,43 @@ router.get('/createVocabAnswer', (req, res) => {
     })
 })
 
+router.get('/authUser', (req, res) => {
+  username = req.query.username
+  password = req.query.hashed_password
+  connection.query(`SELECT password FROM user where user_name='${username}'`, 
+  (err, rows, fields) => 
+    {
+      if(err) throw err
+      if(password == rows[0].password) {
+        res.status(200).json({
+          status: "success",
+        });
+      }
+      else {
+        res.status(200).json({
+          status: "failed",
+        });
+      }
+    })
+})
+
+router.get('/createUser', (req, res) => {
+  username = req.query.username
+  password = req.query.hashed_password
+  connection.query(`INSERT INTO user (user_name, password) VALUES ('${username}', '${password}');`, 
+  (err, rows, fields) => 
+    {
+      if(err) throw err
+      else {
+        res.status(200).json({
+          status: "success",
+        });
+      }
+    })
+})
+
+
+
 const LocalStrategy = require('passport-local').Strategy;
 
 
