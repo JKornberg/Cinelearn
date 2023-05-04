@@ -7,6 +7,8 @@ modalContainer.appendChild(checkmark);
 
 */
 
+// const { createRequire } = require("module");
+
 /* add mixpanel tracking */
 var current_subs = [];
 var elapsed_time = 0; //ms
@@ -62,6 +64,7 @@ class VocabQuestion {
 		this.randomSpanishWords = getRandomValuesFromArray(english_words)
 		this.section = Math.floor(max_time/this.start)
 		this.id = id
+		this.type = 'vq'
 	}
 }
 
@@ -80,6 +83,7 @@ class ContextQuestion {
 		this.start = start/10000; // number;
 		this.section = Math.floor(max_time/this.start)
 		this.id = id
+		this.type = 'cq'
 	}
 }
 
@@ -94,7 +98,7 @@ class QuizQuestion {
 }
 
 // Create some sample quiz questions
-const quizQuestions = [
+var quizQuestions = [
 ];
 
 var dict = {
@@ -110,7 +114,7 @@ var dict = {
 let subs = [];
 let subs2 = [];
 
-const questions = [
+var questions = [
 
 ];
 
@@ -400,6 +404,22 @@ function updateSidebar() {
 
 	const sidebarList = document.createElement('div');
 	sidebarList.className = 'sidebar-list';
+	// filter all questions that could be added
+	var newCQs = contextQuestions.filter((q) => q.start <= time);
+	var newVQs = vocabQuestions.filter((q) => q.start <= time);
+	
+	// for each newQ filter if is already in questions
+	var newNewCQs = newCQs.filter((q) => questions.indexOf(q) === -1 );
+	var newNewVQs = newVQs.filter((q) => questions.indexOf(q) === -1 );
+
+	// add newQs to questions
+	questions = questions.concat(newNewCQs);
+	questions = questions.concat(newNewVQs);
+
+	questions.sort((a, b) => (a.start > b.start) ? 1 : -1);
+
+	// FIXME sort questions based on time!
+
 	questions.forEach(question => {
 		const listItem = document.createElement('div');
 		listItem.className = 'sidebar-list-item';
@@ -407,7 +427,12 @@ function updateSidebar() {
 		listItem.addEventListener('click', () => {
 			console.log(question.id);
 			if (questionMutex == 0) {
-				createQuizModal(quizQuestions[question.id]);
+				if (question.type == 'cq') {
+					createQuizModal(contextQuestions[question.id]);
+				}
+				else if (question.type = 'vq') {
+					createQuizModal(vocabQuestions[question.id]);
+				}
 				questionMutex += 1;
 			}
 		});
