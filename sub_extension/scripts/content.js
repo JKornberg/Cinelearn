@@ -382,12 +382,15 @@ function createVocabModal(question) {
 
 		answerChoice.addEventListener("click", () => {
 			if (selectedValues.indexOf(choice) !== -1) {
-				selectedValues.splice(finalWords.indexOf(choice)-1, 1); // 2nd parameter means remove one item only
+				selectedValues = selectedValues.filter(function(item) {
+					return item !== choice
+				})	
 				answerChoice.classList.add("vocab-answer-inactive");
 				answerChoice.classList.remove("vocab-answer-active");
 				answerElement.classList.remove('test_class')
 				answerElement.classList.add('test_class')
 				console.log(selectedValues)
+				console.log(question.spanish)
 			} else {
 				selectedValues.push(choice)
 				answerChoice.classList.remove("vocab-answer-inactive");
