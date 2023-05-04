@@ -514,14 +514,17 @@ var intervalId = window.setInterval(function () {
 			});
 			newContent.textContent = sub.textContent;
 			newSubContainer.appendChild(newContent);
-			newContent.addEventListener('click', function (event) {
-				let parsedWord = event.target.textContent.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").replace(/\s{2,}/g, "")
-				if (DICTIONARY[parsedWord]) {
-					alert(`${parsedWord} translates to: ${DICTIONARY[parsedWord]}`)
-				} else{
-					alert(`Sorry, we don't have a translation for ${parsedWord}`)
-				}
-			}, false)
+			if (sub.id === 'sub2') {
+				newContent.addEventListener('click', function (event) {
+					let parsedWord = event.target.textContent.toLowerCase().replace(/[.,\/#!?$%\^&\*;:{}=\-_`~()]/g, "").replace(/\s{2,}/g, "")
+					if (DICTIONARY[parsedWord]) {
+						alert(`${parsedWord} translates to: ${DICTIONARY[parsedWord]}`)
+					} else{
+						alert(`Sorry, we don't have a translation for ${parsedWord}`)
+					}
+				}, false)
+			}
+			
 			const br = document.createElement('br');
 			newSubContainer.appendChild(br);
 		});
