@@ -489,7 +489,11 @@ var intervalId = window.setInterval(function () {
 			newSubContainer.appendChild(newContent);
 			newContent.addEventListener('click', function (event) {
 				let parsedWord = event.target.textContent.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").replace(/\s{2,}/g, "")
-				alert(DICTIONARY[parsedWord])
+				if (DICTIONARY[parsedWord]) {
+					alert(`${parsedWord} translates to: ${DICTIONARY[parsedWord]}`)
+				} else{
+					alert(`Sorry, we don't have a translation for ${parsedWord}`)
+				}
 			}, false)
 			const br = document.createElement('br');
 			newSubContainer.appendChild(br);
