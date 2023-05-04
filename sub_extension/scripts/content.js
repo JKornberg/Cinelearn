@@ -367,7 +367,7 @@ function createVocabModal(question) {
 
 
 	const answerElement = document.createElement("h2");
-	answerElement.textContent = `Spanish: ${selectedValues}`;
+	answerElement.textContent = `Spanish: ${selectedValues.join(' ')}`;
 	answerElement.classList.add("question-spanish")
 	modalContainer.appendChild(answerElement);
 	// Create the Spanish Element
@@ -381,14 +381,20 @@ function createVocabModal(question) {
 
 
 		answerChoice.addEventListener("click", () => {
-			if (selectedValues.findIndex(choice) !== -1) {
-				selectedValues.splice(finalWords.findIndex(choice), 1); // 2nd parameter means remove one item only
+			if (selectedValues.indexOf(choice) !== -1) {
+				selectedValues.splice(finalWords.indexOf(choice)-1, 1); // 2nd parameter means remove one item only
 				answerChoice.classList.add("vocab-answer-inactive");
 				answerChoice.classList.remove("vocab-answer-active");
+				answerElement.classList.remove('test_class')
+				answerElement.classList.add('test_class')
+				console.log(selectedValues)
 			} else {
 				selectedValues.push(choice)
 				answerChoice.classList.remove("vocab-answer-inactive");
 				answerChoice.classList.add("vocab-answer-active");
+				answerElement.classList.remove('test_class')
+				answerElement.classList.add('test_class')
+				console.log(selectedValues)
 			}
 		});
 
