@@ -403,7 +403,12 @@ function updateSidebar() {
 	sidebarList.className = 'sidebar-list';
 	questions.forEach(question => {
 		const listItem = document.createElement('div');
-		listItem.className = 'sidebar-list-item';
+		listItem.classList.add('sidebar-list-item')
+		if (question.correct){
+			listItem.classList.add('correct' === true);
+		} else if (question.correct === false){
+			listItem.classList.add('incorrect');
+		}
 		listItem.textContent = question.question;
 		listItem.addEventListener('click', () => {
 			console.log(question.id);

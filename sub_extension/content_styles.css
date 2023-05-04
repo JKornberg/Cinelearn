@@ -157,33 +157,14 @@ hr.solid {
 
 }
 
-.sidebar-list-item-correct{
-    background-color: #FCA311;
-    font-size: 12pt;
-    height: 10px;
-    width: 70%;
-    margin: 0 auto;
-    color: #000;
-    border-radius: 10px;
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+.sidebar-list-item.correct{
+    background-color: lightcyan;
+    height: 30px;
+    color: #bbb;
 }
-.sidebar-list-item-incorrect{
-    background-color: #FCA311;
-    font-size: 12pt;
-    height: 10px;
-    width: 70%;
-    margin: 0 auto;
-    color: #000;
-    border-radius: 10px;
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
+.sidebar-list-item.incorrect{
+    background-color: red;
 }
 
 .explanation-container{
@@ -216,4 +197,15 @@ hr.solid {
 
 .vocab-list-item {
     font-size: 12pt;
+}
+
+.vocab-answer-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #FCA311;
+}
+.vocab-answer-container.selected {
+    background-color: #E5E5E5;
+    color: white;
 }
