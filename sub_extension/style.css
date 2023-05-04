@@ -11,12 +11,12 @@ body{
 
 .mountain-climbing {
   position: relative;
-  display: none;
+  display: inline-block;
   width: 300px;
 }
 
 .mountain-climber {
-  display: none;
+  display: inline-block;
   position: absolute;
   top: 170px;
   left: 220px;
@@ -26,13 +26,12 @@ body{
 .btn-container {
   display: none;
   position: relative;
+  display: flex;
+  flex-direction: row;
+  color: white;
 }
 		
 .btn-container span {
-  position: absolute;
-  top: 0;
-  left: 100%;
-  margin-left: 10px;
   line-height: 1.5;
   font-family: 'Open Sans', sans-serif;
 }
@@ -67,6 +66,7 @@ body{
   color: #fff;
 }
 
+
 .login-container {
   display: block;
   justify-content: center;
@@ -80,5 +80,14 @@ body{
 .login-logo {
   width: 200px;
   margin: 0 auto;
+}
+
+p {
+  color: #fff;
+  font-size: 12pt;
+}
+
+#authenticated-section{
+  display: none;
 }
 
