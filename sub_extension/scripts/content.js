@@ -376,41 +376,27 @@ function createVocabModal(question) {
 	answerContainer.classList.add("answer-container");
 
 	finalWords.forEach((choice, index) => {
-		const answerElement = document.createElement("button");
-		answerElement.classList.add("vocab-answer");
+		const answerChoice = document.createElement("button");
+		answerChoice.classList.add("vocab-answer-inactive");
+		answerChoice.textContent = choice
 
-		const labelElement = document.createElement("label");
-		labelElement.textContent = choice;
-		labelElement.setAttribute("for", `answer-${index}`);
 
-		const inputElement = document.createElement("input");
-		inputElement.type = "radio";
-		inputElement.name = "answer";
-		inputElement.id = `answer-${index}`;
-		inputElement.value = index;
-		answerElement.appendChild(inputElement);
-		answerElement.appendChild(labelElement);
-		answerContainer.appendChild(answerElement);
+		answerChoice.addEventListener("click", () => {
+			if (selectedValues.findIndex(choice) !== -1) {
+				selectedValues.splice(finalWords.findIndex(choice), 1); // 2nd parameter means remove one item only
+				answerChoice.classList.add("vocab-answer-inactive");
+				answerChoice.classList.remove("vocab-answer-active");
+			} else {
+				selectedValues.push(choice)
+				answerChoice.classList.remove("vocab-answer-inactive");
+				answerChoice.classList.add("vocab-answer-active");
+			}
+		});
+
+		answerContainer.appendChild(answerChoice);
 	});
 
-	question.choices.forEach((choice, index) => {
-		const answerElement = document.createElement("div");
-		answerElement.classList.add("answer-element");
-
-		const labelElement = document.createElement("label");
-		labelElement.textContent = choice;
-		labelElement.setAttribute("for", `answer-${index}`);
-
-		const inputElement = document.createElement("input");
-		inputElement.type = "radio";
-		inputElement.name = "answer";
-		inputElement.id = `answer-${index}`;
-		inputElement.value = index;
-		answerElement.appendChild(inputElement);
-		answerElement.appendChild(labelElement);
-		answerContainer.appendChild(answerElement);
-	});
-
+	
 	modalContainer.appendChild(answerContainer);
 
 	// Create button container and submit / skip buttons
@@ -446,13 +432,13 @@ function createVocabModal(question) {
 	// Add event listeners to the submit and close buttons
 	submitButton.addEventListener("click", () => {
 		questionMutex -= 1;
-		if (selectedAnswer === question.spanish) {
+		if (selectedValues.join(' ') === question.spanish) {
 			modalBg.remove();
-			createAnswer("Correct!", question.explanation);
+			createAnswer("Correct!", `${question.english} translates to ${question.spanish}`);
 		} else {
 			// alert("Incorrect!");
 			modalBg.remove();
-			createAnswer("Incorrect", question.explanation);
+			createAnswer("You got this wrong", `${question.english} translates to ${question.spanish}`);
 		}
 	});
 
@@ -552,11 +538,11 @@ function createQuizModal(question) {
 		if (selectedAnswer === question.correctAnswer) {
 			// alert("Correct!");
 			modalBg.remove();
-			createAnswer("Correct!");
+			createAnswer("Correct!", 'add explanation');
 		} else {
 			// alert("Incorrect!");
 			modalBg.remove();
-			createAnswer("Incorrect");
+			createAnswer("Incorrect", 'add explanation');
 		}
 	});
 
@@ -610,7 +596,7 @@ function updateSidebar() {
 					createQuizModal(question);
 				}
 				else if (question.type == 'vq') {
-					createQuizModal(question);
+					createVocabModal(question);
 				}
 				questionMutex += 1;
 			}
