@@ -157,6 +157,35 @@ hr.solid {
 
 }
 
+.sidebar-list-item-correct{
+    background-color: #FCA311;
+    font-size: 12pt;
+    height: 10px;
+    width: 70%;
+    margin: 0 auto;
+    color: #000;
+    border-radius: 10px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.sidebar-list-item-incorrect{
+    background-color: #FCA311;
+    font-size: 12pt;
+    height: 10px;
+    width: 70%;
+    margin: 0 auto;
+    color: #000;
+    border-radius: 10px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
 .explanation-container{
     background-color: #14213D;
     border-radius: 10px;

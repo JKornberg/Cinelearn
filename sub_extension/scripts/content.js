@@ -22,11 +22,14 @@ class Subtitle {
 }
 
 class QuestionSidebar {
-	constructor(start, id, question, type) {
+	constructor(start, id, question, type, index) {
+		this.index,
 		this.start = start; // number;
 		this.id = id; // number;
 		this.question = question; //string
 		this.type = type
+		this.answered = false
+		this.correct = null
 	}
 }
 
@@ -111,7 +114,7 @@ let subs = [];
 let subs2 = [];
 
 const questions = [
-
+	new QuestionSidebar('0')
 ];
 
 
@@ -195,7 +198,6 @@ window.addEventListener('load', function() {
 		contextQuestions = data['data'].map((question, qid) => {
 			return new ContextQuestion(qid, question['start_time'],question['english_question'], question['spanish_question'], question['answer_list'])
 		})
-		console.log(vocabQuestions)
 	})
 	.catch(error => console.error(error));  });
 
@@ -212,7 +214,6 @@ window.addEventListener('load', function() {
 		vocabQuestions = data['data'].map((question) => {
 			return new VocabQuestion(question['vocab_id'], question['start_time'],question['english_vocab'],question['spanish_vocab'])
 		})	
-		console.log(contextQuestions)
 	})
 	.catch(error => console.error(error));  });
 window.video_change_observer = new MutationObserver(callback);
@@ -303,7 +304,7 @@ function createQuizModal(question) {
 
 	// Create the question title element
 	const titleElement = document.createElement("h2");
-	titleElement.textContent = "Question 1";
+	titleElement.textContent = "Question";
 	titleElement.classList.add("question-title")
 	modalContainer.appendChild(titleElement);
 
