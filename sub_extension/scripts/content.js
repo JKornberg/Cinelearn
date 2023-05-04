@@ -114,6 +114,9 @@ const questions = [
 var pause = false;
 var callback = function (mutationsList, observer) {
 	for (const mutation of mutationsList) {
+		if (slider_element == null){
+			break;
+		}
 		if (mutation.target.className == "active ltr-omkt8s" ||
 			mutation.target.className == "active ltr-omkt8s focus-visible") {
 			// bottom bar is active //
