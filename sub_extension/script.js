@@ -94,12 +94,14 @@ document.addEventListener('DOMContentLoaded', function () {
   let username = "Not logged in";
   let streak = 0;
 
+  let loggedInName = null;
+
   function showProgress() {
     if (!userId) {
       console.log("Error, userId not set, defaulting to 1");
       userId = 1;
     }
-    document.getElementById('username-display').innerText = `Welcome ${username}!`
+    document.getElementById('username-display').innerText = `Welcome ${username === 'Not logged in' ? loggedInName : username}!`
     let url = `https://cinelearn.fly.dev/getUserContextProgress?episode_num=0&user_id=${userId}`
     console.log(opts)
     fetch(url, opts).then(response => response.json()).then(data => {
@@ -131,6 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
     chrome.storage.local.remove(['user_id', 'username'], function () {
       console.log("User Id is removed");
       console.log("Username is removed");
+      loggedInName = null;
     });
     window.location.reload();
   });
@@ -192,6 +195,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Check if the username and password are correct (replace with your own logic)
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
+    loggedInName = username
     var isAuthenticated = false;
     //Check if user_id is stored in local  storage
 
