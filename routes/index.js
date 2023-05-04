@@ -72,7 +72,7 @@ router.get('/getContextQuestions', (req, res) => {
         english_answer_list = rows[i]['GROUP_CONCAT(english_answer)'].split(",")
         spanish_answer_list = rows[i]['GROUP_CONCAT(spanish_answer)'].split(",")
         is_correct_list = rows[i]['GROUP_CONCAT(is_correct)'].split(",")
-        console.log(typeof english_answer_list)
+        question_dict.question_id = rows[i].question_id
         answer_info_list = english_answer_list.map((e,i) => {return [e,spanish_answer_list[i], is_correct_list[i]]})
         question_dict.answer_list = answer_info_list
         question_list.push(question_dict)
