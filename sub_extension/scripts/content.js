@@ -115,9 +115,6 @@ var pause = false;
 let slider_element;
 var callback = function (mutationsList, observer) {
 	for (const mutation of mutationsList) {
-		if (slider_element == null){
-			break;
-		}
 		if (mutation.target.className == "active ltr-omkt8s" ||
 			mutation.target.className == "active ltr-omkt8s focus-visible") {
 			// bottom bar is active //
@@ -152,6 +149,7 @@ var callback = function (mutationsList, observer) {
 		if (mutation.target.className == "control-medium ltr-1evcx25"){
 			// console.log(mutation);
 			slider_element = document.querySelector('[aria-label="Seek time scrubber"]');
+
 				
 			// console.log(pause);
 			// console.log(slider_element);
@@ -238,6 +236,7 @@ window.addEventListener('load', function() {
 		},
 	}
 	fetch('https://cinelearn.fly.dev/getVocabQuestions?episode_num=0',opts)
+
 	.then(response => response.json())
 	.then(data => {
 		data['data']= data['data'].sort(function(a, b) {
