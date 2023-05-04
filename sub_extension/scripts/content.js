@@ -61,7 +61,8 @@ const questions = [
 var pause = false;
 var callback = function (mutationsList, observer) {
 	for (const mutation of mutationsList) {
-		if (mutation.target.className == "active ltr-omkt8s") {
+		if (mutation.target.className == "active ltr-omkt8s" ||
+			mutation.target.className == "active ltr-omkt8s focus-visible") {
 			// bottom bar is active //
 			var slider_element = document.querySelector('[aria-label="Seek time scrubber"]');
 			var play_pause = document.querySelector('[data-uia="control-play-pause-play"]');
@@ -72,10 +73,37 @@ var callback = function (mutationsList, observer) {
 			max_time = parseInt(slider_element.getAttribute("aria-valuemax"));
 			ref_time = parseInt(slider_element.getAttribute("aria-valuenow"));
 			elapsed_time = 0;
-
-
 		}
-		// console.log(mutation);
+		if (mutation.target.className == "watch-video video-container-modifier") {
+			console.log(mutation.addedNodes);
+			if (mutation.addedNodes.length > 0){
+				const addedNodes = mutation.addedNodes;
+				// console.log(addedNodes);
+				const className = addedNodes[0].getAttribute("data-uia");
+				pause = 'watch-video-notification-pause' === className;
+				console.log("ahh", pause);
+				// bottom bar is active //
+				var slider_element = document.querySelector('[aria-label="Seek time scrubber"]');
+
+				// console.log(pause);
+				// console.log(slider_element);
+				max_time = parseInt(slider_element.getAttribute("aria-valuemax"));
+				ref_time = parseInt(slider_element.getAttribute("aria-valuenow"));
+				elapsed_time = 0;
+			}
+		}
+		if (mutation.target.className == "control-medium ltr-1evcx25"){
+			// console.log(mutation);
+			var slider_element = document.querySelector('[aria-label="Seek time scrubber"]');
+				
+			// console.log(pause);
+			// console.log(slider_element);
+			max_time = parseInt(slider_element.getAttribute("aria-valuemax"));
+			ref_time = parseInt(slider_element.getAttribute("aria-valuenow"));
+			elapsed_time = 0;
+		}
+		// control-medium ltr-1evcx25
+		// console.log(mutation.target.className);
 	}
 }
 
@@ -111,19 +139,18 @@ window.addEventListener('load', function () {
 			'Access-Control-Allow-Origin': '*'
 		},
 	}
-	fetch('https://cinelearn.fly.dev/getSpanishSubs?episode_num=0', opts)
-		.then(response => response.json())
-		.then(data => {
-			data['spanish_subs'] = data['spanish_subs'].sort(function (a, b) {
-				return parseFloat(b['start_time']) - parseFloat(a['start_time'])
-			});
-			subs2 = data['spanish_subs'].map((subtitle) => {
-				return new Subtitle(subtitle['start_time'] / 10000, subtitle['end_time'] / 10000, subtitle['spanish_subtitle'])
-			})
-			console.log(subs2)
+	fetch('https://cinelearn.fly.dev/getSpanishSubs?episode_num=0',opts)
+	.then(response => response.json())
+	.then(data => {
+		data['spanish_subs']= data['spanish_subs'].sort(function(a, b) {
+			return parseFloat(b['start_time']) - parseFloat(a['start_time'])
+		});
+		subs2 = data['spanish_subs'].map((subtitle) => {
+			return new Subtitle(subtitle['start_time']/10000, subtitle['end_time']/10000, subtitle['spanish_subtitle'])
 		})
-		.catch(error => console.error(error));
-});
+		console.log(subs2)
+	})
+	.catch(error => console.error(error));  });
 window.video_change_observer = new MutationObserver(callback);
 window.video_change_observer_config = { childList: true, subtree: true, }
 window.video_change_observer.observe(document.documentElement, window.video_change_observer_config);
