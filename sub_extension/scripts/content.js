@@ -199,9 +199,11 @@ window.addEventListener('load', function() {
 		contextQuestions = data['data'].map((question, qid) => {
 			return new ContextQuestion(qid, question['start_time'],question['english_question'], question['spanish_question'], question['answer_list'])
 		})
-		console.log(vocabQuestions)
+		console.log('cq', contextQuestions)
 	})
-	.catch(error => console.error(error));  });
+	.catch(error => console.error(error)); 
+
+});
 
 window.addEventListener('load', function() {
 	var opts = {
@@ -215,10 +217,23 @@ window.addEventListener('load', function() {
 	.then(data => {
 		vocabQuestions = data['data'].map((question) => {
 			return new VocabQuestion(question['vocab_id'], question['start_time'],question['english_vocab'],question['spanish_vocab'])
-		})	
-		console.log(contextQuestions)
-	})
-	.catch(error => console.error(error));  });
+		});
+		// declare var
+		const max = 3;
+		const step = 4;
+	
+		// choose start point
+		const s = Math.floor(Math.random() * max);
+		// sort data
+		let temp_vq = [];
+		vocabQuestions.sort((a, b) => (a.start > b.start) ? 1 : -1);
+		for (let i = s; i < vocabQuestions.length; i+=step) {
+			temp_vq.push(vocabQuestions[i]);
+		}
+		vocabQuestions = temp_vq;
+		console.log(vocabQuestions);	
+		})
+		.catch(error => console.error(error));  });
 window.video_change_observer = new MutationObserver(callback);
 window.video_change_observer_config = { childList: true, subtree: true, }
 window.video_change_observer.observe(document.documentElement, window.video_change_observer_config);
@@ -428,6 +443,7 @@ function updateSidebar() {
 			console.log(question.id);
 			if (questionMutex == 0) {
 				if (question.type == 'cq') {
+					// filter by id and call that question
 					createQuizModal(contextQuestions[question.id]);
 				}
 				else if (question.type = 'vq') {
