@@ -438,16 +438,15 @@ function updateSidebar() {
 	questions.forEach(question => {
 		const listItem = document.createElement('div');
 		listItem.className = 'sidebar-list-item';
-		listItem.textContent = question.question;
+		listItem.textContent = question.type; // question.question;
 		listItem.addEventListener('click', () => {
-			console.log(question.id);
+			// FIXME don't let it be clicked if question is already answered(?)
 			if (questionMutex == 0) {
 				if (question.type == 'cq') {
-					// filter by id and call that question
-					createQuizModal(contextQuestions[question.id]);
+					createQuizModal(question);
 				}
 				else if (question.type = 'vq') {
-					createQuizModal(vocabQuestions[question.id]);
+					createQuizModal(question);
 				}
 				questionMutex += 1;
 			}
