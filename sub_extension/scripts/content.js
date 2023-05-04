@@ -445,16 +445,48 @@ function createVocabModal(question) {
 	modalContainer.appendChild(closeButton);
 
 
-
+	let opts;
 	// Add event listeners to the submit and close buttons
 	submitButton.addEventListener("click", () => {
 		questionMutex -= 1;
 		if (selectedValues.join(' ') === question.spanish) {
 			modalBg.remove();
-			createAnswer("Correct!", `${question.english} translates to ${question.spanish}`, true);
-			question.correct = true;
+			createAnswer("Correct!", `${question.english} translates to ${question.spanish}`);
+			opts = {
+				headers: {
+				'mode':'cors',
+				'Access-Control-Allow-Origin': '*'
+				},
+			}
+			chrome.storage.local.get(['user_id'], function (result) {
+				console.log(result);
+				if (result.user_id) {
+				const date = new Date().toISOString().slice(0, 19).replace('T', ' ');
+				fetch(`https://cinelearn.fly.dev/createVocabAnswer?user_id=${result.user_id}&language=0&time=${date}&question_id=${question.id}&correct=1`,opts)
+	
+				.then(response => response.json())
+				.then(data => {})
+				.catch(error => console.error(error));
+			}});
+			
+			
 		} else {
-			// alert("Incorrect!");
+			opts = {
+				headers: {
+				'mode':'cors',
+				'Access-Control-Allow-Origin': '*'
+				},
+			}
+			chrome.storage.local.get(['user_id'], function (result) {
+				console.log(result);
+				if (result.user_id) {
+				const date = new Date().toISOString().slice(0, 19).replace('T', ' ');
+				fetch(`https://cinelearn.fly.dev/createVocabAnswer?user_id=${result.user_id}&language=0&time=${date}&question_id=${question.id}&correct=0`,opts)
+	
+				.then(response => response.json())
+				.then(data => {})
+				.catch(error => console.error(error));
+			}});
 			modalBg.remove();
 			createAnswer("You got this wrong", `${question.english} translates to ${question.spanish}`, false);
 			question.correct = false;
@@ -575,10 +607,42 @@ function createQuizModal(question) {
 		questionMutex -= 1;
 		const explanationString = `The question is asking "${question.english_q}" and the correct answer is "${question.english_choices[question.correctIndex]}".`
 		if (selectedAnswer === question.correctIndex) {
+			opts = {
+				headers: {
+				'mode':'cors',
+				'Access-Control-Allow-Origin': '*'
+				},
+			}
+			chrome.storage.local.get(['user_id'], function (result) {
+				console.log(result);
+				if (result.user_id) {
+				const date = new Date().toISOString().slice(0, 19).replace('T', ' ');
+				fetch(`https://cinelearn.fly.dev/createContextAnswer?user_id=${result.user_id}&language=0&time=${date}&question_id=${question.id}&correct=1`,opts)
+	
+				.then(response => response.json())
+				.then(data => {})
+				.catch(error => console.error(error));
+			}});
 			modalBg.remove();
 			createAnswer("Correct!", explanationString, true);
 			question.correct = true;
 		} else {
+			opts = {
+				headers: {
+				'mode':'cors',
+				'Access-Control-Allow-Origin': '*'
+				},
+			}
+			chrome.storage.local.get(['user_id'], function (result) {
+				console.log(result);
+				if (result.user_id) {
+				const date = new Date().toISOString().slice(0, 19).replace('T', ' ');
+				fetch(`https://cinelearn.fly.dev/createContextAnswer?user_id=${result.user_id}&language=0&time=${date}&question_id=${question.id}&correct=0`,opts)
+	
+				.then(response => response.json())
+				.then(data => {})
+				.catch(error => console.error(error));
+			}});
 			modalBg.remove();
 			createAnswer("Incorrect", explanationString, false);
 			question.correct = false;
