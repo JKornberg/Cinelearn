@@ -65,6 +65,7 @@ class VocabQuestion {
 		this.randomEnglishWords = getRandomValuesFromArray(english_words)
 		this.section = Math.floor(max_time/this.start)
 		this.id = id
+		this.type = 'vq'
 	}
 }
 
@@ -83,6 +84,7 @@ class ContextQuestion {
 		this.start = start/10000; // number;
 		this.section = Math.floor(max_time/this.start)
 		this.id = id
+		this.type = 'cq'
 	}
 }
 
@@ -97,7 +99,7 @@ class QuizQuestion {
 }
 
 // Create some sample quiz questions
-const quizQuestions = [
+var quizQuestions = [
 ];
 
 
@@ -105,10 +107,8 @@ const quizQuestions = [
 let subs = [];
 let subs2 = [];
 
+var questions = []
 
-const questions = [
-	new QuestionSidebar('0')
-];
 
 
 var pause = false;
@@ -223,9 +223,11 @@ window.addEventListener('load', function () {
 		contextQuestions = data['data'].map((question, qid) => {
 			return new ContextQuestion(qid, question['start_time'],question['english_question'], question['spanish_question'], question['answer_list'])
 		})
-		console.log(contextQuestions)
+		console.log('cq', contextQuestions);
 	})
-	.catch(error => console.error(error));  });
+	.catch(error => console.error(error)); 
+
+});
 
 window.addEventListener('load', function() {
 	var opts = {
@@ -242,11 +244,23 @@ window.addEventListener('load', function() {
 		});
 		vocabQuestions = data['data'].map((question) => {
 			return new VocabQuestion(question['vocab_id'], question['start_time'],question['english_vocab'],question['spanish_vocab'])
-		})	
-		console.log(vocabQuestions)
-
-	})
-	.catch(error => console.error(error));  });
+		});
+		// declare var
+		const max = 3;
+		const step = 4;
+	
+		// choose start point
+		const s = Math.floor(Math.random() * max);
+		// sort data
+		let temp_vq = [];
+		vocabQuestions.sort((a, b) => (a.start > b.start) ? 1 : -1);
+		for (let i = s; i < vocabQuestions.length; i+=step) {
+			temp_vq.push(vocabQuestions[i]);
+		}
+		vocabQuestions = temp_vq;
+		console.log(vocabQuestions);	
+		})
+		.catch(error => console.error(error));  });
 window.video_change_observer = new MutationObserver(callback);
 window.video_change_observer_config = { childList: true, subtree: true, }
 window.video_change_observer.observe(document.documentElement, window.video_change_observer_config);
@@ -563,6 +577,22 @@ function updateSidebar() {
 
 	const sidebarList = document.createElement('div');
 	sidebarList.className = 'sidebar-list';
+	// filter all questions that could be added
+	var newCQs = contextQuestions.filter((q) => q.start <= time);
+	var newVQs = vocabQuestions.filter((q) => q.start <= time);
+	
+	// for each newQ filter if is already in questions
+	var newNewCQs = newCQs.filter((q) => questions.indexOf(q) === -1 );
+	var newNewVQs = newVQs.filter((q) => questions.indexOf(q) === -1 );
+
+	// add newQs to questions
+	questions = questions.concat(newNewCQs);
+	questions = questions.concat(newNewVQs);
+
+	questions.sort((a, b) => (a.start > b.start) ? 1 : -1);
+
+	// FIXME sort questions based on time!
+
 	questions.forEach(question => {
 		const listItem = document.createElement('div');
 		listItem.classList.add('sidebar-list-item')
@@ -571,11 +601,16 @@ function updateSidebar() {
 		} else if (question.correct === false){
 			listItem.classList.add('incorrect');
 		}
-		listItem.textContent = question.question;
+		listItem.textContent = question.type; // question.question;
 		listItem.addEventListener('click', () => {
-			console.log(question.id);
+			// FIXME don't let it be clicked if question is already answered(?)
 			if (questionMutex == 0) {
-				createQuizModal(quizQuestions[question.id]);
+				if (question.type == 'cq') {
+					createQuizModal(question);
+				}
+				else if (question.type == 'vq') {
+					createQuizModal(question);
+				}
 				questionMutex += 1;
 			}
 		});
