@@ -22,15 +22,74 @@ class Subtitle {
 }
 
 class QuestionSidebar {
-	constructor(start, end, id, question) {
-		this.start = start; // number;
-		this.end = end; // number;
+	constructor(start, id, question, type, index) {
+		this.index,
+			this.start = start; // number;
 		this.id = id; // number;
 		this.question = question; //string
+		this.type = type
+		this.answered = false
+		this.correct = null
+	}
+}
+
+
+function getRandomValuesFromArray(arr) {
+	const result = [];
+	const indices = new Set();
+
+	// Loop until we have 4 unique indices
+	while (indices.size < 4) {
+		const index = Math.floor(Math.random() * arr.length);
+		// Add index to set if it's not already there
+		if (!indices.has(index)) {
+			indices.add(index);
+			result.push(arr[index]);
+		}
+	}
+
+	return result;
+}
+spanish_words = ['alma', 'amor', 'bailar', 'beso', 'caminar', 'cansado', 'comida', 'confiar', 'contento', 'correr', 'cumpleaños', 'decir', 'despertar', 'dormir', 'escuchar', 'esperar', 'estudiar', 'feliz', 'fiesta', 'frente', 'fuerte', 'gracias', 'hablar', 'hacer', 'hermosa', 'hola', 'jugar', 'leer', 'lento', 'libro', 'lindo', 'malo', 'mañana', 'miedo', 'mirar', 'momento', 'nadar', 'nuevo', 'olvidar', 'padre', 'palabra', 'pensar', 'perdón', 'pintar', 'poder', 'preguntar', 'querer', 'rápido', 'recuerda', 'reír', 'respeto', 'saber', 'sentir', 'silencio', 'sol', 'sonrisa', 'soñar', 'tarde', 'tener', 'trabajar', 'tranquilo', 'valiente', 'venir', 'ver', 'viajar', 'vida', 'vivir', 'música', 'amigo', 'animal', 'casa', 'ciudad', 'coche', 'color', 'compartir', 'familia', 'fruta', 'gato', 'hermano', 'historia', 'libertad', 'lugar', 'madre', 'montaña', 'naturaleza', 'niño', 'pájaro', 'paisaje', 'película', 'perro', 'playa', 'pueblo', 'sonido', 'tiempo', 'árboles', 'café', 'hambre', 'lluvia', 'manzana', 'mar', 'nube', 'solitario', 'ventana', 'zapatos']
+english_words = ['yes', 'no', 'maybe', 'goodbye', 'test', 'software', 'startups', 'this']
+
+
+class VocabQuestion {
+	constructor(id, start, english, spanish) {
+		this.start = start / 10000; // number;
+		this.spanish = spanish; // number;
+		this.english = english
+		this.indexWiseWordsEnglish = this.english.split(' ')
+		this.indexWiseWordsSpanish = this.spanish.split(' ')
+		this.randomSpanishWords = getRandomValuesFromArray(spanish_words)
+		this.randomEnglishWords = getRandomValuesFromArray(english_words)
+		this.section = Math.floor(max_time / this.start)
+		this.id = id
+		this.type = 'vq'
+	}
+}
+
+class ContextQuestion {
+	constructor(id, start, english_question, spanish_question, answer_list) {
+		this.english_q = english_question
+		this.spanish_q = spanish_question
+		this.english_choices = answer_list.map((answer) => answer[0])
+		this.spanish_choices = answer_list.map((answer) => answer[1])
+		this.correctIndex = 0
+		answer_list.forEach((answer, idx) => {
+			if (answer[2] == '1') {
+				this.correctIndex = idx
+			}
+		})
+		this.start = start / 10000; // number;
+		this.section = Math.floor(max_time / this.start)
+		this.id = id
+		this.type = 'cq'
 	}
 }
 
 // Define a class to represent the quiz question
+/* have proper questions integrated with backend */
 class QuizQuestion {
 	constructor(question, choices, correctAnswer) {
 		this.question = question; // string
@@ -40,50 +99,56 @@ class QuizQuestion {
 }
 
 // Create some sample quiz questions
-const quizQuestions = [
-	new QuizQuestion("What is the capital of France?", ["London", "Paris", "Berlin", "Madrid"], 1),
-	new QuizQuestion("What is the largest planet in our solar system?", ["Mars", "Jupiter", "Saturn", "Venus"], 1),
-	new QuizQuestion("Who wrote the book 'The Catcher in the Rye'?", ["J.D. Salinger", "Ernest Hemingway", "F. Scott Fitzgerald", "Mark Twain"], 0)
+var quizQuestions = [
 ];
 
 
 
-// let subs = [new Subtitle(0, 100000, 'hello world'), new Subtitle(100000, 300000, 'this is a test')];
-// let subs2 = [new Subtitle(0, 100000, 'hola mundo'), new Subtitle(100000, 300000, 'esto es una prueba')];
+let subs = [];
+let subs2 = [];
 
-const questions = [
-	new QuestionSidebar(10, 20, 0, 'Question 5'),
-	new QuestionSidebar(30, 40, 1, 'Question 4'),
-	new QuestionSidebar(50, 60, 2, 'Question 3')
-];
+var questions = []
+
 
 
 var pause = false;
+let slider_element;
 var callback = function (mutationsList, observer) {
-	for (const mutation of mutationsList) {
-		if (mutation.target.className == "active ltr-omkt8s" ||
-			mutation.target.className == "active ltr-omkt8s focus-visible") {
-			// bottom bar is active //
-			var slider_element = document.querySelector('[aria-label="Seek time scrubber"]');
-			var play_pause = document.querySelector('[data-uia="control-play-pause-play"]');
-			// play_pause.click();		
-			pause = play_pause !== null && play_pause.getAttribute("aria-label") === "Play";
-			// console.log(pause);
-			// console.log(slider_element);
-			max_time = parseInt(slider_element.getAttribute("aria-valuemax"));
-			ref_time = parseInt(slider_element.getAttribute("aria-valuenow"));
-			elapsed_time = 0;
-		}
-		if (mutation.target.className == "watch-video video-container-modifier") {
-			console.log(mutation.addedNodes);
-			if (mutation.addedNodes.length > 0){
-				const addedNodes = mutation.addedNodes;
-				// console.log(addedNodes);
-				const className = addedNodes[0].getAttribute("data-uia");
-				pause = 'watch-video-notification-pause' === className;
-				console.log("ahh", pause);
+	try {
+		for (const mutation of mutationsList) {
+			if (mutation.target.className == "active ltr-omkt8s" ||
+				mutation.target.className == "active ltr-omkt8s focus-visible") {
 				// bottom bar is active //
 				var slider_element = document.querySelector('[aria-label="Seek time scrubber"]');
+				var play_pause = document.querySelector('[data-uia="control-play-pause-play"]');
+				// play_pause.click();		
+				pause = play_pause !== null && play_pause.getAttribute("aria-label") === "Play";
+				// console.log(pause);
+				// console.log(slider_element);
+				max_time = parseInt(slider_element.getAttribute("aria-valuemax"));
+				ref_time = parseInt(slider_element.getAttribute("aria-valuenow"));
+				elapsed_time = 0;
+			}
+			if (mutation.target.className == "watch-video video-container-modifier") {
+				console.log(mutation.addedNodes);
+				if (mutation.addedNodes.length > 0) {
+					const addedNodes = mutation.addedNodes;
+					// console.log(addedNodes);
+					const className = addedNodes[0].getAttribute("data-uia");
+					pause = 'watch-video-notification-pause' === className;
+					// console.log("ahh", pause);
+					// bottom bar is active //
+					slider_element = document.querySelector('[aria-label="Seek time scrubber"]');
+					// console.log(pause);
+					// console.log(slider_element);
+					max_time = parseInt(slider_element.getAttribute("aria-valuemax"));
+					ref_time = parseInt(slider_element.getAttribute("aria-valuenow"));
+					elapsed_time = 0;
+				}
+			}
+			if (mutation.target.className == "control-medium ltr-1evcx25") {
+				// console.log(mutation);
+				slider_element = document.querySelector('[aria-label="Seek time scrubber"]');
 
 				// console.log(pause);
 				// console.log(slider_element);
@@ -91,20 +156,13 @@ var callback = function (mutationsList, observer) {
 				ref_time = parseInt(slider_element.getAttribute("aria-valuenow"));
 				elapsed_time = 0;
 			}
+			// control-medium ltr-1evcx25
+			// console.log(mutation.target.className);
 		}
-		if (mutation.target.className == "control-medium ltr-1evcx25"){
-			// console.log(mutation);
-			var slider_element = document.querySelector('[aria-label="Seek time scrubber"]');
-				
-			// console.log(pause);
-			// console.log(slider_element);
-			max_time = parseInt(slider_element.getAttribute("aria-valuemax"));
-			ref_time = parseInt(slider_element.getAttribute("aria-valuenow"));
-			elapsed_time = 0;
-		}
-		// control-medium ltr-1evcx25
-		// console.log(mutation.target.className);
+	} catch{
+		console.log("no slider found");
 	}
+	
 }
 
 window.addEventListener('load', function () {
@@ -123,14 +181,9 @@ window.addEventListener('load', function () {
 			subs = data['english_subs'].map((subtitle) => {
 				return new Subtitle(subtitle['start_time'] / 10000, subtitle['end_time'] / 10000, subtitle['english_subtitle'])
 			})
-			console.log(subs)
-
 		})
 		.catch(error => console.error(error));
 });
-
-
-
 
 window.addEventListener('load', function () {
 	var opts = {
@@ -139,18 +192,80 @@ window.addEventListener('load', function () {
 			'Access-Control-Allow-Origin': '*'
 		},
 	}
-	fetch('https://cinelearn.fly.dev/getSpanishSubs?episode_num=0',opts)
-	.then(response => response.json())
-	.then(data => {
-		data['spanish_subs']= data['spanish_subs'].sort(function(a, b) {
-			return parseFloat(b['start_time']) - parseFloat(a['start_time'])
-		});
-		subs2 = data['spanish_subs'].map((subtitle) => {
-			return new Subtitle(subtitle['start_time']/10000, subtitle['end_time']/10000, subtitle['spanish_subtitle'])
+	fetch('https://cinelearn.fly.dev/getSpanishSubs?episode_num=0', opts)
+		.then(response => response.json())
+		.then(data => {
+			data['spanish_subs'] = data['spanish_subs'].sort(function (a, b) {
+				return parseFloat(b['start_time']) - parseFloat(a['start_time'])
+			});
+			subs2 = data['spanish_subs'].map((subtitle) => {
+				return new Subtitle(subtitle['start_time'] / 10000, subtitle['end_time'] / 10000, subtitle['spanish_subtitle'])
+			})
+
 		})
-		console.log(subs2)
-	})
-	.catch(error => console.error(error));  });
+		.catch(error => console.error(error));
+});
+
+
+let contextQuestions = []
+let vocabQuestions = []
+
+window.addEventListener('load', function () {
+	var opts = {
+		headers: {
+			'mode': 'cors',
+			'Access-Control-Allow-Origin': '*'
+		},
+	}
+	fetch('https://cinelearn.fly.dev/getContextQuestions?episode_num=0', opts)
+		.then(response => response.json())
+		.then(data => {
+			data['data'] = data['data'].sort(function (a, b) {
+				return parseFloat(b['start_time']) - parseFloat(a['start_time'])
+			});
+			contextQuestions = data['data'].map((question, qid) => {
+				return new ContextQuestion(qid, question['start_time'], question['english_question'], question['spanish_question'], question['answer_list'])
+			})
+			console.log('cq', contextQuestions);
+		})
+		.catch(error => console.error(error));
+
+});
+
+window.addEventListener('load', function () {
+	var opts = {
+		headers: {
+			'mode': 'cors',
+			'Access-Control-Allow-Origin': '*'
+		},
+	}
+	fetch('https://cinelearn.fly.dev/getVocabQuestions?episode_num=0', opts)
+
+		.then(response => response.json())
+		.then(data => {
+			data['data'] = data['data'].sort(function (a, b) {
+				return parseFloat(b['start_time']) - parseFloat(a['start_time'])
+			});
+			vocabQuestions = data['data'].map((question) => {
+				return new VocabQuestion(question['vocab_id'], question['start_time'], question['english_vocab'], question['spanish_vocab'])
+			});
+			// declare var
+			const max = 3;
+			const step = 4;
+
+			// choose start point
+			const s = Math.floor(Math.random() * max);
+			// sort data
+			let temp_vq = [];
+			vocabQuestions.sort((a, b) => (a.start > b.start) ? 1 : -1);
+			for (let i = s; i < vocabQuestions.length; i += step) {
+				temp_vq.push(vocabQuestions[i]);
+			}
+			vocabQuestions = temp_vq;
+			console.log(vocabQuestions);
+		})
+		.catch(error => console.error(error));
+});
 window.video_change_observer = new MutationObserver(callback);
 window.video_change_observer_config = { childList: true, subtree: true, }
 window.video_change_observer.observe(document.documentElement, window.video_change_observer_config);
@@ -161,7 +276,7 @@ window.video_change_observer.observe(document.documentElement, window.video_chan
 createSub = true;
 questionMutex = 0;
 
-function createAnswer(text) {
+function createAnswer(text, explanationText, correct) {
 	const modalBg = document.createElement("div");
 	modalBg.classList.add("modal-bg");
 	modalBg.className = 'modal-box';
@@ -178,7 +293,7 @@ function createAnswer(text) {
 
 	// Add icon
 	const iconElement = document.createElement("i");
-	if (text == 'Correct') {
+	if (correct) {
 		iconElement.classList.add("fa-solid", "fa-circle-check", "checkmark");
 
 	} else {
@@ -189,7 +304,7 @@ function createAnswer(text) {
 	const explanationContainer = document.createElement("div");
 	explanationContainer.classList.add("explanation-container");
 	const explanation = document.createElement("p");
-	explanation.textContent = "This is an explanation for why the answer is correct. I hope you enjoy!";
+	explanation.textContent = explanationText;
 	explanation.classList.add("explanation");
 	explanationContainer.appendChild(explanation);
 	modalContainer.appendChild(explanationContainer);
@@ -226,6 +341,188 @@ function createAnswer(text) {
 }
 
 
+
+
+function createVocabModal(question) {
+
+	let finalWords = []
+	finalWords = question.indexWiseWordsSpanish.concat(question.randomSpanishWords)
+
+	let selectedValues = [];
+	const modalBg = document.createElement("div");
+	modalBg.classList.add("modal-bg");
+	modalBg.className = 'modal-box';
+
+	// Create the modal container element
+	const modalContainer = document.createElement("div");
+	modalContainer.classList.add("modal-container");
+
+	// Create the question title element
+	const titleElement = document.createElement("h2");
+	titleElement.textContent = "Translate this";
+	titleElement.classList.add("question-title")
+	modalContainer.appendChild(titleElement);
+
+	// Create the English element
+	const questionElement = document.createElement("h2");
+	questionElement.textContent = `English: ${question.english}`;
+	questionElement.classList.add("question-english")
+	modalContainer.appendChild(questionElement);
+
+
+
+	const answerElement = document.createElement("h2");
+	answerElement.innerText = `Spanish: ${selectedValues.join(' ')}`;
+	answerElement.classList.add("question-spanish")
+	modalContainer.appendChild(answerElement);
+	// Create the Spanish Element
+	const answerContainer = document.createElement("div");
+	answerContainer.classList.add("answer-container","vocab");
+
+	const shuffledWords = shuffle(finalWords);
+
+
+	shuffledWords.forEach((choice, index) => {
+		const answerChoice = document.createElement("button");
+		answerChoice.classList.add( "vocab-answer", "inactive");
+		answerChoice.textContent = choice
+
+
+		answerChoice.addEventListener("click", () => {
+			console.log("clicked")
+			if (selectedValues.indexOf(choice) !== -1) {
+				selectedValues = selectedValues.filter(function (item) {
+					return item !== choice // remove from list
+				})
+				answerChoice.classList.add("inactive");
+				answerChoice.classList.remove("active");
+				answerElement.innerText = 'Spanish: ' + selectedValues.join(' ')
+				// answerElement.classList.remove('test_class')
+				// answerElement.classList.add('test_class')
+				console.log(selectedValues)
+				console.log(question.spanish)
+			} else {
+				selectedValues.push(choice)
+				answerChoice.classList.remove("inactive");
+				answerChoice.classList.add("active");
+				answerElement.innerText = 'Spanish: ' + selectedValues.join(' ')
+				console.log(answerElement.innerText)
+			}
+		});
+
+		answerContainer.appendChild(answerChoice);
+	});
+
+
+	modalContainer.appendChild(answerContainer);
+
+	// Create button container and submit / skip buttons
+
+	const buttonContainer = document.createElement("div");
+	buttonContainer.classList.add("button-container");
+
+	const submitButton = document.createElement("button");
+	submitButton.classList.add("submit", "app-button");
+	submitButton.textContent = "Submit";
+	buttonContainer.appendChild(submitButton);
+
+	const videoSkipButton = document.createElement("button");
+	videoSkipButton.classList.add("skip", "app-button");
+	videoSkipButton.textContent = "Skip to Time";
+	buttonContainer.appendChild(videoSkipButton);
+
+	modalContainer.appendChild(buttonContainer);
+
+	// Create the close button element
+	const closeButton = document.createElement("span");
+	closeButton.classList.add("close-button");
+	closeButton.innerHTML = "&times;";
+	closeButton.style.position = 'absolute';
+	closeButton.style.top = '10px';
+	closeButton.style.right = '10px';
+	closeButton.style.fontSize = '20px';
+	closeButton.style.cursor = 'pointer';
+	modalContainer.appendChild(closeButton);
+
+
+	let opts;
+	// Add event listeners to the submit and close buttons
+	submitButton.addEventListener("click", () => {
+		questionMutex -= 1;
+		if (selectedValues.join(' ') === question.spanish) {
+			modalBg.remove();
+			createAnswer("Correct!", `${question.english} translates to ${question.spanish}`);
+			opts = {
+				headers: {
+				'mode':'cors',
+				'Access-Control-Allow-Origin': '*'
+				},
+			}
+			chrome.storage.local.get(['user_id'], function (result) {
+				console.log(result);
+				if (result.user_id) {
+				const date = new Date().toISOString().slice(0, 19).replace('T', ' ');
+				fetch(`https://cinelearn.fly.dev/createVocabAnswer?user_id=${result.user_id}&language=0&time=${date}&question_id=${question.id}&correct=1`,opts)
+	
+				.then(response => response.json())
+				.then(data => {})
+				.catch(error => console.error(error));
+			}});
+			
+			
+		} else {
+			opts = {
+				headers: {
+				'mode':'cors',
+				'Access-Control-Allow-Origin': '*'
+				},
+			}
+			chrome.storage.local.get(['user_id'], function (result) {
+				console.log(result);
+				if (result.user_id) {
+				const date = new Date().toISOString().slice(0, 19).replace('T', ' ');
+				fetch(`https://cinelearn.fly.dev/createVocabAnswer?user_id=${result.user_id}&language=0&time=${date}&question_id=${question.id}&correct=0`,opts)
+	
+				.then(response => response.json())
+				.then(data => {})
+				.catch(error => console.error(error));
+			}});
+			modalBg.remove();
+			createAnswer("You got this wrong", `${question.english} translates to ${question.spanish}`, false);
+			question.correct = false;
+		}
+		updateSidebar();
+	});
+
+	closeButton.addEventListener("click", () => {
+		questionMutex -= 1;
+		modalBg.remove();
+	});
+
+	// Append the modal container to the modal background and the modal background to the body
+	modalBg.appendChild(modalContainer);
+	const vidDiv = document.querySelector(".watch-video--player-view");
+	vidDiv.appendChild(modalBg);
+}
+
+function shuffle(array) {
+	let currentIndex = array.length,  randomIndex;
+  
+	// While there remain elements to shuffle.
+	while (currentIndex != 0) {
+  
+	  // Pick a remaining element.
+	  randomIndex = Math.floor(Math.random() * currentIndex);
+	  currentIndex--;
+  
+	  // And swap it with the current element.
+	  [array[currentIndex], array[randomIndex]] = [
+		array[randomIndex], array[currentIndex]];
+	}
+  
+	return array;
+  }
+
 // Define a function to create a quiz modal
 function createQuizModal(question) {
 	// Create the modal background element
@@ -239,21 +536,22 @@ function createQuizModal(question) {
 
 	// Create the question title element
 	const titleElement = document.createElement("h2");
-	titleElement.textContent = "Question 1";
+	titleElement.textContent = "Question";
 	titleElement.classList.add("question-title")
 	modalContainer.appendChild(titleElement);
 
 	// Create the question element
 	const questionElement = document.createElement("h2");
-	questionElement.textContent = question.question;
+	questionElement.textContent = question.spanish_q;
 	questionElement.classList.add("question")
 	modalContainer.appendChild(questionElement);
 
 	// Create the answer choice elements
 	const answerContainer = document.createElement("div");
-	answerContainer.classList.add("answer-container");
+	answerContainer.classList.add("answer-container","context");
 
-	question.choices.forEach((choice, index) => {
+
+	question.spanish_choices.forEach((choice, index) => {
 		const answerElement = document.createElement("div");
 		answerElement.classList.add("answer-element");
 
@@ -307,15 +605,49 @@ function createQuizModal(question) {
 	submitButton.addEventListener("click", () => {
 		const selectedAnswer = parseInt(document.querySelector('input[name="answer"]:checked').value);
 		questionMutex -= 1;
-		if (selectedAnswer === question.correctAnswer) {
-			// alert("Correct!");
+		const explanationString = `The question is asking "${question.english_q}" and the correct answer is "${question.english_choices[question.correctIndex]}".`
+		if (selectedAnswer === question.correctIndex) {
+			opts = {
+				headers: {
+				'mode':'cors',
+				'Access-Control-Allow-Origin': '*'
+				},
+			}
+			chrome.storage.local.get(['user_id'], function (result) {
+				console.log(result);
+				if (result.user_id) {
+				const date = new Date().toISOString().slice(0, 19).replace('T', ' ');
+				fetch(`https://cinelearn.fly.dev/createContextAnswer?user_id=${result.user_id}&language=0&time=${date}&question_id=${question.id}&correct=1`,opts)
+	
+				.then(response => response.json())
+				.then(data => {})
+				.catch(error => console.error(error));
+			}});
 			modalBg.remove();
-			createAnswer("Correct!");
+			createAnswer("Correct!", explanationString, true);
+			question.correct = true;
 		} else {
-			// alert("Incorrect!");
+			opts = {
+				headers: {
+				'mode':'cors',
+				'Access-Control-Allow-Origin': '*'
+				},
+			}
+			chrome.storage.local.get(['user_id'], function (result) {
+				console.log(result);
+				if (result.user_id) {
+				const date = new Date().toISOString().slice(0, 19).replace('T', ' ');
+				fetch(`https://cinelearn.fly.dev/createContextAnswer?user_id=${result.user_id}&language=0&time=${date}&question_id=${question.id}&correct=0`,opts)
+	
+				.then(response => response.json())
+				.then(data => {})
+				.catch(error => console.error(error));
+			}});
 			modalBg.remove();
-			createAnswer("Incorrect");
+			createAnswer("Incorrect", explanationString, false);
+			question.correct = false;
 		}
+		updateSidebar();
 	});
 
 	closeButton.addEventListener("click", () => {
@@ -336,14 +668,46 @@ function updateSidebar() {
 
 	const sidebarList = document.createElement('div');
 	sidebarList.className = 'sidebar-list';
+	// filter all questions that could be added
+	var newCQs = contextQuestions.filter((q) => q.start <= time);
+	var newVQs = vocabQuestions.filter((q) => q.start <= time);
+
+	// for each newQ filter if is already in questions
+	var newNewCQs = newCQs.filter((q) => questions.indexOf(q) === -1);
+	var newNewVQs = newVQs.filter((q) => questions.indexOf(q) === -1);
+
+	// add newQs to questions
+	questions = questions.concat(newNewCQs);
+	questions = questions.concat(newNewVQs);
+
+	questions.sort((a, b) => (a.start > b.start) ? 1 : -1);
+
+	// FIXME sort questions based on time!
+
 	questions.forEach(question => {
 		const listItem = document.createElement('div');
-		listItem.className = 'sidebar-list-item';
-		listItem.textContent = question.question;
+		listItem.classList.add('sidebar-list-item')
+		if (question.correct == true) {
+			listItem.classList.add('correct');
+		} else if (question.correct == false) {
+			listItem.classList.add('incorrect');
+		}
+		let textContent = "";
+		if (question.type == 'vq'){
+			textContent = "Vocab Question"
+		} else{
+			textContent = "Context Question"
+		}
+		listItem.textContent = textContent; // question.question;
 		listItem.addEventListener('click', () => {
-			console.log(question.id);
+			// FIXME don't let it be clicked if question is already answered(?)
 			if (questionMutex == 0) {
-				createQuizModal(quizQuestions[question.id]);
+				if (question.type == 'cq') {
+					createQuizModal(question);
+				}
+				else if (question.type == 'vq') {
+					createVocabModal(question);
+				}
 				questionMutex += 1;
 			}
 		});
@@ -516,15 +880,16 @@ var intervalId = window.setInterval(function () {
 			newSubContainer.appendChild(newContent);
 			if (sub.id === 'sub2') {
 				newContent.addEventListener('click', function (event) {
+					// eslint-disable-next-line no-useless-escape
 					let parsedWord = event.target.textContent.toLowerCase().replace(/[.,\/#!?$%\^&\*;:{}=\-_`~()]/g, "").replace(/\s{2,}/g, "")
 					if (DICTIONARY[parsedWord]) {
 						alert(`${parsedWord} translates to: ${DICTIONARY[parsedWord]}`)
-					} else{
+					} else {
 						alert(`Sorry, we don't have a translation for ${parsedWord}`)
 					}
 				}, false)
 			}
-			
+
 			const br = document.createElement('br');
 			newSubContainer.appendChild(br);
 		});
