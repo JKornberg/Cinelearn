@@ -220,6 +220,7 @@ window.addEventListener('load', function () {
 		contextQuestions = data['data'].map((question, qid) => {
 			return new ContextQuestion(qid, question['start_time'],question['english_question'], question['spanish_question'], question['answer_list'])
 		})
+		console.log(contextQuestions)
 	})
 	.catch(error => console.error(error));  });
 
@@ -239,6 +240,8 @@ window.addEventListener('load', function() {
 		vocabQuestions = data['data'].map((question) => {
 			return new VocabQuestion(question['vocab_id'], question['start_time'],question['english_vocab'],question['spanish_vocab'])
 		})	
+		console.log(vocabQuestions)
+
 	})
 	.catch(error => console.error(error));  });
 window.video_change_observer = new MutationObserver(callback);
@@ -323,7 +326,7 @@ function createVocabModal(question) {
 	let finalWords = []
 	finalWords = question.indexWiseWordsSpanish.concat(question.randomEnglishWords)
 
-	let selectedCell = ''
+	let selectedValues = [];
 	const modalBg = document.createElement("div");
 	modalBg.classList.add("modal-bg");
 	modalBg.className = 'modal-box';
@@ -344,13 +347,19 @@ function createVocabModal(question) {
 	questionElement.classList.add("question")
 	modalContainer.appendChild(questionElement);
 
+
+
+	const answerElement = document.createElement("h2");
+	answerElement.textContent = `Spanish: ${selectedValues}`;
+	answerElement.classList.add("question")
+	answerElement.appendChild(questionElement);
 	// Create the Spanish Element
 	const answerContainer = document.createElement("div");
 	answerContainer.classList.add("answer-container");
 
-	question.choices.forEach((choice, index) => {
-		const answerElement = document.createElement("div");
-		answerElement.classList.add("answer-element");
+	finalWords.forEach((choice, index) => {
+		const answerElement = document.createElement("button");
+		answerElement.classList.add("vocab-answer");
 
 		const labelElement = document.createElement("label");
 		labelElement.textContent = choice;
@@ -421,11 +430,11 @@ function createVocabModal(question) {
 		questionMutex -= 1;
 		if (selectedAnswer === question.spanish) {
 			modalBg.remove();
-			createAnswer("Correct!");
+			createAnswer("Correct!", question.explanation);
 		} else {
 			// alert("Incorrect!");
 			modalBg.remove();
-			createAnswer("Incorrect");
+			createAnswer("Incorrect", question.explanation);
 		}
 	});
 
