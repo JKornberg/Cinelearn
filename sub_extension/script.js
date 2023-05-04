@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
       // btnContainer.style.display = 'inline-block'; // Show the button container
       mountain.style.display = 'inline-block'; // Show the mountain
       climber.style.display = 'inline-block'; // Show the climber
-      const target = data['user_correct'] 
+      let target = data['user_correct'] 
       if (target > 7){
         target = 7;
       }
