@@ -341,7 +341,7 @@ function createAnswer(text, explanationText) {
 function createVocabModal(question) {
 
 	let finalWords = []
-	finalWords = question.indexWiseWordsSpanish.concat(question.randomEnglishWords)
+	finalWords = question.indexWiseWordsSpanish.concat(question.randomSpanishWords)
 
 	let selectedValues = [];
 	const modalBg = document.createElement("div");
@@ -361,15 +361,15 @@ function createVocabModal(question) {
 	// Create the English element
 	const questionElement = document.createElement("h2");
 	questionElement.textContent = `English: ${question.english}`;
-	questionElement.classList.add("question")
+	questionElement.classList.add("question-english")
 	modalContainer.appendChild(questionElement);
 
 
 
 	const answerElement = document.createElement("h2");
 	answerElement.textContent = `Spanish: ${selectedValues}`;
-	answerElement.classList.add("question")
-	answerElement.appendChild(questionElement);
+	answerElement.classList.add("question-spanish")
+	modalContainer.appendChild(answerElement);
 	// Create the Spanish Element
 	const answerContainer = document.createElement("div");
 	answerContainer.classList.add("answer-container");
@@ -472,7 +472,7 @@ function createQuizModal(question) {
 
 	// Create the question element
 	const questionElement = document.createElement("h2");
-	questionElement.textContent = question.question;
+	questionElement.textContent = question.spanish_q;
 	questionElement.classList.add("question")
 	modalContainer.appendChild(questionElement);
 
@@ -480,7 +480,7 @@ function createQuizModal(question) {
 	const answerContainer = document.createElement("div");
 	answerContainer.classList.add("answer-container");
 
-	question.choices.forEach((choice, index) => {
+	question.spanish_choices.forEach((choice, index) => {
 		const answerElement = document.createElement("div");
 		answerElement.classList.add("answer-element");
 
@@ -534,7 +534,7 @@ function createQuizModal(question) {
 	submitButton.addEventListener("click", () => {
 		const selectedAnswer = parseInt(document.querySelector('input[name="answer"]:checked').value);
 		questionMutex -= 1;
-		if (selectedAnswer === question.correctAnswer) {
+		if (selectedAnswer === question.correctIndex) {
 			// alert("Correct!");
 			modalBg.remove();
 			createAnswer("Correct!", 'add explanation');

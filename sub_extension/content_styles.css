@@ -136,6 +136,8 @@ hr.solid {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    max-height: 200px;
+    overflow-y: auto;
 }
 
 .question-container{
