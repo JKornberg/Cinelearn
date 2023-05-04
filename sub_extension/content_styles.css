@@ -31,11 +31,20 @@
     font-weight: bolder
 }
 
-.answer-container{
+.answer-container.vocab{
     display:grid;
     width: 75%;
     margin: 0 auto;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+}
+
+.answer-container.context{
+    display:grid;
+    width: 75%;
+    margin: 0 auto;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
 }
 
 .answer-element{
@@ -171,9 +180,8 @@ hr.solid {
 }
 
 .sidebar-list-item.correct{
-    background-color: lightcyan;
-    height: 30px;
-    color: #bbb;
+    background-color: lightgreen;
+    color: black;
 }
 
 .sidebar-list-item.incorrect{
@@ -212,13 +220,27 @@ hr.solid {
     font-size: 12pt;
 }
 
-.vocab-answer-container {
+.vocab-answer {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     background-color: #FCA311;
+    border-radius: 15px;
+    font-size: 15pt;
+    padding: 7px;
+    margin: 5px;
+    width: min-content;
 }
-.vocab-answer-container.selected {
+.vocab-answer.active {
+    background-color: darkgray;
+    color: #fff;
+}
+
+.vocab-answer.inactive {
     background-color: #E5E5E5;
-    color: white;
+    color: black;
+}
+
+.button-container button {
+    margin: 10px;
 }

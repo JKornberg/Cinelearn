@@ -24,7 +24,7 @@ class Subtitle {
 class QuestionSidebar {
 	constructor(start, id, question, type, index) {
 		this.index,
-		this.start = start; // number;
+			this.start = start; // number;
 		this.id = id; // number;
 		this.question = question; //string
 		this.type = type
@@ -37,7 +37,7 @@ class QuestionSidebar {
 function getRandomValuesFromArray(arr) {
 	const result = [];
 	const indices = new Set();
-	
+
 	// Loop until we have 4 unique indices
 	while (indices.size < 4) {
 		const index = Math.floor(Math.random() * arr.length);
@@ -47,42 +47,42 @@ function getRandomValuesFromArray(arr) {
 			result.push(arr[index]);
 		}
 	}
-	
+
 	return result;
-  }
+}
 spanish_words = ['alma', 'amor', 'bailar', 'beso', 'caminar', 'cansado', 'comida', 'confiar', 'contento', 'correr', 'cumpleaños', 'decir', 'despertar', 'dormir', 'escuchar', 'esperar', 'estudiar', 'feliz', 'fiesta', 'frente', 'fuerte', 'gracias', 'hablar', 'hacer', 'hermosa', 'hola', 'jugar', 'leer', 'lento', 'libro', 'lindo', 'malo', 'mañana', 'miedo', 'mirar', 'momento', 'nadar', 'nuevo', 'olvidar', 'padre', 'palabra', 'pensar', 'perdón', 'pintar', 'poder', 'preguntar', 'querer', 'rápido', 'recuerda', 'reír', 'respeto', 'saber', 'sentir', 'silencio', 'sol', 'sonrisa', 'soñar', 'tarde', 'tener', 'trabajar', 'tranquilo', 'valiente', 'venir', 'ver', 'viajar', 'vida', 'vivir', 'música', 'amigo', 'animal', 'casa', 'ciudad', 'coche', 'color', 'compartir', 'familia', 'fruta', 'gato', 'hermano', 'historia', 'libertad', 'lugar', 'madre', 'montaña', 'naturaleza', 'niño', 'pájaro', 'paisaje', 'película', 'perro', 'playa', 'pueblo', 'sonido', 'tiempo', 'árboles', 'café', 'hambre', 'lluvia', 'manzana', 'mar', 'nube', 'solitario', 'ventana', 'zapatos']
 english_words = ['yes', 'no', 'maybe', 'goodbye', 'test', 'software', 'startups', 'this']
 
 
 class VocabQuestion {
-	constructor(id,start, english, spanish) {
-		this.start = start/10000; // number;
+	constructor(id, start, english, spanish) {
+		this.start = start / 10000; // number;
 		this.spanish = spanish; // number;
 		this.english = english
 		this.indexWiseWordsEnglish = this.english.split(' ')
 		this.indexWiseWordsSpanish = this.spanish.split(' ')
 		this.randomSpanishWords = getRandomValuesFromArray(spanish_words)
 		this.randomEnglishWords = getRandomValuesFromArray(english_words)
-		this.section = Math.floor(max_time/this.start)
+		this.section = Math.floor(max_time / this.start)
 		this.id = id
 		this.type = 'vq'
 	}
 }
 
 class ContextQuestion {
-	constructor(id, start,english_question, spanish_question, answer_list) {
+	constructor(id, start, english_question, spanish_question, answer_list) {
 		this.english_q = english_question
 		this.spanish_q = spanish_question
 		this.english_choices = answer_list.map((answer) => answer[0])
 		this.spanish_choices = answer_list.map((answer) => answer[1])
 		this.correctIndex = 0
 		answer_list.forEach((answer, idx) => {
-			if (answer[2] == '1'){
+			if (answer[2] == '1') {
 				this.correctIndex = idx
 			}
 		})
-		this.start = start/10000; // number;
-		this.section = Math.floor(max_time/this.start)
+		this.start = start / 10000; // number;
+		this.section = Math.floor(max_time / this.start)
 		this.id = id
 		this.type = 'cq'
 	}
@@ -114,29 +114,40 @@ var questions = []
 var pause = false;
 let slider_element;
 var callback = function (mutationsList, observer) {
-	for (const mutation of mutationsList) {
-		if (mutation.target.className == "active ltr-omkt8s" ||
-			mutation.target.className == "active ltr-omkt8s focus-visible") {
-			// bottom bar is active //
-			var slider_element = document.querySelector('[aria-label="Seek time scrubber"]');
-			var play_pause = document.querySelector('[data-uia="control-play-pause-play"]');
-			// play_pause.click();		
-			pause = play_pause !== null && play_pause.getAttribute("aria-label") === "Play";
-			// console.log(pause);
-			// console.log(slider_element);
-			max_time = parseInt(slider_element.getAttribute("aria-valuemax"));
-			ref_time = parseInt(slider_element.getAttribute("aria-valuenow"));
-			elapsed_time = 0;
-		}
-		if (mutation.target.className == "watch-video video-container-modifier") {
-			console.log(mutation.addedNodes);
-			if (mutation.addedNodes.length > 0){
-				const addedNodes = mutation.addedNodes;
-				// console.log(addedNodes);
-				const className = addedNodes[0].getAttribute("data-uia");
-				pause = 'watch-video-notification-pause' === className;
-				console.log("ahh", pause);
+	try {
+		for (const mutation of mutationsList) {
+			if (mutation.target.className == "active ltr-omkt8s" ||
+				mutation.target.className == "active ltr-omkt8s focus-visible") {
 				// bottom bar is active //
+				var slider_element = document.querySelector('[aria-label="Seek time scrubber"]');
+				var play_pause = document.querySelector('[data-uia="control-play-pause-play"]');
+				// play_pause.click();		
+				pause = play_pause !== null && play_pause.getAttribute("aria-label") === "Play";
+				// console.log(pause);
+				// console.log(slider_element);
+				max_time = parseInt(slider_element.getAttribute("aria-valuemax"));
+				ref_time = parseInt(slider_element.getAttribute("aria-valuenow"));
+				elapsed_time = 0;
+			}
+			if (mutation.target.className == "watch-video video-container-modifier") {
+				console.log(mutation.addedNodes);
+				if (mutation.addedNodes.length > 0) {
+					const addedNodes = mutation.addedNodes;
+					// console.log(addedNodes);
+					const className = addedNodes[0].getAttribute("data-uia");
+					pause = 'watch-video-notification-pause' === className;
+					// console.log("ahh", pause);
+					// bottom bar is active //
+					slider_element = document.querySelector('[aria-label="Seek time scrubber"]');
+					// console.log(pause);
+					// console.log(slider_element);
+					max_time = parseInt(slider_element.getAttribute("aria-valuemax"));
+					ref_time = parseInt(slider_element.getAttribute("aria-valuenow"));
+					elapsed_time = 0;
+				}
+			}
+			if (mutation.target.className == "control-medium ltr-1evcx25") {
+				// console.log(mutation);
 				slider_element = document.querySelector('[aria-label="Seek time scrubber"]');
 
 				// console.log(pause);
@@ -145,21 +156,13 @@ var callback = function (mutationsList, observer) {
 				ref_time = parseInt(slider_element.getAttribute("aria-valuenow"));
 				elapsed_time = 0;
 			}
+			// control-medium ltr-1evcx25
+			// console.log(mutation.target.className);
 		}
-		if (mutation.target.className == "control-medium ltr-1evcx25"){
-			// console.log(mutation);
-			slider_element = document.querySelector('[aria-label="Seek time scrubber"]');
-
-				
-			// console.log(pause);
-			// console.log(slider_element);
-			max_time = parseInt(slider_element.getAttribute("aria-valuemax"));
-			ref_time = parseInt(slider_element.getAttribute("aria-valuenow"));
-			elapsed_time = 0;
-		}
-		// control-medium ltr-1evcx25
-		// console.log(mutation.target.className);
+	} catch{
+		console.log("no slider found");
 	}
+	
 }
 
 window.addEventListener('load', function () {
@@ -182,25 +185,26 @@ window.addEventListener('load', function () {
 		.catch(error => console.error(error));
 });
 
-	window.addEventListener('load', function() {
-		var opts = {
-			headers: {
-			'mode':'cors',
+window.addEventListener('load', function () {
+	var opts = {
+		headers: {
+			'mode': 'cors',
 			'Access-Control-Allow-Origin': '*'
-			},
-		}
-		fetch('https://cinelearn.fly.dev/getSpanishSubs?episode_num=0',opts)
+		},
+	}
+	fetch('https://cinelearn.fly.dev/getSpanishSubs?episode_num=0', opts)
 		.then(response => response.json())
 		.then(data => {
-			data['spanish_subs']= data['spanish_subs'].sort(function(a, b) {
+			data['spanish_subs'] = data['spanish_subs'].sort(function (a, b) {
 				return parseFloat(b['start_time']) - parseFloat(a['start_time'])
 			});
 			subs2 = data['spanish_subs'].map((subtitle) => {
-				return new Subtitle(subtitle['start_time']/10000, subtitle['end_time']/10000, subtitle['spanish_subtitle'])
+				return new Subtitle(subtitle['start_time'] / 10000, subtitle['end_time'] / 10000, subtitle['spanish_subtitle'])
 			})
-	
+
 		})
-		.catch(error => console.error(error));  });
+		.catch(error => console.error(error));
+});
 
 
 let contextQuestions = []
@@ -213,54 +217,55 @@ window.addEventListener('load', function () {
 			'Access-Control-Allow-Origin': '*'
 		},
 	}
-	fetch('https://cinelearn.fly.dev/getContextQuestions?episode_num=0',opts)
-	.then(response => response.json())
-	.then(data => {
-		data['data']= data['data'].sort(function(a, b) {
-			return parseFloat(b['start_time']) - parseFloat(a['start_time'])
-		});
-		contextQuestions = data['data'].map((question, qid) => {
-			return new ContextQuestion(qid, question['start_time'],question['english_question'], question['spanish_question'], question['answer_list'])
+	fetch('https://cinelearn.fly.dev/getContextQuestions?episode_num=0', opts)
+		.then(response => response.json())
+		.then(data => {
+			data['data'] = data['data'].sort(function (a, b) {
+				return parseFloat(b['start_time']) - parseFloat(a['start_time'])
+			});
+			contextQuestions = data['data'].map((question, qid) => {
+				return new ContextQuestion(qid, question['start_time'], question['english_question'], question['spanish_question'], question['answer_list'])
+			})
+			console.log('cq', contextQuestions);
 		})
-		console.log('cq', contextQuestions);
-	})
-	.catch(error => console.error(error)); 
+		.catch(error => console.error(error));
 
 });
 
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
 	var opts = {
 		headers: {
-		'mode':'cors',
-		'Access-Control-Allow-Origin': '*'
+			'mode': 'cors',
+			'Access-Control-Allow-Origin': '*'
 		},
 	}
-	fetch('https://cinelearn.fly.dev/getVocabQuestions?episode_num=0',opts)
+	fetch('https://cinelearn.fly.dev/getVocabQuestions?episode_num=0', opts)
 
-	.then(response => response.json())
-	.then(data => {
-		data['data']= data['data'].sort(function(a, b) {
-			return parseFloat(b['start_time']) - parseFloat(a['start_time'])
-		});
-		vocabQuestions = data['data'].map((question) => {
-			return new VocabQuestion(question['vocab_id'], question['start_time'],question['english_vocab'],question['spanish_vocab'])
-		});
-		// declare var
-		const max = 3;
-		const step = 4;
-	
-		// choose start point
-		const s = Math.floor(Math.random() * max);
-		// sort data
-		let temp_vq = [];
-		vocabQuestions.sort((a, b) => (a.start > b.start) ? 1 : -1);
-		for (let i = s; i < vocabQuestions.length; i+=step) {
-			temp_vq.push(vocabQuestions[i]);
-		}
-		vocabQuestions = temp_vq;
-		console.log(vocabQuestions);	
+		.then(response => response.json())
+		.then(data => {
+			data['data'] = data['data'].sort(function (a, b) {
+				return parseFloat(b['start_time']) - parseFloat(a['start_time'])
+			});
+			vocabQuestions = data['data'].map((question) => {
+				return new VocabQuestion(question['vocab_id'], question['start_time'], question['english_vocab'], question['spanish_vocab'])
+			});
+			// declare var
+			const max = 3;
+			const step = 4;
+
+			// choose start point
+			const s = Math.floor(Math.random() * max);
+			// sort data
+			let temp_vq = [];
+			vocabQuestions.sort((a, b) => (a.start > b.start) ? 1 : -1);
+			for (let i = s; i < vocabQuestions.length; i += step) {
+				temp_vq.push(vocabQuestions[i]);
+			}
+			vocabQuestions = temp_vq;
+			console.log(vocabQuestions);
 		})
-		.catch(error => console.error(error));  });
+		.catch(error => console.error(error));
+});
 window.video_change_observer = new MutationObserver(callback);
 window.video_change_observer_config = { childList: true, subtree: true, }
 window.video_change_observer.observe(document.documentElement, window.video_change_observer_config);
@@ -271,7 +276,7 @@ window.video_change_observer.observe(document.documentElement, window.video_chan
 createSub = true;
 questionMutex = 0;
 
-function createAnswer(text, explanationText) {
+function createAnswer(text, explanationText, correct) {
 	const modalBg = document.createElement("div");
 	modalBg.classList.add("modal-bg");
 	modalBg.className = 'modal-box';
@@ -288,7 +293,7 @@ function createAnswer(text, explanationText) {
 
 	// Add icon
 	const iconElement = document.createElement("i");
-	if (text == 'Correct') {
+	if (correct) {
 		iconElement.classList.add("fa-solid", "fa-circle-check", "checkmark");
 
 	} else {
@@ -367,44 +372,48 @@ function createVocabModal(question) {
 
 
 	const answerElement = document.createElement("h2");
-	answerElement.textContent = `Spanish: ${selectedValues.join(' ')}`;
+	answerElement.innerText = `Spanish: ${selectedValues.join(' ')}`;
 	answerElement.classList.add("question-spanish")
 	modalContainer.appendChild(answerElement);
 	// Create the Spanish Element
 	const answerContainer = document.createElement("div");
-	answerContainer.classList.add("answer-container");
+	answerContainer.classList.add("answer-container","vocab");
 
-	finalWords.forEach((choice, index) => {
+	const shuffledWords = shuffle(finalWords);
+
+
+	shuffledWords.forEach((choice, index) => {
 		const answerChoice = document.createElement("button");
-		answerChoice.classList.add("vocab-answer-inactive");
+		answerChoice.classList.add( "vocab-answer", "inactive");
 		answerChoice.textContent = choice
 
 
 		answerChoice.addEventListener("click", () => {
+			console.log("clicked")
 			if (selectedValues.indexOf(choice) !== -1) {
-				selectedValues = selectedValues.filter(function(item) {
-					return item !== choice
-				})	
-				answerChoice.classList.add("vocab-answer-inactive");
-				answerChoice.classList.remove("vocab-answer-active");
-				answerElement.classList.remove('test_class')
-				answerElement.classList.add('test_class')
+				selectedValues = selectedValues.filter(function (item) {
+					return item !== choice // remove from list
+				})
+				answerChoice.classList.add("inactive");
+				answerChoice.classList.remove("active");
+				answerElement.innerText = 'Spanish: ' + selectedValues.join(' ')
+				// answerElement.classList.remove('test_class')
+				// answerElement.classList.add('test_class')
 				console.log(selectedValues)
 				console.log(question.spanish)
 			} else {
 				selectedValues.push(choice)
-				answerChoice.classList.remove("vocab-answer-inactive");
-				answerChoice.classList.add("vocab-answer-active");
-				answerElement.classList.remove('test_class')
-				answerElement.classList.add('test_class')
-				console.log(selectedValues)
+				answerChoice.classList.remove("inactive");
+				answerChoice.classList.add("active");
+				answerElement.innerText = 'Spanish: ' + selectedValues.join(' ')
+				console.log(answerElement.innerText)
 			}
 		});
 
 		answerContainer.appendChild(answerChoice);
 	});
 
-	
+
 	modalContainer.appendChild(answerContainer);
 
 	// Create button container and submit / skip buttons
@@ -442,12 +451,15 @@ function createVocabModal(question) {
 		questionMutex -= 1;
 		if (selectedValues.join(' ') === question.spanish) {
 			modalBg.remove();
-			createAnswer("Correct!", `${question.english} translates to ${question.spanish}`);
+			createAnswer("Correct!", `${question.english} translates to ${question.spanish}`, true);
+			question.correct = true;
 		} else {
 			// alert("Incorrect!");
 			modalBg.remove();
-			createAnswer("You got this wrong", `${question.english} translates to ${question.spanish}`);
+			createAnswer("You got this wrong", `${question.english} translates to ${question.spanish}`, false);
+			question.correct = false;
 		}
+		updateSidebar();
 	});
 
 	closeButton.addEventListener("click", () => {
@@ -461,6 +473,23 @@ function createVocabModal(question) {
 	vidDiv.appendChild(modalBg);
 }
 
+function shuffle(array) {
+	let currentIndex = array.length,  randomIndex;
+  
+	// While there remain elements to shuffle.
+	while (currentIndex != 0) {
+  
+	  // Pick a remaining element.
+	  randomIndex = Math.floor(Math.random() * currentIndex);
+	  currentIndex--;
+  
+	  // And swap it with the current element.
+	  [array[currentIndex], array[randomIndex]] = [
+		array[randomIndex], array[currentIndex]];
+	}
+  
+	return array;
+  }
 
 // Define a function to create a quiz modal
 function createQuizModal(question) {
@@ -487,7 +516,8 @@ function createQuizModal(question) {
 
 	// Create the answer choice elements
 	const answerContainer = document.createElement("div");
-	answerContainer.classList.add("answer-container");
+	answerContainer.classList.add("answer-container","context");
+
 
 	question.spanish_choices.forEach((choice, index) => {
 		const answerElement = document.createElement("div");
@@ -543,15 +573,17 @@ function createQuizModal(question) {
 	submitButton.addEventListener("click", () => {
 		const selectedAnswer = parseInt(document.querySelector('input[name="answer"]:checked').value);
 		questionMutex -= 1;
+		const explanationString = `The question is asking "${question.english_q}" and the correct answer is "${question.english_choices[question.correctIndex]}".`
 		if (selectedAnswer === question.correctIndex) {
-			// alert("Correct!");
 			modalBg.remove();
-			createAnswer("Correct!", 'add explanation');
+			createAnswer("Correct!", explanationString, true);
+			question.correct = true;
 		} else {
-			// alert("Incorrect!");
 			modalBg.remove();
-			createAnswer("Incorrect", 'add explanation');
+			createAnswer("Incorrect", explanationString, false);
+			question.correct = false;
 		}
+		updateSidebar();
 	});
 
 	closeButton.addEventListener("click", () => {
@@ -575,10 +607,10 @@ function updateSidebar() {
 	// filter all questions that could be added
 	var newCQs = contextQuestions.filter((q) => q.start <= time);
 	var newVQs = vocabQuestions.filter((q) => q.start <= time);
-	
+
 	// for each newQ filter if is already in questions
-	var newNewCQs = newCQs.filter((q) => questions.indexOf(q) === -1 );
-	var newNewVQs = newVQs.filter((q) => questions.indexOf(q) === -1 );
+	var newNewCQs = newCQs.filter((q) => questions.indexOf(q) === -1);
+	var newNewVQs = newVQs.filter((q) => questions.indexOf(q) === -1);
 
 	// add newQs to questions
 	questions = questions.concat(newNewCQs);
@@ -591,12 +623,18 @@ function updateSidebar() {
 	questions.forEach(question => {
 		const listItem = document.createElement('div');
 		listItem.classList.add('sidebar-list-item')
-		if (question.correct){
-			listItem.classList.add('correct' === true);
-		} else if (question.correct === false){
+		if (question.correct == true) {
+			listItem.classList.add('correct');
+		} else if (question.correct == false) {
 			listItem.classList.add('incorrect');
 		}
-		listItem.textContent = question.type; // question.question;
+		let textContent = "";
+		if (question.type == 'vq'){
+			textContent = "Vocab Question"
+		} else{
+			textContent = "Context Question"
+		}
+		listItem.textContent = textContent; // question.question;
 		listItem.addEventListener('click', () => {
 			// FIXME don't let it be clicked if question is already answered(?)
 			if (questionMutex == 0) {
@@ -782,12 +820,12 @@ var intervalId = window.setInterval(function () {
 					let parsedWord = event.target.textContent.toLowerCase().replace(/[.,\/#!?$%\^&\*;:{}=\-_`~()]/g, "").replace(/\s{2,}/g, "")
 					if (DICTIONARY[parsedWord]) {
 						alert(`${parsedWord} translates to: ${DICTIONARY[parsedWord]}`)
-					} else{
+					} else {
 						alert(`Sorry, we don't have a translation for ${parsedWord}`)
 					}
 				}, false)
 			}
-			
+
 			const br = document.createElement('br');
 			newSubContainer.appendChild(br);
 		});
