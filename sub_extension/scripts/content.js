@@ -22,11 +22,64 @@ class Subtitle {
 }
 
 class QuestionSidebar {
-	constructor(start, end, id, question) {
+	constructor(start, id, question, type) {
 		this.start = start; // number;
-		this.end = end; // number;
 		this.id = id; // number;
 		this.question = question; //string
+		this.type = type
+	}
+}
+
+
+function getRandomValuesFromArray(arr) {
+	const result = [];
+	const indices = new Set();
+	
+	// Loop until we have 4 unique indices
+	while (indices.size < 4) {
+		const index = Math.floor(Math.random() * arr.length);
+		// Add index to set if it's not already there
+		if (!indices.has(index)) {
+			indices.add(index);
+			result.push(arr[index]);
+		}
+	}
+	
+	return result;
+  }
+spanish_words = ['alma', 'amor', 'bailar', 'beso', 'caminar', 'cansado', 'comida', 'confiar', 'contento', 'correr', 'cumpleaños', 'decir', 'despertar', 'dormir', 'escuchar', 'esperar', 'estudiar', 'feliz', 'fiesta', 'frente', 'fuerte', 'gracias', 'hablar', 'hacer', 'hermosa', 'hola', 'jugar', 'leer', 'lento', 'libro', 'lindo', 'malo', 'mañana', 'miedo', 'mirar', 'momento', 'nadar', 'nuevo', 'olvidar', 'padre', 'palabra', 'pensar', 'perdón', 'pintar', 'poder', 'preguntar', 'querer', 'rápido', 'recuerda', 'reír', 'respeto', 'saber', 'sentir', 'silencio', 'sol', 'sonrisa', 'soñar', 'tarde', 'tener', 'trabajar', 'tranquilo', 'valiente', 'venir', 'ver', 'viajar', 'vida', 'vivir', 'música', 'amigo', 'animal', 'casa', 'ciudad', 'coche', 'color', 'compartir', 'familia', 'fruta', 'gato', 'hermano', 'historia', 'libertad', 'lugar', 'madre', 'montaña', 'naturaleza', 'niño', 'pájaro', 'paisaje', 'película', 'perro', 'playa', 'pueblo', 'sonido', 'tiempo', 'árboles', 'café', 'hambre', 'lluvia', 'manzana', 'mar', 'nube', 'solitario', 'ventana', 'zapatos']
+english_words = ['yes', 'no', 'maybe', 'goodbye', 'test', 'software', 'startups', 'this']
+
+
+class VocabQuestion {
+	constructor(id,start, english, spanish) {
+		this.start = start/10000; // number;
+		this.spanish = spanish; // number;
+		this.english = english
+		this.indexWiseWordsEnglish = this.english.split(' ')
+		this.indexWiseWordsSpanish = this.spanish.split(' ')
+		this.randomSpanishWords = getRandomValuesFromArray(spanish_words)
+		this.randomSpanishWords = getRandomValuesFromArray(english_words)
+		this.section = Math.floor(max_time/this.start)
+		this.id = id
+	}
+}
+
+class ContextQuestion {
+	constructor(id, start,english_question, spanish_question, answer_list) {
+		this.english_q = english_question
+		this.spanish_q = spanish_question
+		this.english_choices = answer_list.map((answer) => answer[0])
+		this.spanish_choices = answer_list.map((answer) => answer[1])
+		this.correctIndex = 0
+		answer_list.forEach((answer, idx) => {
+			if (answer[2] == '1'){
+				this.correctIndex = idx
+			}
+		})
+		this.start = start/10000; // number;
+		this.section = Math.floor(max_time/this.start)
+		this.id = id
 	}
 }
 
@@ -42,9 +95,6 @@ class QuizQuestion {
 
 // Create some sample quiz questions
 const quizQuestions = [
-	new QuizQuestion("What is the capital of France?", ["London", "Paris", "Berlin", "Madrid"], 1),
-	new QuizQuestion("What is the largest planet in our solar system?", ["Mars", "Jupiter", "Saturn", "Venus"], 1),
-	new QuizQuestion("Who wrote the book 'The Catcher in the Rye'?", ["J.D. Salinger", "Ernest Hemingway", "F. Scott Fitzgerald", "Mark Twain"], 0)
 ];
 
 var dict = {
@@ -61,9 +111,7 @@ let subs = [];
 let subs2 = [];
 
 const questions = [
-	new QuestionSidebar(10, 20, 0, 'Question 5'),
-	new QuestionSidebar(30, 40, 1, 'Question 4'),
-	new QuestionSidebar(50, 60, 2, 'Question 3')
+
 ];
 
 
@@ -109,8 +157,30 @@ window.addEventListener('load', function() {
 	})
 	.catch(error => console.error(error));  });
 
+	window.addEventListener('load', function() {
+		var opts = {
+			headers: {
+			'mode':'cors',
+			'Access-Control-Allow-Origin': '*'
+			},
+		}
+		fetch('https://cinelearn.fly.dev/getSpanishSubs?episode_num=0',opts)
+		.then(response => response.json())
+		.then(data => {
+			data['spanish_subs']= data['spanish_subs'].sort(function(a, b) {
+				return parseFloat(b['start_time']) - parseFloat(a['start_time'])
+			});
+			subs = data['spanish_subs'].map((subtitle) => {
+				return new Subtitle(subtitle['start_time']/10000, subtitle['end_time']/10000, subtitle['spanish_subtitle'])
+			})
+			console.log(subs)
+	
+		})
+		.catch(error => console.error(error));  });
 
 
+let contextQuestions = []
+let vocabQuestions = []
 
 window.addEventListener('load', function() {
 	var opts = {
@@ -122,7 +192,10 @@ window.addEventListener('load', function() {
 	fetch('https://cinelearn.fly.dev/getContextQuestions?episode_num=0',opts)
 	.then(response => response.json())
 	.then(data => {
-		console.log(data)
+		contextQuestions = data['data'].map((question, qid) => {
+			return new ContextQuestion(qid, question['start_time'],question['english_question'], question['spanish_question'], question['answer_list'])
+		})
+		console.log(vocabQuestions)
 	})
 	.catch(error => console.error(error));  });
 
@@ -136,23 +209,10 @@ window.addEventListener('load', function() {
 	fetch('https://cinelearn.fly.dev/getVocabQuestions?episode_num=0',opts)
 	.then(response => response.json())
 	.then(data => {
-		console.log(data)
-	})
-	.catch(error => console.error(error));  });
-
-
-
-window.addEventListener('load', function() {
-	var opts = {
-		headers: {
-		'mode':'cors',
-		'Access-Control-Allow-Origin': '*'
-		},
-	}
-	fetch('https://cinelearn.fly.dev/getSpanishSubs?episode_num=0',opts)
-	.then(response => response.json())
-	.then(data => {
-		console.log(data)
+		vocabQuestions = data['data'].map((question) => {
+			return new VocabQuestion(question['vocab_id'], question['start_time'],question['english_vocab'],question['spanish_vocab'])
+		})	
+		console.log(contextQuestions)
 	})
 	.catch(error => console.error(error));  });
 window.video_change_observer = new MutationObserver(callback);
