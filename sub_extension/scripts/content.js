@@ -176,8 +176,6 @@ window.addEventListener('load', function () {
 			subs = data['english_subs'].map((subtitle) => {
 				return new Subtitle(subtitle['start_time'] / 10000, subtitle['end_time'] / 10000, subtitle['english_subtitle'])
 			})
-			console.log(subs)
-
 		})
 		.catch(error => console.error(error));
 });
@@ -195,10 +193,9 @@ window.addEventListener('load', function () {
 			data['spanish_subs']= data['spanish_subs'].sort(function(a, b) {
 				return parseFloat(b['start_time']) - parseFloat(a['start_time'])
 			});
-			subs = data['spanish_subs'].map((subtitle) => {
+			subs2 = data['spanish_subs'].map((subtitle) => {
 				return new Subtitle(subtitle['start_time']/10000, subtitle['end_time']/10000, subtitle['spanish_subtitle'])
 			})
-			console.log(subs)
 	
 		})
 		.catch(error => console.error(error));  });
@@ -217,7 +214,7 @@ window.addEventListener('load', function () {
 	fetch('https://cinelearn.fly.dev/getContextQuestions?episode_num=0',opts)
 	.then(response => response.json())
 	.then(data => {
-		data['spanish_subs']= data['spanish_subs'].sort(function(a, b) {
+		data['data']= data['data'].sort(function(a, b) {
 			return parseFloat(b['start_time']) - parseFloat(a['start_time'])
 		});
 		contextQuestions = data['data'].map((question, qid) => {
@@ -236,6 +233,9 @@ window.addEventListener('load', function() {
 	fetch('https://cinelearn.fly.dev/getVocabQuestions?episode_num=0',opts)
 	.then(response => response.json())
 	.then(data => {
+		data['data']= data['data'].sort(function(a, b) {
+			return parseFloat(b['start_time']) - parseFloat(a['start_time'])
+		});
 		vocabQuestions = data['data'].map((question) => {
 			return new VocabQuestion(question['vocab_id'], question['start_time'],question['english_vocab'],question['spanish_vocab'])
 		})	
