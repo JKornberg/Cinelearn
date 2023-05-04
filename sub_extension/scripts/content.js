@@ -12,6 +12,12 @@ var current_subs = [];
 var elapsed_time = 0; //ms
 var ref_time = 0; // ms
 var max_time = 0; // ms
+const	opts = {
+	headers: {
+	'mode':'cors',
+	'Access-Control-Allow-Origin': '*'
+	},
+}
 
 class Subtitle {
 	constructor(start, end, sub) {
@@ -166,12 +172,7 @@ var callback = function (mutationsList, observer) {
 }
 
 window.addEventListener('load', function () {
-	var opts = {
-		headers: {
-			'mode': 'cors',
-			'Access-Control-Allow-Origin': '*'
-		},
-	}
+
 	fetch('https://cinelearn.fly.dev/getEnglishSubs?episode_num=0', opts)
 		.then(response => response.json())
 		.then(data => {
@@ -186,12 +187,7 @@ window.addEventListener('load', function () {
 });
 
 window.addEventListener('load', function () {
-	var opts = {
-		headers: {
-			'mode': 'cors',
-			'Access-Control-Allow-Origin': '*'
-		},
-	}
+
 	fetch('https://cinelearn.fly.dev/getSpanishSubs?episode_num=0', opts)
 		.then(response => response.json())
 		.then(data => {
@@ -211,12 +207,7 @@ let contextQuestions = []
 let vocabQuestions = []
 
 window.addEventListener('load', function () {
-	var opts = {
-		headers: {
-			'mode': 'cors',
-			'Access-Control-Allow-Origin': '*'
-		},
-	}
+
 	fetch('https://cinelearn.fly.dev/getContextQuestions?episode_num=0', opts)
 		.then(response => response.json())
 		.then(data => {
@@ -233,12 +224,7 @@ window.addEventListener('load', function () {
 });
 
 window.addEventListener('load', function () {
-	var opts = {
-		headers: {
-			'mode': 'cors',
-			'Access-Control-Allow-Origin': '*'
-		},
-	}
+
 	fetch('https://cinelearn.fly.dev/getVocabQuestions?episode_num=0', opts)
 
 		.then(response => response.json())
@@ -426,10 +412,10 @@ function createVocabModal(question) {
 	submitButton.textContent = "Submit";
 	buttonContainer.appendChild(submitButton);
 
-	const videoSkipButton = document.createElement("button");
-	videoSkipButton.classList.add("skip", "app-button");
-	videoSkipButton.textContent = "Skip to Time";
-	buttonContainer.appendChild(videoSkipButton);
+	// const videoSkipButton = document.createElement("button");
+	// videoSkipButton.classList.add("skip", "app-button");
+	// videoSkipButton.textContent = "Skip to Time";
+	// buttonContainer.appendChild(videoSkipButton);
 
 	modalContainer.appendChild(buttonContainer);
 
@@ -445,19 +431,13 @@ function createVocabModal(question) {
 	modalContainer.appendChild(closeButton);
 
 
-	let opts;
 	// Add event listeners to the submit and close buttons
 	submitButton.addEventListener("click", () => {
 		questionMutex -= 1;
 		if (selectedValues.join(' ') === question.spanish) {
 			modalBg.remove();
-			createAnswer("Correct!", `${question.english} translates to ${question.spanish}`);
-			opts = {
-				headers: {
-				'mode':'cors',
-				'Access-Control-Allow-Origin': '*'
-				},
-			}
+			createAnswer("Correct!", `${question.english} translates to ${question.spanish}`, true);
+
 			chrome.storage.local.get(['user_id'], function (result) {
 				console.log(result);
 				if (result.user_id) {
@@ -469,14 +449,8 @@ function createVocabModal(question) {
 				.catch(error => console.error(error));
 			}});
 			
-			
+			question.correct = true;
 		} else {
-			opts = {
-				headers: {
-				'mode':'cors',
-				'Access-Control-Allow-Origin': '*'
-				},
-			}
 			chrome.storage.local.get(['user_id'], function (result) {
 				console.log(result);
 				if (result.user_id) {
@@ -561,6 +535,7 @@ function createQuizModal(question) {
 
 		const inputElement = document.createElement("input");
 		inputElement.type = "radio";
+		inputElement.classList.add("checkmark");
 		inputElement.name = "answer";
 		inputElement.id = `answer-${index}`;
 		inputElement.value = index;
@@ -581,10 +556,10 @@ function createQuizModal(question) {
 	submitButton.textContent = "Submit";
 	buttonContainer.appendChild(submitButton);
 
-	const videoSkipButton = document.createElement("button");
-	videoSkipButton.classList.add("skip", "app-button");
-	videoSkipButton.textContent = "Skip to Time";
-	buttonContainer.appendChild(videoSkipButton);
+	// const videoSkipButton = document.createElement("button");
+	// videoSkipButton.classList.add("skip", "app-button");
+	// videoSkipButton.textContent = "Skip to Time";
+	// buttonContainer.appendChild(videoSkipButton);
 
 	modalContainer.appendChild(buttonContainer);
 
@@ -607,12 +582,6 @@ function createQuizModal(question) {
 		questionMutex -= 1;
 		const explanationString = `The question is asking "${question.english_q}" and the correct answer is "${question.english_choices[question.correctIndex]}".`
 		if (selectedAnswer === question.correctIndex) {
-			opts = {
-				headers: {
-				'mode':'cors',
-				'Access-Control-Allow-Origin': '*'
-				},
-			}
 			chrome.storage.local.get(['user_id'], function (result) {
 				console.log(result);
 				if (result.user_id) {
@@ -627,12 +596,6 @@ function createQuizModal(question) {
 			createAnswer("Correct!", explanationString, true);
 			question.correct = true;
 		} else {
-			opts = {
-				headers: {
-				'mode':'cors',
-				'Access-Control-Allow-Origin': '*'
-				},
-			}
 			chrome.storage.local.get(['user_id'], function (result) {
 				console.log(result);
 				if (result.user_id) {

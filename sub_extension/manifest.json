@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Learn with Netflix",
+  "name": "CineLearn",
   "version": "1.1",
-  "description": "Add the reading time to Chrome Extension documentation articles",
+  "description": "CineLearn is a Chrome extension that allows you to learn a language while watching Netflix.",
   "icons": {
     "16": "images/icon-16.png",
     "32": "images/icon-32.png",

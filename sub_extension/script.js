@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
       userId = 1;
     }
     document.getElementById('username-display').innerText = `Welcome ${username === 'Not logged in' ? loggedInName : username}!`
-    let url = `https://cinelearn.fly.dev/getUserContextProgress?episode_num=0&user_id=${userId}`
+    let url = `https://cinelearn.fly.dev/getUserTotalProgress?episode_num=0&user_id=${userId}`
     console.log(opts)
     fetch(url, opts).then(response => response.json()).then(data => {
       authenticatedSection.style.display = 'block';
@@ -111,10 +111,10 @@ document.addEventListener('DOMContentLoaded', function () {
       // btnContainer.style.display = 'inline-block'; // Show the button container
       mountain.style.display = 'inline-block'; // Show the mountain
       climber.style.display = 'inline-block'; // Show the climber
-      let target = data['user_correct'] 
-      if (target > 7){
-        target = 7;
-      }
+      let target = data['user_correct'] % 7
+      // if (target > 7){
+      //   target = 7;
+      // }
     
       let ticks = 0;
       let progressInterval = setInterval(function () {

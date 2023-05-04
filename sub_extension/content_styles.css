@@ -44,7 +44,10 @@
     width: 75%;
     margin: 0 auto;
     grid-template-columns: repeat(2, 1fr);
-    justify-items: center;
+    justify-items: start;
+    row-gap: 50px;
+    column-gap: 40px;
+    text-align: left;
 }
 
 .answer-element{
@@ -52,7 +55,10 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    
+}
+
+.answer-element input{
+    margin-right: 15px;
 }
 
 .app-button{
@@ -244,3 +250,4 @@ hr.solid {
 .button-container button {
     margin: 10px;
 }
+
