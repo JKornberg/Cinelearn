@@ -72,7 +72,7 @@ router.get('/getContextQuestions', (req, res) => {
         english_answer_list = rows[i]['GROUP_CONCAT(english_answer)'].split(",")
         spanish_answer_list = rows[i]['GROUP_CONCAT(spanish_answer)'].split(",")
         is_correct_list = rows[i]['GROUP_CONCAT(is_correct)'].split(",")
-        console.log(typeof english_answer_list)
+        question_dict.question_id = rows[i].question_id
         answer_info_list = english_answer_list.map((e,i) => {return [e,spanish_answer_list[i], is_correct_list[i]]})
         question_dict.answer_list = answer_info_list
         question_list.push(question_dict)
@@ -101,8 +101,8 @@ router.get('/getUserContextProgress', (req, res) => {
   episode_num = req.query.episode_num
   user_id = req.query.user_id
   connection.query(`SELECT user_id,SUM(correct),episode_id 
-  FROM progress JOIN vocab_progress ON progress.vocab_progress_id=vocab_progress.progress_id 
-  JOIN vocab on vocab.vocab_id=vocab_progress.vocab_id GROUP BY user_id HAVING user_id=${user_id} AND episode_id=${episode_num}`, 
+  FROM progress JOIN question_progress ON progress.question_progress_id=question_progress.progress_id 
+  JOIN question on question.question_id=question_progress.question_id GROUP BY user_id HAVING user_id=${user_id} AND episode_id=${episode_num}`, 
   (err, rows, fields) => 
     {
       if(rows.length > 0) {
@@ -170,7 +170,7 @@ router.get('/getUserVocabProgress', (req, res) => {
 router.get('/getEpisodeContextInfo', (req, res) => {
   episode_num = req.query.episode_num
   user_id = req.query.user_id
-  connection.query(`SELECT user_id,language,english_question,spanish_question,difficulty,correct,episode_id FROM question_progress 
+  connection.query(`SELECT question.question_id,user_id,language,english_question,spanish_question,difficulty,correct,episode_id FROM question_progress 
   JOIN progress ON progress.question_progress_id=question_progress.progress_id JOIN question 
   ON question.question_id=question_progress.question_id WHERE user_id=${user_id} AND episode_id=${episode_num}`, 
   (err, rows, fields) => 
@@ -185,6 +185,7 @@ router.get('/getEpisodeContextInfo', (req, res) => {
         context_question_dict.correct = rows[i]['correct']
         context_question_dict.episode_id = rows[i]['episode_id']
         context_question_dict.user_id = rows[i]['user_id']
+        context_question_dict.question_id = rows[i]['question_id']
         context_question_list.push(context_question_dict)
       }
       if(err) throw err
@@ -205,7 +206,7 @@ router.get('/getEpisodeContextInfo', (req, res) => {
 router.get('/getEpisodeVocabInfo', (req, res) => {
   episode_num = req.query.episode_num
   user_id = req.query.user_id
-  connection.query(`SELECT user_id,language,english_vocab,spanish_vocab,difficulty,correct,episode_id,explanation FROM vocab_progress 
+  connection.query(`SELECT vocab.vocab_id,user_id,language,english_vocab,spanish_vocab,difficulty,correct,episode_id,explanation FROM vocab_progress 
   JOIN progress ON progress.vocab_progress_id=vocab_progress.progress_id JOIN vocab 
   ON vocab.vocab_id=vocab_progress.vocab_id WHERE user_id=${user_id} AND episode_id=${episode_num}`, 
   (err, rows, fields) => 
@@ -224,14 +225,6 @@ router.get('/getEpisodeVocabInfo', (req, res) => {
       });
     })
 })
-
-function hashcode(s) {
-  var h = 0, l = s.length, i = 0;
-  if ( l > 0 )
-    while (i < l)
-      h = (h << 5) - h + s.charCodeAt(i++) | 0;
-  return h;
-}
 
 router.get('/createContextAnswer', (req, res) => {
   question_id = req.query.question_id
