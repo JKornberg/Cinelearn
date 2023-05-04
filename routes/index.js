@@ -233,7 +233,7 @@ router.get('/createContextAnswer', (req, res) => {
   language = req.query.language
   user_id = req.query.user_id
   connection.query(`INSERT INTO question_progress (question_id, correct,time)
-  VALUES (${question_id},${correct},${time}); SELECT progress_id FROM question_progress WHERE progress_id=LAST_INSERT_ID()`, 
+  VALUES (${question_id},${correct},'${time}'); SELECT progress_id FROM question_progress WHERE progress_id=LAST_INSERT_ID()`, 
   (err, rows, fields) => 
     {
       if(err) throw err
@@ -259,7 +259,7 @@ router.get('/createVocabAnswer', (req, res) => {
   language = req.query.language
   user_id = req.query.user_id
   connection.query(`INSERT INTO vocab_progress (vocab_id, correct,time)
-  VALUES (${question_id},${correct},${time}); SELECT progress_id FROM vocab_progress WHERE progress_id=LAST_INSERT_ID()`, 
+  VALUES (${question_id},${correct},'${time}'); SELECT progress_id FROM vocab_progress WHERE progress_id=LAST_INSERT_ID()`, 
   (err, rows, fields) => 
     {
       if(err) throw err
