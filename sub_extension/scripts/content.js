@@ -112,6 +112,7 @@ var questions = []
 
 
 var pause = false;
+let slider_element;
 var callback = function (mutationsList, observer) {
 	for (const mutation of mutationsList) {
 		if (slider_element == null){
@@ -139,7 +140,7 @@ var callback = function (mutationsList, observer) {
 				pause = 'watch-video-notification-pause' === className;
 				console.log("ahh", pause);
 				// bottom bar is active //
-				var slider_element = document.querySelector('[aria-label="Seek time scrubber"]');
+				slider_element = document.querySelector('[aria-label="Seek time scrubber"]');
 
 				// console.log(pause);
 				// console.log(slider_element);
@@ -150,7 +151,7 @@ var callback = function (mutationsList, observer) {
 		}
 		if (mutation.target.className == "control-medium ltr-1evcx25"){
 			// console.log(mutation);
-			var slider_element = document.querySelector('[aria-label="Seek time scrubber"]');
+			slider_element = document.querySelector('[aria-label="Seek time scrubber"]');
 				
 			// console.log(pause);
 			// console.log(slider_element);
@@ -783,6 +784,7 @@ var intervalId = window.setInterval(function () {
 			newSubContainer.appendChild(newContent);
 			if (sub.id === 'sub2') {
 				newContent.addEventListener('click', function (event) {
+					// eslint-disable-next-line no-useless-escape
 					let parsedWord = event.target.textContent.toLowerCase().replace(/[.,\/#!?$%\^&\*;:{}=\-_`~()]/g, "").replace(/\s{2,}/g, "")
 					if (DICTIONARY[parsedWord]) {
 						alert(`${parsedWord} translates to: ${DICTIONARY[parsedWord]}`)
