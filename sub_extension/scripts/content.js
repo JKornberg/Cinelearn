@@ -62,7 +62,7 @@ class VocabQuestion {
 		this.indexWiseWordsEnglish = this.english.split(' ')
 		this.indexWiseWordsSpanish = this.spanish.split(' ')
 		this.randomSpanishWords = getRandomValuesFromArray(spanish_words)
-		this.randomSpanishWords = getRandomValuesFromArray(english_words)
+		this.randomEnglishWords = getRandomValuesFromArray(english_words)
 		this.section = Math.floor(max_time/this.start)
 		this.id = id
 	}
@@ -195,6 +195,9 @@ window.addEventListener('load', function() {
 	fetch('https://cinelearn.fly.dev/getContextQuestions?episode_num=0',opts)
 	.then(response => response.json())
 	.then(data => {
+		data['spanish_subs']= data['spanish_subs'].sort(function(a, b) {
+			return parseFloat(b['start_time']) - parseFloat(a['start_time'])
+		});
 		contextQuestions = data['data'].map((question, qid) => {
 			return new ContextQuestion(qid, question['start_time'],question['english_question'], question['spanish_question'], question['answer_list'])
 		})
@@ -226,7 +229,7 @@ window.video_change_observer.observe(document.documentElement, window.video_chan
 createSub = true;
 questionMutex = 0;
 
-function createAnswer(text) {
+function createAnswer(text, explanationText) {
 	const modalBg = document.createElement("div");
 	modalBg.classList.add("modal-bg");
 	modalBg.className = 'modal-box';
@@ -254,7 +257,7 @@ function createAnswer(text) {
 	const explanationContainer = document.createElement("div");
 	explanationContainer.classList.add("explanation-container");
 	const explanation = document.createElement("p");
-	explanation.textContent = "This is an explanation for why the answer is correct. I hope you enjoy!";
+	explanation.textContent = explanationText;
 	explanation.classList.add("explanation");
 	explanationContainer.appendChild(explanation);
 	modalContainer.appendChild(explanationContainer);
@@ -281,6 +284,131 @@ function createAnswer(text) {
 	modalContainer.appendChild(closeButton);
 
 	closeButton.addEventListener("click", () => {
+		modalBg.remove();
+	});
+
+	// Append the modal container to the modal background and the modal background to the body
+	modalBg.appendChild(modalContainer);
+	const vidDiv = document.querySelector(".watch-video--player-view");
+	vidDiv.appendChild(modalBg);
+}
+
+
+
+
+function createVocabModal(question) {
+
+	let finalWords = []
+	finalWords = question.indexWiseWordsSpanish.concat(question.randomEnglishWords)
+
+	let selectedCell = ''
+	const modalBg = document.createElement("div");
+	modalBg.classList.add("modal-bg");
+	modalBg.className = 'modal-box';
+
+	// Create the modal container element
+	const modalContainer = document.createElement("div");
+	modalContainer.classList.add("modal-container");
+
+	// Create the question title element
+	const titleElement = document.createElement("h2");
+	titleElement.textContent = "Translate this";
+	titleElement.classList.add("question-title")
+	modalContainer.appendChild(titleElement);
+
+	// Create the English element
+	const questionElement = document.createElement("h2");
+	questionElement.textContent = `English: ${question.english}`;
+	questionElement.classList.add("question")
+	modalContainer.appendChild(questionElement);
+
+	// Create the Spanish Element
+	const answerContainer = document.createElement("div");
+	answerContainer.classList.add("answer-container");
+
+	question.choices.forEach((choice, index) => {
+		const answerElement = document.createElement("div");
+		answerElement.classList.add("answer-element");
+
+		const labelElement = document.createElement("label");
+		labelElement.textContent = choice;
+		labelElement.setAttribute("for", `answer-${index}`);
+
+		const inputElement = document.createElement("input");
+		inputElement.type = "radio";
+		inputElement.name = "answer";
+		inputElement.id = `answer-${index}`;
+		inputElement.value = index;
+		answerElement.appendChild(inputElement);
+		answerElement.appendChild(labelElement);
+		answerContainer.appendChild(answerElement);
+	});
+
+	question.choices.forEach((choice, index) => {
+		const answerElement = document.createElement("div");
+		answerElement.classList.add("answer-element");
+
+		const labelElement = document.createElement("label");
+		labelElement.textContent = choice;
+		labelElement.setAttribute("for", `answer-${index}`);
+
+		const inputElement = document.createElement("input");
+		inputElement.type = "radio";
+		inputElement.name = "answer";
+		inputElement.id = `answer-${index}`;
+		inputElement.value = index;
+		answerElement.appendChild(inputElement);
+		answerElement.appendChild(labelElement);
+		answerContainer.appendChild(answerElement);
+	});
+
+	modalContainer.appendChild(answerContainer);
+
+	// Create button container and submit / skip buttons
+
+	const buttonContainer = document.createElement("div");
+	buttonContainer.classList.add("button-container");
+
+	const submitButton = document.createElement("button");
+	submitButton.classList.add("submit", "app-button");
+	submitButton.textContent = "Submit";
+	buttonContainer.appendChild(submitButton);
+
+	const videoSkipButton = document.createElement("button");
+	videoSkipButton.classList.add("skip", "app-button");
+	videoSkipButton.textContent = "Skip to Time";
+	buttonContainer.appendChild(videoSkipButton);
+
+	modalContainer.appendChild(buttonContainer);
+
+	// Create the close button element
+	const closeButton = document.createElement("span");
+	closeButton.classList.add("close-button");
+	closeButton.innerHTML = "&times;";
+	closeButton.style.position = 'absolute';
+	closeButton.style.top = '10px';
+	closeButton.style.right = '10px';
+	closeButton.style.fontSize = '20px';
+	closeButton.style.cursor = 'pointer';
+	modalContainer.appendChild(closeButton);
+
+
+
+	// Add event listeners to the submit and close buttons
+	submitButton.addEventListener("click", () => {
+		questionMutex -= 1;
+		if (selectedAnswer === question.spanish) {
+			modalBg.remove();
+			createAnswer("Correct!");
+		} else {
+			// alert("Incorrect!");
+			modalBg.remove();
+			createAnswer("Incorrect");
+		}
+	});
+
+	closeButton.addEventListener("click", () => {
+		questionMutex -= 1;
 		modalBg.remove();
 	});
 
