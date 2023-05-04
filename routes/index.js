@@ -167,6 +167,42 @@ router.get('/getUserVocabProgress', (req, res) => {
     })
 })
 
+
+router.get('/getUserTotalProgress', (req, res) => {
+  episode_num = req.query.episode_num
+  user_id = req.query.user_id
+  connection.query(`SELECT user_id,SUM(question_progress.correct),SUM(vocab_progress.correct) FROM progress 
+  LEFT JOIN vocab_progress ON vocab_progress.progress_id=vocab_progress_id LEFT JOIN question_progress ON 
+  question_progress.progress_id=question_progress_id GROUP BY user_id HAVING user_id=${user_id};`, 
+  (err, rows, fields) => 
+    {
+      if(rows.length > 0) {
+        user_correct_num = rows[0]['SUM(question_progress.correct)']+rows[0]['SUM(vocab_progress.correct)']
+        episode_id = 0
+        user_id = rows[0]['user_id']
+      }
+      else {
+        user_correct_num = 0
+        episode_id = episode_num
+        user_id = user_id
+      }
+      if(err) throw err
+
+      mixpanel.track('User Vocab Progress', {
+        'distinct_id': user_id,
+        'episode_id': episode_num,
+        'correct': user_correct_num
+      });
+
+      res.status(200).json({
+        status: "success",
+        user_correct: user_correct_num,
+        episode_id: episode_id,
+        user_id: user_id
+      });
+    })
+})
+
 router.get('/getEpisodeContextInfo', (req, res) => {
   episode_num = req.query.episode_num
   user_id = req.query.user_id
