@@ -14,11 +14,11 @@ var mixpanel = Mixpanel.init('ececd3d662d1259408c9b162565367ef');
 // var privateKey = fs.readFileSync('./private-key.pem', 'utf8');
 /* GET home page. */ 
 const connection = mysql.createConnection({
-  host: 'database-1.cvifg4azbmac.us-east-2.rds.amazonaws.com',
+  host: process.env.DB_HOST,
   port: 3306,
-  user: 'admin',
-  password: 'Cinelearn!',
-  database: 'cinelearn',
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
   multipleStatements: true
 });
 

@@ -6,7 +6,7 @@ const mysql = require('mysql')
 const cors = require('cors');
 var Mixpanel = require('mixpanel');
 var mixpanel = Mixpanel.init('ececd3d662d1259408c9b162565367ef');
-
+const dotenv = require('dotenv');
 var app = express();
 app.use(cors())
 
