@@ -264,6 +264,7 @@ window.addEventListener('load', function () {
 		})
 		.catch(error => console.error(error));
 });
+
 window.video_change_observer = new MutationObserver(callback);
 window.video_change_observer_config = { childList: true, subtree: true, }
 window.video_change_observer.observe(document.documentElement, window.video_change_observer_config);
