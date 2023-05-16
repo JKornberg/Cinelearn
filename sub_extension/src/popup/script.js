@@ -1,4 +1,3 @@
-
 const opts = {
   headers: {
     'mode': 'cors',
@@ -86,9 +85,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const progressBar = document.getElementById('myProgress');
   const mountain = document.getElementById('mountain-climbing');
   const climber = document.getElementById('mountain-climber');
-  const btnContainer = document.querySelector('.btn-container');
-  const passwordField = document.querySelector('.password-field');
-  const showPasswordCheckbox = document.getElementById('show-password-checkbox');
+  // const btnContainer = document.querySelector('.btn-container');
+  // const passwordField = document.querySelector('.password-field');
+  // const showPasswordCheckbox = document.getElementById('show-password-checkbox');
   const logoutButton = document.getElementById('logout-button');
   let userId = null;
   let username = "Not logged in";
@@ -131,8 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   logoutButton.addEventListener('click', () => {
     chrome.storage.local.remove(['user_id', 'username'], function () {
-      console.log("User Id is removed");
-      console.log("Username is removed");
+     
       loggedInName = null;
     });
     window.location.reload();
@@ -189,9 +187,20 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  loginForm.addEventListener('submit', async (event) => {
+  loginForm.addEventListener('click', async (event) => {
     event.preventDefault(); // Prevent the form from submitting
+    chrome.identity.getAuthToken({ 'interactive': true }, function (token) {
+      console.log(token); // logged in with google
+    });
+    return;
+    // chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+    //   // tabs[0] is the active tab in the current window
+    //   var activeTab = tabs[0];
+    //   var message = { action: "changeVariable", data: "2" };
+    //   chrome.tabs.sendMessage(activeTab.id, message);
+    // });
 
+    // return;
     // Check if the username and password are correct (replace with your own logic)
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
@@ -227,19 +236,19 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  showPasswordCheckbox.addEventListener('change', () => {
-    // Toggle the visibility of the password field
-    const passwordInput = document.getElementById('password');
-    const showPasswordIcon = document.querySelector('.show-password-icon');
+  // showPasswordCheckbox.addEventListener('change', () => {
+  //   // Toggle the visibility of the password field
+  //   const passwordInput = document.getElementById('password');
+  //   const showPasswordIcon = document.querySelector('.show-password-icon');
 
-    if (showPasswordCheckbox.checked) {
-      passwordInput.type = 'text';
-      showPasswordIcon.classList.add('hide-password');
-    } else {
-      passwordInput.type = 'password';
-      showPasswordIcon.classList.remove('hide-password');
-    }
-  });
+  //   if (showPasswordCheckbox.checked) {
+  //     passwordInput.type = 'text';
+  //     showPasswordIcon.classList.add('hide-password');
+  //   } else {
+  //     passwordInput.type = 'password';
+  //     showPasswordIcon.classList.remove('hide-password');
+  //   }
+  // });
   
 
 

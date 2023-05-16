@@ -19,6 +19,18 @@ const	opts = {
 	},
 }
 
+// *** EXAMPLE OF MESSAGE PASSING ***
+
+// let testVar = 1
+// console.log("TestVar: ", testVar);
+// chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+// 	if (message.action === "changeVariable") {
+// 	  // Change the variable value
+// 	  testVar = message.data;
+// 	  console.log("Variable changed to:", testVar);
+// 	}
+// });
+
 class Subtitle {
 	constructor(start, end, sub) {
 		this.start = start; // number;

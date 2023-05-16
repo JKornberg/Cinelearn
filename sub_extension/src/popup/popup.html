@@ -3,8 +3,9 @@
 
 <head>
 	<title>Mountain Climbing Progress</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<script src="script.js"></script>
+	<link rel="stylesheet" type="text/css" href="/src/popup/css/popup_style.css">
+	<script src="/libs/google_auth_helper.js" async defer></script>
+	<script src="/src/popup/script.js"></script>
 </head>
 <!-- add streak code-->
 <body>
@@ -13,9 +14,9 @@
 	<div class="wrapper">
 		<div id="authenticated-section">
 			<div id="mountain-section">
-				<img class="mountain-climbing" id="mountain-climbing" src="images/mountain-climbing.jpg"
+				<img class="mountain-climbing" id="mountain-climbing" src="/images/mountain-climbing.jpg"
 					alt="Mountain Climbing">
-				<img class="mountain-climber" id="mountain-climber" src="images/mountain-climber.png"
+				<img class="mountain-climber" id="mountain-climber" src="/images/mountain-climber.png"
 					alt="Mountain Climber">
 			</div>
 			<progress id="myProgress" value="0" max="100" style="width: 100%;"></progress>
@@ -29,7 +30,7 @@
 		</div>
 		<!-- Add a form to enter username and password -->
 		<div class="login-container">
-			<img class="login-logo" src="images/logo_narrow.png" alt="Logo" />
+			<!-- <img class="login-logo" src="/images/logo_narrow.png" alt="Logo" />
 			<form id="login-form">
 				<input class='form-input' id="username" name="username" value="" placeholder="Username">
 				<input class='form-input' id="password" name="password" type="password" value="" placeholder="Password">
@@ -42,7 +43,10 @@
 				<br>
 
 				<input class="app-button" type="submit" value="Login">
-			</form>
+			</form> -->
+			<button type="button" id='login-form' class="login-with-google-btn" >
+				Sign in with Google
+			  </button>
 		</div>
 	</div>
 
